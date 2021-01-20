@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
@@ -7,7 +8,9 @@ const App: React.FC = () => {
     <>
       <Header />
       <main>
-        <h1>Welcome To MERN ECommerce</h1>
+        <Container>
+          <h1>Welcome To MERN ECommerce</h1>
+        </Container>
       </main>
       <Footer />
     </>
