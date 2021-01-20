@@ -1,7 +1,17 @@
 import React from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 const App: React.FC = () => {
-  return <>Welcome to MERN E-Commerce</>;
+  return (
+    <>
+      <Header />
+      <main>
+        <h1>Welcome To MERN ECommerce</h1>
+      </main>
+      <Footer />
+    </>
+  );
 };
 
 export default App;
