@@ -1,10 +1,9 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import products from "../products";
-import { Product } from "../types";
+import { ProductType } from "../types";
 
-interface Props extends Product {
-  product: Product;
+interface Props {
+  product: ProductType;
 }
 
 const Product = ({ product }: Props) => {

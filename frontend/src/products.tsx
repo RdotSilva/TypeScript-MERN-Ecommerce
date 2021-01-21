@@ -1,6 +1,6 @@
-import { Product } from "./types";
+import { ProductType } from "./types";
 
-const products: Product[] = [
+const products: ProductType[] = [
   {
     _id: "1",
     name: "Airpods Wireless Bluetooth Headphones",
