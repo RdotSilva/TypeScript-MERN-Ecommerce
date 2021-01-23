@@ -1,8 +1,15 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
+import products from "../products";
 
-interface Props {}
+interface MatchParams {
+  id: string;
+}
 
-const ProductScreen = (props: Props) => {
+interface Props extends RouteComponentProps<MatchParams> {}
+
+const ProductScreen = ({ match }: Props) => {
+  const product = products.find((product) => product._id === match.params.id);
   return <div>Product</div>;
 };
 
