@@ -1,9 +1,8 @@
 import React from "react";
-import { Col, Image, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Rating from "../components/Rating";
 import products from "../products";
-import { ProductType } from "../types";
 
 interface MatchParams {
   id: string;
@@ -42,6 +41,35 @@ const ProductScreen = ({ match }: Props) => {
                 Description: {product.description}
               </ListGroup.Item>
             </ListGroup>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <ListGroup.Item variant="flush">
+                <Row>
+                  <Col>Price:</Col>
+                  <Col>
+                    <strong>${product.price}</strong>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item variant="flush">
+                <Row>
+                  <Col>Status:</Col>
+                  <Col>
+                    {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item variant="flush">
+                <Button
+                  className="btn-block"
+                  type="button"
+                  disabled={product.countInStock === 0}
+                >
+                  Add To Cart
+                </Button>
+              </ListGroup.Item>
+            </Card>
           </Col>
         </Row>
       </>
