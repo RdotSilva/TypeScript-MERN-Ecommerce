@@ -4,7 +4,7 @@
   "description": "MERN E-Commerce",
   "main": "server.tsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/server.ts"
   },
   "repository": {
     "type": "git",
