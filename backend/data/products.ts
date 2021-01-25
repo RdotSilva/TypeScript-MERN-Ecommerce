@@ -81,4 +81,4 @@ const products: ProductType[] = [
   },
 ];
 
-export default products;
+module.exports = products;
