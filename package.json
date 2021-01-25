@@ -2,7 +2,8 @@
   "name": "ecommerce",
   "version": "1.0.0",
   "description": "MERN E-Commerce",
-  "main": "server.tsx",
+  "main": "server.ts",
+  "type": "module",
   "scripts": {
     "start": "node backend/server.ts"
   },
