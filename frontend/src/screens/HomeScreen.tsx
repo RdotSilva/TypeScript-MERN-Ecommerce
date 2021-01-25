@@ -9,6 +9,10 @@ interface Props {}
 const HomeScreen = (props: Props) => {
   const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    // TODO: Make request to back end, get products, and set product state
+  });
+
   return (
     <>
       <h1>Latest Products</h1>
