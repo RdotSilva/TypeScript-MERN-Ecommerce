@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Rating from "../components/Rating";
+import { ProductType } from "../types";
 
 interface MatchParams {
   id: string;
@@ -10,9 +12,21 @@ interface MatchParams {
 interface Props extends RouteComponentProps<MatchParams> {}
 
 const ProductScreen = ({ match }: Props) => {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState<ProductType | {}>({});
 
-  if (product === undefined) {
+  /**
+   * Fetches a single product from the backend using id param and updates product state
+   */
+  const fetchProduct = async () => {
+    const { data } = await axios.get(`/api/products/${match.params.id}`);
+    setProduct(data);
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
+
+  if (product === undefined || product === {}) {
     return <>No Product Data</>;
   } else {
     return (
