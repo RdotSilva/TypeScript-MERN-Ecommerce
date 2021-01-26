@@ -12,7 +12,7 @@ interface MatchParams {
 interface Props extends RouteComponentProps<MatchParams> {}
 
 const ProductScreen = ({ match }: Props) => {
-  const [product, setProduct] = useState<ProductType | {}>({});
+  const [product, setProduct] = useState<ProductType>();
 
   /**
    * Fetches a single product from the backend using id param and updates product state
@@ -26,7 +26,7 @@ const ProductScreen = ({ match }: Props) => {
     fetchProduct();
   }, []);
 
-  if (product === undefined || product === {}) {
+  if (product === undefined) {
     return <>No Product Data</>;
   } else {
     return (
