@@ -4,7 +4,7 @@
   "description": "MERN E-Commerce",
   "main": "server.ts",
   "scripts": {
-    "start": "node backend/server.ts"
+    "start": "npx ts-node backend/server.ts"
   },
   "repository": {
     "type": "git",
