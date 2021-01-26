@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import Product from "../components/Product";
-import products from "../products";
+
 import { ProductType } from "../types";
 
 interface Props {}
@@ -10,13 +10,16 @@ interface Props {}
 const HomeScreen = (props: Props) => {
   const [products, setProducts] = useState([]);
 
+  /**
+   * Fetches all products from the backend
+   */
+  const fetchProducts = async () => {
+    const { data } = await axios.get("/api/products");
+
+    setProducts(data);
+  };
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get("/api/products");
-
-      setProducts(data);
-    };
-
     fetchProducts();
   }, []);
 
