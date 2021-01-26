@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Rating from "../components/Rating";
-import products from "../products";
 
 interface MatchParams {
   id: string;
@@ -11,7 +10,7 @@ interface MatchParams {
 interface Props extends RouteComponentProps<MatchParams> {}
 
 const ProductScreen = ({ match }: Props) => {
-  const product = products.find((product) => product._id === match.params.id);
+  const [product, setProduct] = useState({});
 
   if (product === undefined) {
     return <>No Product Data</>;
