@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import Product from "../components/Product";
@@ -10,8 +11,14 @@ const HomeScreen = (props: Props) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // TODO: Make request to back end, get products, and set product state
-  });
+    const fetchProducts = async () => {
+      const { data } = await axios.get("/api/products");
+
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <>
