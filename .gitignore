@@ -27,3 +27,6 @@ yarn-error.log*
 
 # typescript
 .eslintcache
+
+# nodemon config
+nodemon.json
