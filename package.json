@@ -4,7 +4,10 @@
   "description": "MERN E-Commerce",
   "main": "server.ts",
   "scripts": {
-    "start": "npx ts-node backend/server.ts"
+    "start": "npx ts-node backend/server.ts",
+    "server": "./node_modules/.bin/nodemon",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
