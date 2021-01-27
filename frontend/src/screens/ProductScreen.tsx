@@ -24,7 +24,7 @@ const ProductScreen = ({ match }: Props) => {
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [match]);
 
   if (product === undefined) {
     return <>No Product Data</>;
