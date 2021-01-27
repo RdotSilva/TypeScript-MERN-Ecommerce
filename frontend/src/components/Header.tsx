@@ -4,6 +4,9 @@ import { LinkContainer } from "react-router-bootstrap";
 
 interface Props {}
 
+/**
+ * Header component
+ */
 const Header = (props: Props) => {
   return (
     <header>

@@ -3,6 +3,9 @@ import { Col, Container, Row } from "react-bootstrap";
 
 interface Props {}
 
+/**
+ * Footer component
+ */
 const Footer = (props: Props) => {
   return (
     <footer>
