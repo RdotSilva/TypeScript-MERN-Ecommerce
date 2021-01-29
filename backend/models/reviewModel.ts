@@ -1,4 +1,12 @@
+import { Model, Document } from "mongoose";
+
 const mongoose = require("mongoose");
+
+interface Review extends Document {
+  name: string;
+  rating: number;
+  comment: string;
+}
 
 const reviewSchema = mongoose.Schema(
   {
@@ -9,6 +17,6 @@ const reviewSchema = mongoose.Schema(
   { timestamps: true } // Automatically create "createdAt timestamp");
 );
 
-const Review = mongoose.model("Review", reviewSchema);
+const Review: Model<Review> = mongoose.model("Review", reviewSchema);
 
 export default Review;
