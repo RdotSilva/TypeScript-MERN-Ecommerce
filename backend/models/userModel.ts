@@ -1,4 +1,13 @@
+import { Model, Document } from "mongoose";
+
 const mongoose = require("mongoose");
+
+interface User extends Document {
+  name: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+}
 
 const userSchema = mongoose.Schema(
   {
@@ -24,6 +33,6 @@ const userSchema = mongoose.Schema(
   { timestamps: true } // Automatically create "createdAt timestamp"
 );
 
-const User = mongoose.model("User", userSchema);
+const User: Model<User> = mongoose.model("User", userSchema);
 
 export default User;
