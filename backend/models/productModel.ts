@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const reviewSchema = require("./reviewModel");
 
 const productSchema = mongoose.Schema(
   {
@@ -27,6 +28,7 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    reviews: [reviewSchema],
     rating: {
       type: Number,
       required: true,
@@ -50,3 +52,7 @@ const productSchema = mongoose.Schema(
   },
   { timestamps: true } // Automatically create "createdAt timestamp"
 );
+
+const Product = mongoose.model("Product", productSchema);
+
+export default Product;
