@@ -1,6 +1,41 @@
-const mongoose = require("mongoose");
+import mongoose, { Document, Model } from "mongoose";
+import { ProductType } from "../types";
+import User from "./userModel";
 
-const orderSchema = mongoose.Schema(
+interface Order extends Document {
+  user: User;
+  orderItems: [
+    {
+      name: string;
+      quantity: number;
+      image: string;
+      price: number;
+      product: { type: ProductType };
+    }
+  ];
+  shippingAddress: {
+    address: string;
+    city: string;
+    postalCode: string;
+    country: string;
+  };
+  paymentMethod: string;
+  paymentResult: {
+    id: string;
+    status: string;
+    update_time: string;
+    email_address: string;
+  };
+  taxPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
+  isPaid: boolean;
+  paidAt: Date;
+  isDelivered: boolean;
+  deliveredAt: Date;
+}
+
+const orderSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -71,6 +106,6 @@ const orderSchema = mongoose.Schema(
   { timestamps: true } // Automatically create "createdAt timestamp"
 );
 
-const Order = mongoose.model("Order", orderSchema);
+const Order: Model<Order> = mongoose.model("Order", orderSchema);
 
 export default Order;
