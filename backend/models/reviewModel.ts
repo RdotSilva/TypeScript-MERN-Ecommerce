@@ -26,6 +26,4 @@ const reviewSchema = mongoose.Schema(
   { timestamps: true } // Automatically create "createdAt timestamp");
 );
 
-const Review: Model<Review> = mongoose.model("Review", reviewSchema);
-
 export default Review;
