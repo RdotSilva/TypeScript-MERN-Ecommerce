@@ -39,3 +39,19 @@ const importData = async () => {
     process.exit(1);
   }
 };
+
+const destroyData = async () => {
+  try {
+    // Clear any existing items from DB
+    await Order.deleteMany();
+    await Product.deleteMany();
+    await User.deleteMany();
+
+    console.log("Data Destroyed!");
+
+    process.exit();
+  } catch (error) {
+    console.error(`${error}`);
+    process.exit(1);
+  }
+};
