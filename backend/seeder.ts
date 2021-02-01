@@ -7,10 +7,18 @@ import Product from "./models/productModel";
 import Order from "./models/orderModel";
 import connectDB from "./config/db";
 
+/**
+ * Helper file that is used for adding and removing test data to the database
+ */
+
 dotenv.config();
 
 connectDB();
 
+/**
+ * Destroy existing data and seed new data into the database
+ * This will populate a list of products with a default admin user
+ */
 const importData = async () => {
   try {
     // Clear any existing items from DB
@@ -40,6 +48,9 @@ const importData = async () => {
   }
 };
 
+/**
+ * Destroy all data on the database
+ */
 const destroyData = async () => {
   try {
     // Clear any existing items from DB
