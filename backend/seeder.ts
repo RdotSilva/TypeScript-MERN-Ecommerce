@@ -55,3 +55,6 @@ const destroyData = async () => {
     process.exit(1);
   }
 };
+
+// Check command line args to destroy or import data
+process.argv[2] === "-d" ? destroyData() : importData();
