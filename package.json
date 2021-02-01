@@ -7,7 +7,8 @@
     "start": "npx ts-node backend/server.ts",
     "server": "./node_modules/.bin/nodemon",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "npx ts-node backend/seeder.ts"
   },
   "repository": {
     "type": "git",
