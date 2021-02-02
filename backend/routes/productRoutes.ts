@@ -19,17 +19,16 @@ router.get(
 /**
  * Fetch single product
  * @route GET /api/products/:id
- * @param id ID of product to fetch
+ * @param id ID of
  * @access Public
  */
 router.get(
   "/:id",
   asyncHandler(async (req: Request, res: Response) => {
-    const product = await Product.findById(req.params.id);
-
-    if (product) {
+    try {
+      const product = await Product.findById(req.params.id);
       res.json(product);
-    } else {
+    } catch (error) {
       res.status(404).json({ message: "Product not found" });
     }
   })
