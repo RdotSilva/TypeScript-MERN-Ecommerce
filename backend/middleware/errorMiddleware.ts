@@ -11,6 +11,7 @@ const notFound = (
   next(error);
 };
 
+// TODO: Debug error handler. Not passing correct message for the error.
 const errorHandler = (
   err: Error,
   req: Request,
