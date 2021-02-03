@@ -16,6 +16,12 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/products/", productRoutes);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  const error = new Error(`Not found - ${req.originalUrl}`);
+  res.status(404);
+  next(error);
+});
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   const statusCode: number = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode);
   res.json({
