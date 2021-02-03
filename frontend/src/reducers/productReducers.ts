@@ -1,4 +1,12 @@
-export const productListReducer = (state = { products: [] }, action) => {
+type ProductActionType = {
+  type: string;
+  payload: [];
+};
+
+export const productListReducer = (
+  state = { products: [] },
+  action: ProductActionType
+) => {
   switch (action.type) {
     case "PRODUCT_LIST_REQUEST":
       return { loading: true, products: [] };
