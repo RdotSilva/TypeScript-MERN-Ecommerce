@@ -6,9 +6,11 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware";
 // Routes
 import productRoutes from "./routes/productRoutes";
 
-dotenv.config();
+const PORT = process.env.PORT || 5000;
 
 const app = express();
+
+dotenv.config();
 
 connectDB();
 
@@ -18,11 +20,9 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/products/", productRoutes);
 
+// Use Middleware
 app.use(notFound);
-
 app.use(errorHandler);
-
-const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
