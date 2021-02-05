@@ -1,6 +1,7 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../actions/productActions";
 import Product from "../components/Product";
 
 import { ProductType } from "../types";
@@ -9,19 +10,18 @@ interface Props {}
 
 const HomeScreen = (props: Props) => {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   /**
    * Fetches all products from the backend
    */
   const fetchProducts = async () => {
-    const { data } = await axios.get("/api/products");
-
-    setProducts(data);
+    dispatch(listProducts());
   };
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   return (
     <>
