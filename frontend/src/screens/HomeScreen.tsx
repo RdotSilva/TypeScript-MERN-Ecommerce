@@ -30,6 +30,8 @@ const HomeScreen = (props: Props) => {
     fetchProducts();
   }, [dispatch]);
 
+  //TODO: Fix loading issue. Might have to temporarily remove loading text and revert back to previous code.
+
   return (
     <>
       <h1>Latest Products</h1>
