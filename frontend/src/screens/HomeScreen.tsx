@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 import Product from "../components/Product";
+import { RootState } from "../store";
 
 import { ProductType } from "../types";
 
@@ -11,6 +12,10 @@ interface Props {}
 const HomeScreen = (props: Props) => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
+
+  const productList = useSelector((state: RootState) => state.productList);
+
+  const { loading, error } = productList;
 
   /**
    * Fetches all products from the backend
