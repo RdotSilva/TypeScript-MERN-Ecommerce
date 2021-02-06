@@ -6,6 +6,9 @@ interface Props {
   children: string;
 }
 
+/**
+ * Message component used to format alerts throughout different pages
+ */
 const Message = ({ variant, children }: Props) => {
   return <Alert variant={variant}>{children}</Alert>;
 };
