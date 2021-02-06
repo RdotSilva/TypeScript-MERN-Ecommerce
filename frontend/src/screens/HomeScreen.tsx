@@ -34,20 +34,13 @@ const HomeScreen = (props: Props) => {
 
   return (
     <>
-      <h1>Latest Products</h1>
-      {loading ? (
-        <h2>Loading...</h2>
-      ) : error ? (
-        <h3>{error}</h3>
-      ) : (
-        <Row>
-          {products.map((product: ProductType) => (
-            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-              <Product product={product} />
-            </Col>
-          ))}
-        </Row>
-      )}
+      <Row>
+        {products.map((product: ProductType) => (
+          <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+            <Product product={product} />
+          </Col>
+        ))}
+      </Row>
     </>
   );
 };
