@@ -9,3 +9,9 @@ export interface ProductListRequestAction {
   loading: boolean;
   products: ProductType[];
 }
+
+export interface ProductListSuccessAction {
+  type: typeof PRODUCT_LIST_SUCCESS;
+  loading: boolean;
+  products: ProductType[];
+}
