@@ -3,6 +3,11 @@ type ProductActionType = {
   payload: [];
 };
 
+type ProductDetailsActionType = {
+  type: string;
+  payload: { product: { reviews: [] } };
+};
+
 export const productListReducer = (
   state = { products: [] },
   action: ProductActionType
@@ -21,7 +26,7 @@ export const productListReducer = (
 
 export const productDetailsReducer = (
   state = { product: { reviews: [] } },
-  action: ProductActionType
+  action: ProductDetailsActionType
 ) => {
   switch (action.type) {
     case "PRODUCT_DETAILS_REQUEST":
