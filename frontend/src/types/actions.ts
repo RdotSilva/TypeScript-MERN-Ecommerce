@@ -6,20 +6,20 @@ export const PRODUCT_LIST_FAIL = "PRODUCT_LIST_FAIL";
 
 export interface ProductListRequestAction {
   type: typeof PRODUCT_LIST_REQUEST;
-  loading: boolean;
-  products: ProductType[];
+  loading?: boolean;
+  payload?: ProductType[];
 }
 
 export interface ProductListSuccessAction {
   type: typeof PRODUCT_LIST_SUCCESS;
-  loading: boolean;
-  products: ProductType[];
+  loading?: boolean;
+  payload?: ProductType[];
 }
 
 export interface ProductListFailAction {
   type: typeof PRODUCT_LIST_FAIL;
-  loading: boolean;
-  error: Error;
+  loading?: boolean;
+  payload?: Error;
 }
 
 /**
