@@ -25,3 +25,5 @@ export const listProducts = () => async (dispatch: Dispatch<AppAction>) => {
     });
   }
 };
+
+// TODO: Add listProductDetails actions

@@ -22,6 +22,8 @@ export interface ProductListFailAction {
   payload?: Error;
 }
 
+// TODO: Add interfaces for ProductDetailsActions (x3)
+
 /**
  * ProductList actions aggregated into one total action type
  */
@@ -31,9 +33,13 @@ export type ProductListActions =
   | ProductListSuccessAction
   | ProductListFailAction;
 
+// TODO: Create ProductDetailsActions type and combine all 3 actions
+
 /**
  * Aggregate of ALL actions types to use within the entire application
  * Combine all of your Redux action aggregates into this
  */
+
+// TODO: Update AppAction with new ProductDetailsActions
 
 export type AppAction = ProductListActions;
