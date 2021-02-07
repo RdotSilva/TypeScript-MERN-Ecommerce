@@ -21,3 +21,19 @@ export interface ProductListFailAction {
   loading: boolean;
   error: Error;
 }
+
+/**
+ * ProductList actions aggregated into one total action type
+ */
+
+export type ProductListActions =
+  | ProductListRequestAction
+  | ProductListSuccessAction
+  | ProductListFailAction;
+
+/**
+ * Aggregate of ALL actions types to use within the entire application
+ * Combine all of your Redux action aggregates into this
+ */
+
+export type AppAction = ProductListActions;
