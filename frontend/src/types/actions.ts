@@ -15,3 +15,9 @@ export interface ProductListSuccessAction {
   loading: boolean;
   products: ProductType[];
 }
+
+export interface ProductListFailAction {
+  type: typeof PRODUCT_LIST_FAIL;
+  loading: boolean;
+  error: Error;
+}
