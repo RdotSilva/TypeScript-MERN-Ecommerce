@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import { AppAction } from "../types/actions";
 import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
@@ -7,7 +8,7 @@ import {
 } from "./../constants/productConstants";
 
 // Action creators
-export const listProducts = () => async (dispatch: Dispatch) => {
+export const listProducts = () => async (dispatch: Dispatch<AppAction>) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
