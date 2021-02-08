@@ -1,4 +1,9 @@
 import {
+  PRODUCT_DETAILS_REQUEST,
+  PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_FAIL,
+} from "./../constants/productConstants";
+import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -24,6 +29,24 @@ export interface ProductListFailAction {
 }
 
 // TODO: Add interfaces for ProductDetailsActions (x3)
+
+export interface ProductDetailsRequestAction {
+  type: typeof PRODUCT_DETAILS_REQUEST;
+  loading?: boolean;
+  payload: ProductType;
+}
+
+export interface ProductDetailsSuccessAction {
+  type: typeof PRODUCT_DETAILS_SUCCESS;
+  loading?: boolean;
+  payload: ProductType;
+}
+
+export interface ProductDetailsFailAction {
+  type: typeof PRODUCT_DETAILS_FAIL;
+  loading?: boolean;
+  payload?: Error;
+}
 
 /**
  * ProductList actions aggregated into one total action type
