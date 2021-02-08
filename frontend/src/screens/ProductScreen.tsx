@@ -6,6 +6,8 @@ import Rating from "../components/Rating";
 import { ProductType } from "../types";
 import { listProductDetails } from "../actions/productActions";
 import { RootState } from "../store";
+import Loader from "../components/Loader.";
+import Message from "../components/Message";
 
 interface MatchParams {
   id: string;
@@ -20,20 +22,26 @@ const ProductScreen = ({ match }: Props) => {
     (state: RootState) => state.productDetails
   );
 
-  const { loading, error, product } = productDetails;
+  const {
+    loading,
+    error,
+    product,
+  }: { loading: boolean; error: Error; product: ProductType } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
 
-  if (product === undefined || Object.keys(product).length === 0) {
-    return <>No Product Data</>;
-  } else {
-    return (
-      <>
-        <Link className="btn btn-light my-3" to="/">
-          Go Back
-        </Link>
+  return (
+    <>
+      <Link className="btn btn-light my-3" to="/">
+        Go Back
+      </Link>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
         <Row>
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />
@@ -85,9 +93,9 @@ const ProductScreen = ({ match }: Props) => {
             </Card>
           </Col>
         </Row>
-      </>
-    );
-  }
+      )}
+    </>
+  );
 };
 
 export default ProductScreen;
