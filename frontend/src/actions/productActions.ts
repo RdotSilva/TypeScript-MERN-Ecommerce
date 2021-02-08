@@ -10,6 +10,10 @@ import {
   PRODUCT_LIST_SUCCESS,
 } from "./../constants/productConstants";
 
+/**
+ * List Products action creator
+ * Actions related to listing all products
+ */
 export const listProducts = () => async (dispatch: Dispatch<AppAction>) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
@@ -28,6 +32,10 @@ export const listProducts = () => async (dispatch: Dispatch<AppAction>) => {
   }
 };
 
+/**
+ * List Product Details action creator
+ * Actions related to details of a specific product
+ */
 export const listProductDetails = (id: Number) => async (
   dispatch: Dispatch<AppAction>
 ) => {
