@@ -31,7 +31,7 @@ export interface ProductListFailAction {
 export interface ProductDetailsRequestAction {
   type: typeof PRODUCT_DETAILS_REQUEST;
   loading?: boolean;
-  payload: ProductType;
+  payload?: ProductType;
 }
 
 export interface ProductDetailsSuccessAction {
