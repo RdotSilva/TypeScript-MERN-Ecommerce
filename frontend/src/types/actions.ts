@@ -1,8 +1,9 @@
+import {
+  PRODUCT_LIST_FAIL,
+  PRODUCT_LIST_REQUEST,
+  PRODUCT_LIST_SUCCESS,
+} from "../constants/productConstants";
 import { ProductType } from "./../types";
-
-export const PRODUCT_LIST_REQUEST = "PRODUCT_LIST_REQUEST";
-export const PRODUCT_LIST_SUCCESS = "PRODUCT_LIST_SUCCESS";
-export const PRODUCT_LIST_FAIL = "PRODUCT_LIST_FAIL";
 
 export interface ProductListRequestAction {
   type: typeof PRODUCT_LIST_REQUEST;
