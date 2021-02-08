@@ -28,8 +28,6 @@ export interface ProductListFailAction {
   payload?: Error;
 }
 
-// TODO: Add interfaces for ProductDetailsActions (x3)
-
 export interface ProductDetailsRequestAction {
   type: typeof PRODUCT_DETAILS_REQUEST;
   loading?: boolean;
@@ -57,7 +55,10 @@ export type ProductListActions =
   | ProductListSuccessAction
   | ProductListFailAction;
 
-// TODO: Create ProductDetailsActions type and combine all 3 actions
+export type ProductDetailsActions =
+  | ProductDetailsRequestAction
+  | ProductDetailsSuccessAction
+  | ProductDetailsFailAction;
 
 /**
  * Aggregate of ALL actions types to use within the entire application
@@ -66,4 +67,4 @@ export type ProductListActions =
 
 // TODO: Update AppAction with new ProductDetailsActions
 
-export type AppAction = ProductListActions;
+export type AppAction = ProductListActions | ProductDetailsActions;
