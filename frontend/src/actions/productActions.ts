@@ -36,7 +36,7 @@ export const listProducts = () => async (dispatch: Dispatch<AppAction>) => {
  * List Product Details action creator
  * Actions related to details of a specific product
  */
-export const listProductDetails = (id: Number) => async (
+export const listProductDetails = (id: string) => async (
   dispatch: Dispatch<AppAction>
 ) => {
   try {
