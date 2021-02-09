@@ -6,6 +6,9 @@ interface Props {
   color?: string;
 }
 
+/**
+ * Rating component used for customer reviews
+ */
 const Rating = ({ value, text, color }: Props) => {
   return (
     <div className="rating">
