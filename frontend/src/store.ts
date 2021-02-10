@@ -5,11 +5,13 @@ import {
   productDetailsReducer,
   productListReducer,
 } from "./reducers/productReducers";
+import { cartReducer } from "./reducers/cartReducers";
 import { AppAction } from "./types/actions";
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  cart: cartReducer,
 });
 
 const initialState = {};
