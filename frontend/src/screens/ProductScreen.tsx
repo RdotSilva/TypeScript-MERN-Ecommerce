@@ -101,9 +101,17 @@ const ProductScreen = ({ match }: Props) => {
                         as="select"
                         value={qty}
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          setQty(e.target.value)
+                          setQty(+e.target.value)
                         }
-                      ></Form.Control>
+                      >
+                        {/* Populate the Qty dropdown selector based on the number of items in stock */}
+                        {[...Array(product.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {" "}
+                            {x + 1}
+                          </option>
+                        ))}
+                      </Form.Control>
                     </Col>
                   </Row>
                 </ListGroup.Item>
