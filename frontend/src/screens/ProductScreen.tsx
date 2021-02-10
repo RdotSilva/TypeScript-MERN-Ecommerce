@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import {
   Button,
   Card,
@@ -6,7 +6,6 @@ import {
   Form,
   Image,
   ListGroup,
-  ListGroupItem,
   Row,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,7 +23,7 @@ interface MatchParams {
 
 interface Props extends RouteComponentProps<MatchParams> {}
 
-const ProductScreen = ({ match }: Props) => {
+const ProductScreen = ({ match, history }: Props) => {
   const [qty, setQty] = useState(0);
 
   const dispatch = useDispatch();
@@ -42,6 +41,14 @@ const ProductScreen = ({ match }: Props) => {
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
+
+  /**
+   * Add an item to the cart using qty selected from the form
+   * Navigates a user to the cart page
+   */
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
+  };
 
   return (
     <>
@@ -118,6 +125,7 @@ const ProductScreen = ({ match }: Props) => {
               )}
               <ListGroup.Item variant="flush">
                 <Button
+                  onClick={addToCartHandler}
                   className="btn-block"
                   type="button"
                   disabled={product.countInStock === 0}
