@@ -1,5 +1,14 @@
-import React, { useEffect } from "react";
-import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
+import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  Image,
+  ListGroup,
+  ListGroupItem,
+  Row,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Rating from "../components/Rating";
@@ -16,6 +25,8 @@ interface MatchParams {
 interface Props extends RouteComponentProps<MatchParams> {}
 
 const ProductScreen = ({ match }: Props) => {
+  const [qty, setQty] = useState(0);
+
   const dispatch = useDispatch();
 
   const productDetails = useSelector(
@@ -81,6 +92,22 @@ const ProductScreen = ({ match }: Props) => {
                   </Col>
                 </Row>
               </ListGroup.Item>
+              {product.countInStock > 0 && (
+                <ListGroup.Item>
+                  <Row>
+                    <Col>Qty</Col>
+                    <Col>
+                      <Form.Control
+                        as="select"
+                        value={qty}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          setQty(e.target.value)
+                        }
+                      ></Form.Control>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+              )}
               <ListGroup.Item variant="flush">
                 <Button
                   className="btn-block"
