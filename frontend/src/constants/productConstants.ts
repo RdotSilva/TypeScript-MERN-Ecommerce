@@ -1,12 +1,12 @@
 /**
- * Product List constants
+ * Product List constants used for Redux
  */
 export const PRODUCT_LIST_REQUEST = "PRODUCT_LIST_REQUEST";
 export const PRODUCT_LIST_SUCCESS = "PRODUCT_LIST_SUCCESS";
 export const PRODUCT_LIST_FAIL = "PRODUCT_LIST_FAIL";
 
 /**
- * Product details constants
+ * Product details constants used for Redux
  */
 export const PRODUCT_DETAILS_REQUEST = "PRODUCT_DETAILS_REQUEST";
 export const PRODUCT_DETAILS_SUCCESS = "PRODUCT_DETAILS_SUCCESS";
