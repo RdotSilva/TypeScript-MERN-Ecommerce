@@ -11,7 +11,7 @@ const Footer = (props: Props) => {
     <footer>
       <Container>
         <Row>
-          <Col className="text-center py-3">Copyright &copy: RdotSilva</Col>
+          <Col className="text-center py-3">Copyright &copy; RdotSilva</Col>
         </Row>
       </Container>
     </footer>
