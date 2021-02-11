@@ -1,9 +1,9 @@
-import { ProductType } from "./../types";
+import { CartItem } from "./../types";
 import { CART_ADD_ITEM } from "../constants/cartConstants";
 
 type CartActionType = {
   type: string;
-  payload: ProductType[];
+  payload: CartItem;
 };
 
 export const cartReducer = (
@@ -14,15 +14,16 @@ export const cartReducer = (
     case CART_ADD_ITEM:
       const item = action.payload;
 
-      const itemExists = state.cartItems.find(
-        (cartItem) => cartItem.product === item.product
-      );
+      // Check if item already exists in the cart
+      const itemExists: CartItem = state.cartItems.find(
+        (cartItem: CartItem) => cartItem.product === item.product
+      )!;
 
       if (itemExists) {
         return {
           ...state,
-          cartItems: state.cartItems.map((cartItem) =>
-            cartItem.product === itemExists.product ? item : carItem
+          cartItems: state.cartItems.map((cartItem: CartItem) =>
+            cartItem.product === itemExists.product ? item : cartItem
           ),
         };
       } else {
