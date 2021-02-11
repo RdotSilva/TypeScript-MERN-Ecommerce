@@ -7,7 +7,7 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
 } from "../constants/productConstants";
-import { ProductType } from "./../types";
+import { CartItem, ProductType } from "./../types";
 
 /**
  * Add an interface for each action type
@@ -63,7 +63,7 @@ export interface ProductDetailsFailAction {
 
 export interface AddToCartAction {
   type: typeof CART_ADD_ITEM;
-  payload: ProductType;
+  payload: CartItem;
 }
 
 /**
