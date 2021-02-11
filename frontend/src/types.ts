@@ -1,3 +1,7 @@
+/**
+ * Represents a Product
+ */
+
 export interface ProductType {
   _id: string;
   name: string;
@@ -9,4 +13,17 @@ export interface ProductType {
   countInStock: number;
   rating: number;
   numReviews: number;
+}
+
+/**
+ * Represents an item in the cart
+ */
+
+export interface CartItem {
+  product: string;
+  name: string;
+  image: string;
+  price: number;
+  countInStock: number;
+  qty: number;
 }
