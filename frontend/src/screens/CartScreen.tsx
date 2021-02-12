@@ -26,6 +26,14 @@ const CartScreen = ({ match, location, history }: Props) => {
     ? Number(location.search.split("=")[1])
     : 1;
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (productId) {
+      dispatch(addToCart(productId, qty));
+    }
+  }, [dispatch, productId, qty]);
+
   return <div>Cart</div>;
 };
 
