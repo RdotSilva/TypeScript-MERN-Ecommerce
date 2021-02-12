@@ -1,7 +1,14 @@
 import axios from "axios";
 import { Dispatch } from "react";
 import { CART_ADD_ITEM } from "../constants/cartConstants";
+import { CartItem } from "../types";
 import { AppAction } from "../types/actions";
+
+interface CartState {
+  cart: {
+    cartItems: CartItem[];
+  };
+}
 
 /**
  * Add to cart action creator
@@ -10,7 +17,7 @@ import { AppAction } from "../types/actions";
 
 export const addToCart = (id: string, qty: number) => async (
   dispatch: Dispatch<AppAction>,
-  getState: any // TODO change type
+  getState: () => CartState
 ) => {
   const { data } = await axios.get(`/api/products/${id}`);
 
