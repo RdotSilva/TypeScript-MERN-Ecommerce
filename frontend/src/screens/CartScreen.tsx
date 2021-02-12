@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
@@ -13,9 +13,13 @@ import {
 import Message from "../components/Message";
 import { addToCart } from "../actions/cartActions";
 
-interface Props {}
+const CartScreen = ({ match, location, history }: Props) => {
+  const productId: string = match.params.id;
 
-const CartScreen = (props: Props) => {
+  const qty: number = location.search
+    ? Number(location.search.split("=")[1])
+    : 1;
+
   return <div>Cart</div>;
 };
 
