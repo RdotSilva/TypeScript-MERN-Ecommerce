@@ -6,8 +6,12 @@ type CartActionType = {
   payload: CartItem;
 };
 
+type CartState = {
+  cartItems: CartItem[];
+};
+
 export const cartReducer = (
-  state = { cartItems: [] },
+  state: CartState = { cartItems: [] },
   action: CartActionType
 ) => {
   switch (action.type) {
