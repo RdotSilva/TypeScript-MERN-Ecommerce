@@ -13,6 +13,12 @@ import {
 import Message from "../components/Message";
 import { addToCart } from "../actions/cartActions";
 
+interface MatchParams {
+  id: string;
+}
+
+interface Props extends RouteComponentProps<MatchParams> {}
+
 const CartScreen = ({ match, location, history }: Props) => {
   const productId: string = match.params.id;
 
