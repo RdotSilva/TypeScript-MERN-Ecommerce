@@ -78,6 +78,15 @@ const CartScreen = ({ match, location, history }: Props) => {
                       ))}
                     </Form.Control>
                   </Col>
+                  <Col md={2}>
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() => removeFromCartHandler(item.product)}
+                    >
+                      <i className="fas fa-trash"></i>
+                    </Button>
+                  </Col>
                 </Row>
               </ListGroup.Item>;
             })}
