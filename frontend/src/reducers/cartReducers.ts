@@ -1,10 +1,18 @@
 import { CartItem } from "./../types";
 import { CART_ADD_ITEM } from "../constants/cartConstants";
 
+/**
+ * Type that describes the cart action used in the reducer
+ */
+
 type CartActionType = {
   type: string;
   payload: CartItem;
 };
+
+/**
+ * Type that describes the cart state inside of the reducer
+ */
 
 type CartState = {
   cartItems: CartItem[];
