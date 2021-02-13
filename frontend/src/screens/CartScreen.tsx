@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import Message from "../components/Message";
 import { addToCart } from "../actions/cartActions";
+import { RootState } from "../store";
 
 interface MatchParams {
   id: string;
@@ -27,6 +28,10 @@ const CartScreen = ({ match, location, history }: Props) => {
     : 1;
 
   const dispatch = useDispatch();
+
+  // Get cart items from state
+  const cart = useSelector((state: RootState) => state.cart);
+  const { cartItems } = cart;
 
   useEffect(() => {
     if (productId) {
