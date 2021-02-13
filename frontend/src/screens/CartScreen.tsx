@@ -58,7 +58,7 @@ const CartScreen = ({ match, location, history }: Props) => {
           </Message>
         ) : (
           <ListGroup variant="flush">
-            {cartItems.map((item) => {
+            {cartItems.map((item) => (
               <ListGroup.Item key={item.product}>
                 <Row>
                   <Col md={2}>
@@ -97,8 +97,8 @@ const CartScreen = ({ match, location, history }: Props) => {
                     </Button>
                   </Col>
                 </Row>
-              </ListGroup.Item>;
-            })}
+              </ListGroup.Item>
+            ))}
           </ListGroup>
         )}
       </Col>
