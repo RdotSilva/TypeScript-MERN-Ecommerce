@@ -39,6 +39,15 @@ const CartScreen = ({ match, location, history }: Props) => {
     }
   }, [dispatch, productId, qty]);
 
+  /**
+   * Remove an item from the cart
+   *
+   * @param id - The ID of the item to remove from cart
+   */
+  const removeFromCartHandler = (id: string) => {
+    console.log("Remove");
+  };
+
   return (
     <Row>
       <Col md={8}>
