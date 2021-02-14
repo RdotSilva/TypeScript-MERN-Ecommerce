@@ -48,6 +48,13 @@ const CartScreen = ({ match, location, history }: Props) => {
     console.log("Remove");
   };
 
+  /**
+   * Redirect user to login and then to shipping screen
+   */
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping");
+  };
+
   return (
     <Row>
       <Col md={8}>
@@ -113,6 +120,16 @@ const CartScreen = ({ match, location, history }: Props) => {
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                type="button"
+                className="btn-block"
+                disabled={cartItems.length === 0}
+                onClick={checkoutHandler}
+              >
+                Proceed to checkout
+              </Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>
