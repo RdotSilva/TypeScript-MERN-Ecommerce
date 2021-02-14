@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "react";
-import { CART_ADD_ITEM } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 import { CartItem } from "../types";
 import { AppAction } from "../types/actions";
 
@@ -31,6 +31,22 @@ export const addToCart = (id: string, qty: number) => async (
       countInStock: data.countInStock,
       qty,
     },
+  });
+
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
+
+/**
+ * Remove item from cart action creator
+ * Actions related to removing an item from cart
+ */
+export const removeFromCart = (id: string) => (
+  dispatch: Dispatch<AppAction>,
+  getState: () => CartState
+) => {
+  dispatch({
+    type: CART_REMOVE_ITEM,
+    payload: id,
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
