@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
@@ -58,12 +58,17 @@ export interface ProductDetailsFailAction {
 }
 
 /**
- * Cart Add Item interface
+ * Cart interfaces
  */
 
 export interface AddToCartAction {
   type: typeof CART_ADD_ITEM;
   payload: CartItem;
+}
+
+export interface RemoveFromCartAction {
+  type: typeof CART_REMOVE_ITEM;
+  payload: string;
 }
 
 /**
@@ -80,7 +85,7 @@ export type ProductDetailsActions =
   | ProductDetailsSuccessAction
   | ProductDetailsFailAction;
 
-export type CartActions = AddToCartAction;
+export type CartActions = AddToCartAction | RemoveFromCartAction;
 
 /**
  * Aggregate of ALL actions types to use within the entire application
