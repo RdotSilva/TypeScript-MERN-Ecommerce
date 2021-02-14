@@ -11,7 +11,7 @@ import {
   Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import { RootState } from "../store";
 
 interface MatchParams {
@@ -45,7 +45,8 @@ const CartScreen = ({ match, location, history }: Props) => {
    * @param id - The ID of the item to remove from cart
    */
   const removeFromCartHandler = (id: string) => {
-    console.log("Remove");
+    dispatch(removeFromCart(id));
+    // TODO: Fix issue with item not being removed from cart correctly
   };
 
   /**
