@@ -46,6 +46,7 @@ const CartScreen = ({ match, location, history }: Props) => {
    */
   const removeFromCartHandler = (id: string) => {
     dispatch(removeFromCart(id));
+    history.replace("/cart");
     // TODO: Fix issue with item not being removed from cart correctly
   };
 
