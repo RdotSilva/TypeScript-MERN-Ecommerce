@@ -71,7 +71,7 @@ const CartScreen = ({ match, location, history }: Props) => {
                   <Col md={2}>
                     <Form.Control
                       as="select"
-                      value={qty}
+                      value={item.qty}
                       onChange={(e: ChangeEvent<HTMLInputElement>) =>
                         dispatch(
                           addToCart(item.product, Number(e.target.value))
@@ -81,7 +81,6 @@ const CartScreen = ({ match, location, history }: Props) => {
                       {/* Populate the Qty dropdown selector based on the number of items in stock */}
                       {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
-                          {" "}
                           {x + 1}
                         </option>
                       ))}
