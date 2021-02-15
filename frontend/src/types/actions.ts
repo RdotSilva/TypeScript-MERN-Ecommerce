@@ -68,7 +68,7 @@ export interface AddToCartAction {
 
 export interface RemoveFromCartAction {
   type: typeof CART_REMOVE_ITEM;
-  payload: string;
+  payload: CartItem; // Changed from string to CartItem to fix remove from cart
 }
 
 /**
