@@ -40,13 +40,13 @@ export const addToCart = (id: string, qty: number) => async (
  * Remove item from cart action creator
  * Actions related to removing an item from cart
  */
-export const removeFromCart = (id: string) => (
+export const removeFromCart = (cartItem: CartItem) => (
   dispatch: Dispatch<AppAction>,
   getState: () => CartState
 ) => {
   dispatch({
     type: CART_REMOVE_ITEM,
-    payload: id,
+    payload: cartItem, // Changed from id to cartItem to fix remove from cart
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
