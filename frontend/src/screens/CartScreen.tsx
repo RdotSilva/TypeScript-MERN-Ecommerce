@@ -13,6 +13,7 @@ import {
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 import { RootState } from "../store";
+import { CartItem } from "../types";
 
 interface MatchParams {
   id: string;
@@ -42,12 +43,11 @@ const CartScreen = ({ match, location, history }: Props) => {
   /**
    * Remove an item from the cart
    *
-   * @param id - The ID of the item to remove from cart
+   * @param cartItem - The cart item to remove from cart
    */
-  const removeFromCartHandler = (id: string) => {
-    dispatch(removeFromCart(id));
+  const removeFromCartHandler = (cartItem: CartItem) => {
+    dispatch(removeFromCart(cartItem));
     history.replace("/cart");
-    // TODO: Fix issue with item not being removed from cart correctly
   };
 
   /**
@@ -99,7 +99,7 @@ const CartScreen = ({ match, location, history }: Props) => {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={() => removeFromCartHandler(item.product)}
+                      onClick={() => removeFromCartHandler(item)}
                     >
                       <i className="fas fa-trash"></i>
                     </Button>
