@@ -12,3 +12,5 @@ const authUser = asyncHandler(async (req: Request, res: Response) => {
 
   // TODO: Enable user authentication
 });
+
+export { authUser };
