@@ -5,6 +5,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware";
 
 // Routes
 import productRoutes from "./routes/productRoutes";
+import userRoutes from "./routes/userRoutes";
 
 const PORT = process.env.PORT || 5000;
 
@@ -22,6 +23,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/products/", productRoutes);
+app.use("/api/users", userRoutes);
 
 // Use Middleware
 app.use(notFound);
