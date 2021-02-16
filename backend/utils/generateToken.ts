@@ -5,9 +5,11 @@ import jwt from "jsonwebtoken";
  * @param id The id of the user
  */
 const generateToken = (id: string) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
+  if (process.env.JWT_TOKEN !== undefined) {
+    return jwt.sign({ id }, process.env.JWT_TOKEN, {
+      expiresIn: "30d",
+    });
+  }
 };
 
 export default generateToken;
