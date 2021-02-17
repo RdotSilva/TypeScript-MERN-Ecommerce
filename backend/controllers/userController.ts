@@ -1,6 +1,7 @@
 import { Request, response, Response } from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
+import generateToken from "../utils/generateToken";
 
 /**
  * Authenticate user and get token
@@ -8,7 +9,7 @@ import User from "../models/userModel";
  * @access Public
  */
 const authUser = asyncHandler(async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body as { email: string; password: string };
 
   const user = await User.findOne({ email });
 
@@ -18,7 +19,7 @@ const authUser = asyncHandler(async (req: Request, res: Response) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      token: null,
+      token: generateToken(user._id),
     });
   } else {
     res.status(401);
