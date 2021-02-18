@@ -28,6 +28,13 @@ const authUser = asyncHandler(async (req: Request, res: Response) => {
 });
 
 /**
+ * Register a new user
+ * @route POST /api/users
+ * @access Public
+ */
+const registerUser = asyncHandler(async (req: Request, res: Response) => {});
+
+/**
  * Get user profile
  * @route GET /api/users/profile
  * @access Private
