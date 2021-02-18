@@ -1,4 +1,4 @@
-import { Request, response, Response } from "express";
+import { Request, Response } from "../types/express";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel";
 import generateToken from "../utils/generateToken";
@@ -33,8 +33,19 @@ const authUser = asyncHandler(async (req: Request, res: Response) => {
  * @access Private
  */
 const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
-  res.send("Success");
-  //TODO: Make request to database and fetch use profile
+  const user = await User.findById(req.user?._id);
+
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
 });
 
 export { authUser, getUserProfile };
