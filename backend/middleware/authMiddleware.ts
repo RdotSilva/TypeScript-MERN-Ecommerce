@@ -1,7 +1,13 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from "../types/express";
 import jwt, { Secret } from "jsonwebtoken";
 import User from "../models/userModel";
 import asyncHandler from "express-async-handler";
+
+interface Decoded {
+  id: string;
+  iat: Date;
+  exp: Date;
+}
 
 /**
  * Middleware used to protect routes from unauthorized users
@@ -17,12 +23,17 @@ const protect = asyncHandler(
       req.headers.authorization.startsWith("Bearer")
     ) {
       try {
-        const token = req.headers.authorization.split(" ")[1];
+        token = req.headers.authorization.split(" ")[1];
 
-        const decoded = jwt.verify(token, secret);
+        const decoded = jwt.verify(token, secret) as Decoded;
 
-        console.log(decoded);
-      } catch (error) {}
+        req.user = await User.findById(decoded.id).select("-password");
+        next();
+      } catch (error) {
+        console.error(error);
+        res.status(401);
+        throw new Error("Not authorized, token failed");
+      }
     }
 
     if (!token) {
