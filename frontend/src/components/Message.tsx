@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Alert } from "react-bootstrap";
 
 interface Props {
   variant: string;
-  children: any; // TODO type to allow string + <Link> as children
+  children: ReactNode;
 }
 
 /**
