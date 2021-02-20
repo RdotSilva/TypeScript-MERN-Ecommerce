@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
 
 interface Props {}
@@ -30,7 +31,18 @@ const LoginScreen = (props: Props) => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+        <Button type="submit" variant="parimary">
+          Sign in
+        </Button>
       </Form>
+      <Row className="py-3">
+        <Col>
+          New Customer?{" "}
+          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+            Register
+          </Link>
+        </Col>
+      </Row>
     </FormContainer>
   );
 };
