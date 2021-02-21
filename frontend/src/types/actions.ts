@@ -113,7 +113,7 @@ export type CartActions = AddToCartAction | RemoveFromCartAction;
 
 export type UserActions =
   | UserLoginRequestAction
-  | UserLoginRequestAction
+  | UserLoginSuccessAction
   | UserLoginFailureAction;
 
 /**
