@@ -1,14 +1,15 @@
-import React, { FormEvent, FunctionComponent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
+import { login } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import { RootState } from "../store";
 import { User } from "../types/User";
 
 interface Props extends RouteComponentProps {}
 
-const LoginScreen = ({ location }: Props) => {
+const LoginScreen = ({ location, history }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,9 +25,15 @@ const LoginScreen = ({ location }: Props) => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo]);
+
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // DISPATCH LOGIN
+    dispatch(login(email, password));
   };
 
   return (
