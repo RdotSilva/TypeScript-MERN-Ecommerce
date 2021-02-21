@@ -1,5 +1,5 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk, { ThunkMiddleware } from "redux-thunk";
+import { createStore, combineReducers, applyMiddleware, Action } from "redux";
+import thunk, { ThunkAction, ThunkMiddleware } from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
   productDetailsReducer,
@@ -9,6 +9,13 @@ import { cartReducer } from "./reducers/cartReducers";
 import { AppAction } from "./types/actions";
 import { CartItem } from "./types";
 import { userLoginReducer } from "./reducers/userReducers";
+
+export type AppThunk = ThunkAction<
+  Promise<void>,
+  AppAction,
+  unknown,
+  Action<string>
+>;
 
 const reducer = combineReducers({
   productList: productListReducer,
