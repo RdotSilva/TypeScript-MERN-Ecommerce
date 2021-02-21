@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
+import { logout } from "../actions/userActions";
 
 interface Props {}
 
@@ -14,8 +15,11 @@ const Header = (props: Props) => {
   const userLogin = useSelector((state: any) => state.userLogin);
   const { userInfo } = userLogin;
 
+  /**
+   * Logs a user out of the application
+   */
   const logoutHandler = () => {
-    console.log("logout");
+    dispatch(logout());
   };
 
   return (
