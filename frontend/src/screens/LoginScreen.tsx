@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { FormEvent, FunctionComponent, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
-const LoginScreen = (props: Props) => {
+const LoginScreen = ({ location }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // DISPATCH LOGIN
+  };
 
   return (
     <FormContainer>
