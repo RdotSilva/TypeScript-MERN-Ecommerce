@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 
 interface Props {}
@@ -9,8 +9,14 @@ interface Props {}
  * Header component
  */
 const Header = (props: Props) => {
+  const dispatch = useDispatch();
+
   const userLogin = useSelector((state: any) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    console.log("logout");
+  };
 
   return (
     <header>
