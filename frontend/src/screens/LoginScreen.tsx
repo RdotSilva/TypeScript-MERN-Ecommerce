@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { login } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
+import Loader from "../components/Loader.";
+import Message from "../components/Message";
 import { RootState } from "../store";
 import { User } from "../types/User";
 
@@ -39,6 +41,8 @@ const LoginScreen = ({ location, history }: Props) => {
   return (
     <FormContainer>
       <h1>Sign In</h1>
+      {error && <Message variant="danger">{error}</Message>}
+      {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
           <Form.Label>Email Address</Form.Label>
