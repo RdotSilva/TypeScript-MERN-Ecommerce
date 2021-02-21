@@ -2,6 +2,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
+  USER_LOGOUT,
 } from "./../constants/userConstants";
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 import {
@@ -95,6 +96,10 @@ export interface UserLoginFailureAction {
   payload: any;
 }
 
+export interface UserLogoutAction {
+  type: typeof USER_LOGOUT;
+}
+
 /**
  * Above actions aggregated into one total action type
  */
@@ -114,7 +119,8 @@ export type CartActions = AddToCartAction | RemoveFromCartAction;
 export type UserActions =
   | UserLoginRequestAction
   | UserLoginSuccessAction
-  | UserLoginFailureAction;
+  | UserLoginFailureAction
+  | UserLogoutAction;
 
 /**
  * Aggregate of ALL actions types to use within the entire application
