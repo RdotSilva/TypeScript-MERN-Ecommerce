@@ -1,11 +1,16 @@
+import { AppAction } from "./../types/actions";
 import axios from "axios";
+import { Dispatch } from "react";
+import { AppThunk } from "../store";
 import {
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
 } from "./../constants/userConstants";
 
-export const login = (email: string, password: string) => async (dispatch) => {
+export const login = (email: string, password: string): AppThunk => async (
+  dispatch: Dispatch<AppAction>
+) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
