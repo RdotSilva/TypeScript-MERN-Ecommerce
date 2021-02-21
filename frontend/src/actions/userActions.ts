@@ -6,8 +6,12 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
 } from "./../constants/userConstants";
 
+/**
+ * Action used to log in a user
+ */
 export const login = (email: string, password: string): AppThunk => async (
   dispatch: Dispatch<AppAction>
 ) => {
@@ -47,4 +51,10 @@ export const login = (email: string, password: string): AppThunk => async (
   }
 };
 
-// TODO Add action for logout
+/**
+ * Action used to log out a user
+ */
+export const logout = () => (dispatch: Dispatch<AppAction>) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_LOGOUT });
+};
