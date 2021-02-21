@@ -18,6 +18,10 @@ type CartState = {
   cartItems: CartItem[];
 };
 
+/**
+ * Reducer used for cart related logic
+ */
+
 export const cartReducer = (
   state: CartState = { cartItems: [] },
   action: CartActionType
