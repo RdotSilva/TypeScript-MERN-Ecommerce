@@ -7,6 +7,9 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
+  USER_REGISTER_FAILURE,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
 } from "./../constants/userConstants";
 
 /**
@@ -57,4 +60,55 @@ export const login = (email: string, password: string): AppThunk => async (
 export const logout = () => (dispatch: Dispatch<AppAction>) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
+};
+
+/**
+ * Action used to register a user and immediately log in
+ * the user after registration
+ */
+export const register = (
+  name: string,
+  email: string,
+  password: string
+): AppThunk => async (dispatch: Dispatch<AppAction>) => {
+  try {
+    dispatch({
+      type: USER_REGISTER_REQUEST,
+    });
+
+    // Axios config
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.post(
+      "/api/users",
+      { name, email, password },
+      config
+    );
+
+    dispatch({
+      type: USER_REGISTER_SUCCESS,
+      payload: data,
+    });
+
+    // Log user in immediately after registration
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    });
+
+    // Save user info to local storage
+    localStorage.setItem("userInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: USER_REGISTER_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };
