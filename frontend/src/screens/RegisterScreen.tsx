@@ -12,6 +12,11 @@ import { User } from "../types/User";
 interface Props extends RouteComponentProps {}
 
 const RegisterScreen = ({ location, history }: Props) => {
-  
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
+};
 
 export default RegisterScreen;
