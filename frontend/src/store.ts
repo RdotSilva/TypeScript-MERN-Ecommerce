@@ -8,7 +8,7 @@ import {
 import { cartReducer } from "./reducers/cartReducers";
 import { AppAction } from "./types/actions";
 import { CartItem } from "./types";
-import { userLoginReducer } from "./reducers/userReducers";
+import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 
 export type AppThunk = ThunkAction<
   Promise<void>,
@@ -22,6 +22,7 @@ const reducer = combineReducers({
   productDetails: productDetailsReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 });
 
 const cartItemsFromLocalStorage: CartItem[] = localStorage.getItem("cartItems")
