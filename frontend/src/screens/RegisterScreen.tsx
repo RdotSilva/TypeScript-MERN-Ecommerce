@@ -18,6 +18,24 @@ const RegisterScreen = ({ location, history }: Props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
 
+  const dispatch = useDispatch();
+
+  const userRegister = useSelector((state: any) => state.userRegister);
+
+  const {
+    loading,
+    error,
+    userInfo,
+  }: { loading: boolean; error: Error; userInfo: User } = userRegister;
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
+
   return (
     <FormContainer>
       <h1>Sign Up</h1>
