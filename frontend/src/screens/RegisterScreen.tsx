@@ -36,9 +36,25 @@ const RegisterScreen = ({ location, history }: Props) => {
     }
   }, [history, userInfo, redirect]);
 
+  /**
+   * Check that both passwords in the form match and
+   * fire off the register user action
+   * @param e HTML event form element
+   */
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords must match");
+    } else {
+      dispatch(register(name, email, password));
+    }
+  };
+
   return (
     <FormContainer>
       <h1>Sign Up</h1>
+      {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
