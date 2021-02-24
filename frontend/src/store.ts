@@ -17,6 +17,7 @@ export type AppThunk = ThunkAction<
   Action<string>
 >;
 
+// TODO: Update reducer to use ReduxState type. First need to create State types for productList, productDetails, cart, userRegister.
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
