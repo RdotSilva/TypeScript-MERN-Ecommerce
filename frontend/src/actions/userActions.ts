@@ -3,24 +3,21 @@ import axios from "axios";
 import { Dispatch } from "react";
 import { AppThunk } from "../store";
 import {
-  USER_LOGIN_FAIL,
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGOUT,
   USER_REGISTER_FAILURE,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
 } from "./../constants/userConstants";
+import { UserLoginActionTypes } from "../types/UserLogin";
 
 /**
  * Action used to log in a user
  */
 export const login = (email: string, password: string): AppThunk => async (
-  dispatch: Dispatch<AppAction>
+  dispatch
 ) => {
   try {
     dispatch({
-      type: USER_LOGIN_REQUEST,
+      type: UserLoginActionTypes.USER_LOGIN_REQUEST,
     });
 
     // Axios config
@@ -37,7 +34,7 @@ export const login = (email: string, password: string): AppThunk => async (
     );
 
     dispatch({
-      type: USER_LOGIN_SUCCESS,
+      type: UserLoginActionTypes.USER_LOGIN_SUCCESS,
       payload: data,
     });
 
@@ -45,7 +42,7 @@ export const login = (email: string, password: string): AppThunk => async (
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
-      type: USER_LOGIN_FAIL,
+      type: UserLoginActionTypes.USER_LOGIN_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -59,7 +56,7 @@ export const login = (email: string, password: string): AppThunk => async (
  */
 export const logout = () => (dispatch: Dispatch<AppAction>) => {
   localStorage.removeItem("userInfo");
-  dispatch({ type: USER_LOGOUT });
+  dispatch({ type: UserLoginActionTypes.USER_LOGOUT });
 };
 
 /**
