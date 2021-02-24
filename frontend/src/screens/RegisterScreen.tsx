@@ -16,7 +16,7 @@ const RegisterScreen = ({ location, history }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
 
@@ -59,7 +59,7 @@ const RegisterScreen = ({ location, history }: Props) => {
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name">
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="name"
             placeholder="Enter name"
