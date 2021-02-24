@@ -1,22 +1,26 @@
 import {
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAIL,
-  USER_LOGOUT,
+  UserLoginAction,
+  UserLoginActionTypes,
+  UserLoginState,
+} from "../types/UserLogin";
+import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAILURE,
 } from "./../constants/userConstants";
 
-export const userLoginReducer = (state = {}, action: any) => {
+export const userLoginReducer = (
+  state: UserLoginState = {},
+  action: UserLoginAction
+) => {
   switch (action.type) {
-    case USER_LOGIN_REQUEST:
+    case UserLoginActionTypes.USER_LOGIN_REQUEST:
       return { loading: true };
-    case USER_LOGIN_SUCCESS:
+    case UserLoginActionTypes.USER_LOGIN_SUCCESS:
       return { loading: false, userInfo: action.payload };
-    case USER_LOGIN_FAIL:
+    case UserLoginActionTypes.USER_LOGIN_FAILURE:
       return { loading: false, error: action.payload };
-    case USER_LOGOUT:
+    case UserLoginActionTypes.USER_LOGOUT:
       return {};
     default:
       return state;
