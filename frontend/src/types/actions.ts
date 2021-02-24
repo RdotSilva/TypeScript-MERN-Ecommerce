@@ -3,6 +3,9 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGOUT,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_FAILURE,
 } from "./../constants/userConstants";
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 import {
@@ -79,7 +82,7 @@ export interface RemoveFromCartAction {
 }
 
 /**
- * User interfaces
+ * User Login/Logout interfaces
  */
 
 export interface UserLoginRequestAction {
@@ -101,6 +104,23 @@ export interface UserLogoutAction {
 }
 
 /**
+ * User registration actions
+ */
+
+export interface UserRegisterRequestAction {
+  type: typeof USER_REGISTER_REQUEST;
+}
+export interface UserRegisterSuccessAction {
+  type: typeof USER_REGISTER_SUCCESS;
+  payload: TokenUser;
+}
+
+export interface UserRegisterFailureAction {
+  type: typeof USER_REGISTER_FAILURE;
+  payload: any;
+}
+
+/**
  * Above actions aggregated into one total action type
  */
 
@@ -116,12 +136,16 @@ export type ProductDetailsActions =
 
 export type CartActions = AddToCartAction | RemoveFromCartAction;
 
-export type UserActions =
+export type UserLoginActions =
   | UserLoginRequestAction
   | UserLoginSuccessAction
   | UserLoginFailureAction
   | UserLogoutAction;
 
+export type UserRegistrationActions =
+  | UserRegisterRequestAction
+  | UserRegisterSuccessAction
+  | UserRegisterFailureAction;
 /**
  * Aggregate of ALL actions types to use within the entire application
  * Combine all of your Redux action aggregates into this
@@ -131,4 +155,5 @@ export type AppAction =
   | ProductListActions
   | ProductDetailsActions
   | CartActions
-  | UserActions;
+  | UserLoginActions
+  | UserRegistrationActions;
