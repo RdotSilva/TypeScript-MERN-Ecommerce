@@ -12,11 +12,11 @@ import { User } from "../types/User";
 interface Props extends RouteComponentProps {}
 
 const RegisterScreen = ({ location, history }: Props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
 
   const dispatch = useDispatch();
 
@@ -90,7 +90,7 @@ const RegisterScreen = ({ location, history }: Props) => {
           <Form.Control
             type="password"
             placeholder="Confirm password"
-            value={password}
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
