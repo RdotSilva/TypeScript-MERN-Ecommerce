@@ -17,7 +17,7 @@ import {
   PRODUCT_DETAILS_FAIL,
 } from "../constants/productConstants";
 import { CartItem, ProductType } from "./../types";
-import { TokenUser } from "./User";
+import { TokenUser } from "./index";
 
 /**
  * Add an interface for each action type

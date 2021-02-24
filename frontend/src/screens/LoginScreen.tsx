@@ -6,8 +6,7 @@ import { login } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
-import { RootState } from "../store";
-import { User } from "../types/User";
+import { User } from "../types/index";
 
 interface Props extends RouteComponentProps {}
 
