@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Dispatch } from "react";
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
+import { CartActionTypes } from "../types/";
 import { CartItem } from "../types";
 import { AppAction } from "../types/actions";
+import { AppThunk } from "../store";
 
 interface CartState {
   cart: {
@@ -16,13 +17,13 @@ interface CartState {
  */
 
 export const addToCart = (id: string, qty: number) => async (
-  dispatch: Dispatch<AppAction>,
-  getState: () => CartState
+  dispatch: any,
+  getState: any
 ) => {
   const { data } = await axios.get(`/api/products/${id}`);
 
   dispatch({
-    type: CART_ADD_ITEM,
+    type: CartActionTypes.CART_ADD_ITEM,
     payload: {
       product: data._id,
       name: data.name,
@@ -45,7 +46,7 @@ export const removeFromCart = (cartItem: CartItem) => (
   getState: () => CartState
 ) => {
   dispatch({
-    type: CART_REMOVE_ITEM,
+    type: CartActionTypes.CART_REMOVE_ITEM,
     payload: cartItem, // Changed from id to cartItem to fix remove from cart
   });
 
