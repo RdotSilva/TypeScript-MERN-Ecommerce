@@ -2,12 +2,8 @@ import { AppAction } from "./../types/actions";
 import axios from "axios";
 import { Dispatch } from "react";
 import { AppThunk } from "../store";
-import {
-  USER_REGISTER_FAILURE,
-  USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS,
-} from "./../constants/userConstants";
-import { UserLoginActionTypes } from "../types/UserLogin";
+import { UserLoginActionTypes } from "../types/";
+import { UserRegisterActionTypes } from "../types/";
 
 /**
  * Action used to log in a user
@@ -67,10 +63,10 @@ export const register = (
   name: string,
   email: string,
   password: string
-): AppThunk => async (dispatch: Dispatch<AppAction>) => {
+): AppThunk => async (dispatch) => {
   try {
     dispatch({
-      type: USER_REGISTER_REQUEST,
+      type: UserRegisterActionTypes.USER_REGISTER_REQUEST,
     });
 
     // Axios config
@@ -87,13 +83,13 @@ export const register = (
     );
 
     dispatch({
-      type: USER_REGISTER_SUCCESS,
+      type: UserRegisterActionTypes.USER_REGISTER_SUCCESS,
       payload: data,
     });
 
     // Log user in immediately after registration
     dispatch({
-      type: USER_LOGIN_SUCCESS,
+      type: UserLoginActionTypes.USER_LOGIN_SUCCESS,
       payload: data,
     });
 
@@ -101,7 +97,7 @@ export const register = (
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
-      type: USER_REGISTER_FAILURE,
+      type: UserRegisterActionTypes.USER_REGISTER_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
