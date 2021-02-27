@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, Action } from "redux";
-import thunk, { ThunkAction } from "redux-thunk";
+import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
   productDetailsReducer,
@@ -8,6 +8,8 @@ import {
 import { cartReducer } from "./reducers/cartReducers";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 import { ReduxState } from "./types/ReduxState";
+
+export type AppDispatch = ThunkDispatch<ReduxState, unknown, Action<string>>;
 
 export type AppThunk = ThunkAction<
   Promise<void>,
