@@ -2,6 +2,7 @@ import { ProductDetailsActionTypes } from "./../types/ProductDetails";
 import axios from "axios";
 import { AppThunk } from "../store";
 import { ProductListActionTypes } from "../types/ProductList";
+import { errorHandler } from "./errorHandler";
 
 /**
  * List Products action creator
@@ -20,10 +21,7 @@ export const listProducts = (): AppThunk => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ProductListActionTypes.PRODUCT_LIST_FAILURE,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: errorHandler(error),
     });
   }
 };
@@ -47,10 +45,7 @@ export const listProductDetails = (id: string): AppThunk => async (
   } catch (error) {
     dispatch({
       type: ProductDetailsActionTypes.PRODUCT_DETAILS_FAILURE,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: errorHandler(error),
     });
   }
 };

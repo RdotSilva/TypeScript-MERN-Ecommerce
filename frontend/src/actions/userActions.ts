@@ -4,6 +4,7 @@ import { Dispatch } from "react";
 import { AppThunk } from "../store";
 import { UserLoginActionTypes } from "../types/";
 import { UserRegisterActionTypes } from "../types/";
+import { errorHandler } from "./errorHandler";
 
 /**
  * Action used to log in a user
@@ -39,10 +40,7 @@ export const login = (email: string, password: string): AppThunk => async (
   } catch (error) {
     dispatch({
       type: UserLoginActionTypes.USER_LOGIN_FAILURE,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: errorHandler(error),
     });
   }
 };
@@ -98,10 +96,7 @@ export const register = (
   } catch (error) {
     dispatch({
       type: UserRegisterActionTypes.USER_REGISTER_FAILURE,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: errorHandler(error),
     });
   }
 };
