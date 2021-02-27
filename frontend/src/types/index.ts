@@ -4,3 +4,4 @@ export * from "./UserRegister";
 export * from "./Cart";
 export * from "./Product";
 export * from "./ProductDetails";
+export * from "./ProductList";
