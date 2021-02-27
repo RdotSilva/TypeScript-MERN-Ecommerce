@@ -12,8 +12,8 @@ import {
 } from "react-bootstrap";
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import { RootState } from "../store";
 import { CartItem } from "../types";
+import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
   id: string;
@@ -31,8 +31,7 @@ const CartScreen = ({ match, location, history }: Props) => {
   const dispatch = useDispatch();
 
   // Get cart items from state
-  const cart = useSelector((state: RootState) => state.cart);
-  const { cartItems } = cart;
+  const { cartItems } = useSelector((state: ReduxState) => state.cart);
 
   useEffect(() => {
     if (productId) {
