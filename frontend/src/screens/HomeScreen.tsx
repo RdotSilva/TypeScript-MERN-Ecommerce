@@ -5,6 +5,7 @@ import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import Product from "../components/Product";
+import { AppDispatch } from "../store";
 
 import { ProductType } from "../types";
 import { ReduxState } from "../types/ReduxState";
@@ -12,7 +13,7 @@ import { ReduxState } from "../types/ReduxState";
 interface Props {}
 
 const HomeScreen = (props: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { products, loading, error } = useSelector(
     (state: ReduxState) => state.productList
@@ -29,6 +30,8 @@ const HomeScreen = (props: Props) => {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
+      ) : !products ? (
+        <Message variant="danger">No Products Currently Available</Message>
       ) : (
         <Row>
           {products.map((product: ProductType) => (
