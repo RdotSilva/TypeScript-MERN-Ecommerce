@@ -1,25 +1,31 @@
-import { ProductDetailsActionTypes } from "./../types/ProductDetails";
-import { ProductListActionTypes } from "../types/ProductList";
+import {
+  ProductDetailsAction,
+  ProductDetailsActionTypes,
+  ProductDetailsState,
+} from "./../types/ProductDetails";
+import {
+  ProductListAction,
+  ProductListActionTypes,
+  ProductListState,
+} from "../types/ProductList";
 
-type ProductActionType = {
-  type: string;
-  payload: [];
-};
-
-type ProductDetailsActionType = {
-  type: string;
-  payload: { product: { reviews: [] } };
+const initialProductListState: ProductListState = {
+  products: [],
+  loading: false,
 };
 
 export const productListReducer = (
-  state = { products: [] },
-  action: ProductActionType
+  state: ProductListState = initialProductListState,
+  action: ProductListAction
 ) => {
   switch (action.type) {
     case ProductListActionTypes.PRODUCT_LIST_REQUEST:
-      return { loading: true, products: [] };
+      return { loading: true, products: initialProductListState.products };
     case ProductListActionTypes.PRODUCT_LIST_SUCCESS:
-      return { loading: false, products: action.payload };
+      return {
+        loading: initialProductListState.loading,
+        products: action.payload,
+      };
     case ProductListActionTypes.PRODUCT_LIST_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -27,13 +33,17 @@ export const productListReducer = (
   }
 };
 
+const initialProductDetailsState: ProductDetailsState = {
+  loading: false,
+};
+
 export const productDetailsReducer = (
-  state = { product: { reviews: [] } },
-  action: ProductDetailsActionType
+  state: ProductDetailsState = initialProductDetailsState,
+  action: ProductDetailsAction
 ) => {
   switch (action.type) {
     case ProductDetailsActionTypes.PRODUCT_DETAILS_REQUEST:
-      return { loading: true, ...state };
+      return { loading: true, product: initialProductDetailsState.product };
     case ProductDetailsActionTypes.PRODUCT_DETAILS_SUCCESS:
       return { loading: false, product: action.payload };
     case ProductDetailsActionTypes.PRODUCT_DETAILS_FAILURE:
