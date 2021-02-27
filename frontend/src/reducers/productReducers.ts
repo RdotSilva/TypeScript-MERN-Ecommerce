@@ -1,9 +1,5 @@
 import { ProductDetailsActionTypes } from "./../types/ProductDetails";
-import {
-  PRODUCT_LIST_FAIL,
-  PRODUCT_LIST_REQUEST,
-  PRODUCT_LIST_SUCCESS,
-} from "../constants/productConstants";
+import { ProductListActionTypes } from "../types/ProductList";
 
 type ProductActionType = {
   type: string;
@@ -20,11 +16,11 @@ export const productListReducer = (
   action: ProductActionType
 ) => {
   switch (action.type) {
-    case PRODUCT_LIST_REQUEST:
+    case ProductListActionTypes.PRODUCT_LIST_REQUEST:
       return { loading: true, products: [] };
-    case PRODUCT_LIST_SUCCESS:
+    case ProductListActionTypes.PRODUCT_LIST_SUCCESS:
       return { loading: false, products: action.payload };
-    case PRODUCT_LIST_FAIL:
+    case ProductListActionTypes.PRODUCT_LIST_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;
