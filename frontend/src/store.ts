@@ -9,10 +9,11 @@ import { cartReducer } from "./reducers/cartReducers";
 import { AppAction } from "./types/actions";
 import { CartItem } from "./types";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import { ReduxState } from "./types/ReduxState";
 
 export type AppThunk = ThunkAction<
   Promise<void>,
-  AppAction,
+  ReduxState,
   unknown,
   Action<string>
 >;
