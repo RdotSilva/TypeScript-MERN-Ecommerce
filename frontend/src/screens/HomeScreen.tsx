@@ -5,22 +5,18 @@ import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import Product from "../components/Product";
-import { RootState } from "../store";
 
 import { ProductType } from "../types";
+import { ReduxState } from "../types/ReduxState";
 
 interface Props {}
 
 const HomeScreen = (props: Props) => {
   const dispatch = useDispatch();
 
-  const productList = useSelector((state: RootState) => state.productList);
-
-  const {
-    loading,
-    error,
-    products,
-  }: { loading: boolean; error: Error; products: ProductType[] } = productList;
+  const { products, loading, error } = useSelector(
+    (state: ReduxState) => state.productList
+  );
 
   useEffect(() => {
     dispatch(listProducts());
