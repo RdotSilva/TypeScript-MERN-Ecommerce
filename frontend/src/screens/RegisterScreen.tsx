@@ -6,6 +6,7 @@ import { register } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import { AppDispatch } from "../store";
 import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}
@@ -17,7 +18,7 @@ const RegisterScreen = ({ location, history }: Props) => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { userInfo, loading, error } = useSelector(
     (state: ReduxState) => state.userRegister

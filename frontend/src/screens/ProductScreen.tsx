@@ -15,6 +15,7 @@ import { listProductDetails } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
+import { AppDispatch } from "../store";
 
 interface MatchParams {
   id: string;
@@ -25,7 +26,7 @@ interface Props extends RouteComponentProps<MatchParams> {}
 const ProductScreen = ({ match, history }: Props) => {
   const [qty, setQty] = useState(1);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { product, loading, error } = useSelector(
     (state: ReduxState) => state.productDetails

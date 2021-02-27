@@ -14,6 +14,7 @@ import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 import { CartItem } from "../types";
 import { ReduxState } from "../types/ReduxState";
+import { AppDispatch } from "../store";
 
 interface MatchParams {
   id: string;
@@ -28,7 +29,7 @@ const CartScreen = ({ match, location, history }: Props) => {
     ? Number(location.search.split("=")[1])
     : 1;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   // Get cart items from state
   const { cartItems } = useSelector((state: ReduxState) => state.cart);

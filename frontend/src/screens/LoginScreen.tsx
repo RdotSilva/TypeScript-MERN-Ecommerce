@@ -6,6 +6,7 @@ import { login } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import { AppDispatch } from "../store";
 import { User } from "../types/index";
 
 interface Props extends RouteComponentProps {}
@@ -14,7 +15,7 @@ const LoginScreen = ({ location, history }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const userLogin = useSelector((state: any) => state.userLogin);
 
