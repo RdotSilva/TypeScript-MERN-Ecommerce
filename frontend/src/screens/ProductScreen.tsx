@@ -11,11 +11,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Rating from "../components/Rating";
-import { ProductType } from "../types";
 import { listProductDetails } from "../actions/productActions";
-import { RootState } from "../store";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
   id: string;
@@ -28,15 +27,9 @@ const ProductScreen = ({ match, history }: Props) => {
 
   const dispatch = useDispatch();
 
-  const productDetails = useSelector(
-    (state: RootState) => state.productDetails
+  const { product, loading, error } = useSelector(
+    (state: ReduxState) => state.productDetails
   );
-
-  const {
-    loading,
-    error,
-    product,
-  }: { loading: boolean; error: Error; product: ProductType } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
@@ -59,6 +52,8 @@ const ProductScreen = ({ match, history }: Props) => {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
+      ) : !product ? (
+        <Message variant="danger">Product Not Found</Message>
       ) : (
         <Row>
           <Col md={6}>
