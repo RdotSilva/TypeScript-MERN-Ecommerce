@@ -6,8 +6,7 @@ import { register } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
-import { RootState } from "../store";
-import { User } from "../types/User";
+import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}
 
@@ -20,13 +19,9 @@ const RegisterScreen = ({ location, history }: Props) => {
 
   const dispatch = useDispatch();
 
-  const userRegister = useSelector((state: any) => state.userRegister);
-
-  const {
-    loading,
-    error,
-    userInfo,
-  }: { loading: boolean; error: Error; userInfo: User } = userRegister;
+  const { userInfo, loading, error } = useSelector(
+    (state: ReduxState) => state.userRegister
+  );
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
