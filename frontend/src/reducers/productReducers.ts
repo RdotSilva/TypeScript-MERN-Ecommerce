@@ -27,7 +27,11 @@ export const productListReducer = (
         products: action.payload,
       };
     case ProductListActionTypes.PRODUCT_LIST_FAILURE:
-      return { loading: false, error: action.payload };
+      return {
+        loading: false,
+        error: action.payload,
+        products: initialProductListState.products,
+      };
     default:
       return state;
   }
