@@ -5,6 +5,7 @@ import { AppThunk } from "../store";
 import { UserLoginActionTypes } from "../types/";
 import { UserRegisterActionTypes } from "../types/";
 import { errorHandler } from "./errorHandler";
+import { UserDetailsActionTypes } from "../types/UserDetails";
 
 /**
  * Action used to log in a user
@@ -96,6 +97,45 @@ export const register = (
   } catch (error) {
     dispatch({
       type: UserRegisterActionTypes.USER_REGISTER_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * Action used to get fetch a users details
+ */
+export const getUserDetails = (id: string): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: UserDetailsActionTypes.USER_DETAILS_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users/${id}`, config);
+
+    dispatch({
+      type: UserDetailsActionTypes.USER_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UserDetailsActionTypes.USER_DETAILS_FAILURE,
       payload: errorHandler(error),
     });
   }
