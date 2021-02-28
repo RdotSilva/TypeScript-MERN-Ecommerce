@@ -1,24 +1,15 @@
 import axios from "axios";
-import { Dispatch } from "react";
 import { CartActionTypes } from "../types/";
-import { CartItem } from "../types";
-import { AppAction } from "../types/actions";
 import { AppThunk } from "../store";
-
-interface CartState {
-  cart: {
-    cartItems: CartItem[];
-  };
-}
 
 /**
  * Add to cart action creator
  * Actions related to adding products to the cart
  */
 
-export const addToCart = (id: string, qty: number) => async (
-  dispatch: any,
-  getState: any
+export const addToCart = (id: string, qty: number): AppThunk => async (
+  dispatch,
+  getState
 ) => {
   const { data } = await axios.get(`/api/products/${id}`);
 
@@ -41,13 +32,13 @@ export const addToCart = (id: string, qty: number) => async (
  * Remove item from cart action creator
  * Actions related to removing an item from cart
  */
-export const removeFromCart = (cartItem: CartItem) => (
-  dispatch: Dispatch<AppAction>,
-  getState: () => CartState
+export const removeFromCart = (id: string): AppThunk => async (
+  dispatch,
+  getState
 ) => {
   dispatch({
     type: CartActionTypes.CART_REMOVE_ITEM,
-    payload: cartItem, // Changed from id to cartItem to fix remove from cart
+    payload: id,
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
