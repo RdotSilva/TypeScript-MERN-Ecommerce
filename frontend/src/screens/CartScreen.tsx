@@ -12,7 +12,6 @@ import {
 } from "react-bootstrap";
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import { CartItem } from "../types";
 import { ReduxState } from "../types/ReduxState";
 import { AppDispatch } from "../store";
 
@@ -45,8 +44,8 @@ const CartScreen = ({ match, location, history }: Props) => {
    *
    * @param cartItem - The cart item to remove from cart
    */
-  const removeFromCartHandler = (cartItem: CartItem) => {
-    dispatch(removeFromCart(cartItem));
+  const removeFromCartHandler = (productId: string) => {
+    dispatch(removeFromCart(productId));
     history.replace("/cart");
   };
 
@@ -99,7 +98,7 @@ const CartScreen = ({ match, location, history }: Props) => {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={() => removeFromCartHandler(item)}
+                      onClick={() => removeFromCartHandler(item.product)}
                     >
                       <i className="fas fa-trash"></i>
                     </Button>
