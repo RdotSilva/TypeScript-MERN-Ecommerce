@@ -1,4 +1,3 @@
-import { USER_LOGIN_REQUEST } from "../constants/userConstants";
 import { User } from "./";
 
 export interface UserDetailsState {
