@@ -1,21 +1,13 @@
 import { CartItem } from "./../types";
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
+import { CartAction, CartState } from "../types/";
 
 /**
- * Type that describes the cart action used in the reducer
+ * Initial state for cart
  */
 
-type CartActionType = {
-  type: string;
-  payload: CartItem;
-};
-
-/**
- * Type that describes the cart state inside of the reducer
- */
-
-type CartState = {
-  cartItems: CartItem[];
+const cartInitialState: CartState = {
+  cartItems: [],
 };
 
 /**
@@ -23,22 +15,22 @@ type CartState = {
  */
 
 export const cartReducer = (
-  state: CartState = { cartItems: [] },
-  action: CartActionType
+  state: CartState = cartInitialState,
+  action: CartAction
 ) => {
   switch (action.type) {
     case CART_ADD_ITEM:
       const item = action.payload;
 
       // Check if item already exists in the cart
-      const itemExists: CartItem = state.cartItems.find(
-        (cartItem: CartItem) => cartItem.product === item.product
+      const itemExists = state.cartItems.find(
+        (cartItem) => cartItem.product === item.product
       )!;
 
       if (itemExists) {
         return {
           ...state,
-          cartItems: state.cartItems.map((cartItem: CartItem) =>
+          cartItems: state.cartItems.map((cartItem) =>
             cartItem.product === itemExists.product ? item : cartItem
           ),
         };
@@ -49,7 +41,7 @@ export const cartReducer = (
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          (item) => item.product !== action.payload.product
+          (item) => item.product !== action.payload
         ),
       };
     default:
