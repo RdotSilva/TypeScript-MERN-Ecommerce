@@ -49,7 +49,7 @@ const ProfileScreen = ({ history }: Props) => {
         setEmail(user.email);
       }
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo, user]);
 
   return (
     <Row>
