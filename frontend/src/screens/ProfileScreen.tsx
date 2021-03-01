@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { getUserDetails } from "../actions/userActions";
@@ -20,6 +20,20 @@ const ProfileScreen = ({ history }: Props) => {
   );
 
   const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
+
+  /**
+   * Push an update to the user profile
+   * @param e HTML event form element
+   */
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords must match");
+    } else {
+      //TODO: Dispatch update profile
+    }
+  };
 
   useEffect(() => {
     if (!userInfo) {
