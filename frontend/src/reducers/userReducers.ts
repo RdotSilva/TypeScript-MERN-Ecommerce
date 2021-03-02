@@ -5,7 +5,10 @@ import {
   UserRegisterActionTypes,
 } from "../types/";
 import { UserDetailsActionTypes, UserDetailsState } from "../types/UserDetails";
-import { UserUpdateActionTypes } from "../types/UserUpdate";
+import {
+  UserUpdateActionTypes,
+  UserUpdateProfileActionTypes,
+} from "../types/UserUpdateProfile";
 
 export const userLoginReducer = (
   state: UserLoginState = {},
@@ -58,11 +61,11 @@ export const userDetailsReducer = (
 
 export const userUpdateProfileReducer = (state: any, action: any) => {
   switch (action.type) {
-    case UserUpdateActionTypes.USER_UPDATE_REQUEST:
+    case UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_REQUEST:
       return { loading: true };
-    case UserUpdateActionTypes.USER_UPDATE_SUCCESS:
+    case UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_SUCCESS:
       return { loading: false, success: true, userInfo: action.payload };
-    case UserUpdateActionTypes.USER_UPDATE_FAILURE:
+    case UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;

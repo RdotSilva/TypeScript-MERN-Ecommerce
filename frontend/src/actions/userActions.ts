@@ -7,7 +7,7 @@ import { UserLoginActionTypes } from "../types/";
 import { UserRegisterActionTypes } from "../types/";
 import { errorHandler } from "./errorHandler";
 import { UserDetailsActionTypes } from "../types/UserDetails";
-import { UserUpdateActionTypes } from "../types/UserUpdate";
+import { UserUpdateProfileActionTypes } from "../types/UserUpdateProfile";
 
 /**
  * Action used to log in a user
@@ -152,7 +152,7 @@ export const updateUserProfile = (user: PasswordUser): AppThunk => async (
 ) => {
   try {
     dispatch({
-      type: UserUpdateActionTypes.USER_UPDATE_REQUEST,
+      type: UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_REQUEST,
     });
 
     // Get user info from the userLogin object (from getState)
@@ -171,12 +171,12 @@ export const updateUserProfile = (user: PasswordUser): AppThunk => async (
     const { data } = await axios.put(`/api/users/profile`, user, config);
 
     dispatch({
-      type: UserUpdateActionTypes.USER_UPDATE_SUCCESS,
+      type: UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_SUCCESS,
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: UserUpdateActionTypes.USER_UPDATE_FAILURE,
+      type: UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_FAILURE,
       payload: errorHandler(error),
     });
   }
