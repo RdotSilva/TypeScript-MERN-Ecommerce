@@ -6,8 +6,9 @@ import {
 } from "../types/";
 import { UserDetailsActionTypes, UserDetailsState } from "../types/UserDetails";
 import {
-  UserUpdateActionTypes,
+  UserUpdateProfileAction,
   UserUpdateProfileActionTypes,
+  UserUpdateProfileState,
 } from "../types/UserUpdateProfile";
 
 export const userLoginReducer = (
@@ -59,7 +60,14 @@ export const userDetailsReducer = (
   }
 };
 
-export const userUpdateProfileReducer = (state: any, action: any) => {
+const userUpdateProfileReducerInitialState: UserUpdateProfileState = {
+  loading: false,
+};
+
+export const userUpdateProfileReducer = (
+  state: UserUpdateProfileState = userUpdateProfileReducerInitialState,
+  action: UserUpdateProfileAction
+) => {
   switch (action.type) {
     case UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_REQUEST:
       return { loading: true };
