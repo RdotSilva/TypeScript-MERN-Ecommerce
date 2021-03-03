@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
@@ -24,6 +24,10 @@ const ProfileScreen = ({ history }: Props) => {
 
   const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
 
+  const { success } = useSelector(
+    (state: ReduxState) => state.userUpdateProfile
+  );
+
   /**
    * Push an update to the user profile
    * @param e HTML event form element
@@ -34,7 +38,17 @@ const ProfileScreen = ({ history }: Props) => {
     if (password !== confirmPassword) {
       setMessage("Passwords must match");
     } else {
-      //TODO: Dispatch update profile
+      if (user) {
+        dispatch(
+          updateUserProfile({
+            _id: user._id,
+            name,
+            email,
+            password,
+            isAdmin: user.isAdmin,
+          })
+        );
+      }
     }
   };
 
@@ -57,6 +71,7 @@ const ProfileScreen = ({ history }: Props) => {
         <h2>User Profile</h2>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
+        {success && <Message variant="success">Profile Updated</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
