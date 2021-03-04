@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { RouteComponentProps } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
@@ -10,6 +10,12 @@ const ShippingScreen = ({ history }: Props) => {
   const [city, setCity] = useState<string>("");
   const [postalCode, setPostalCode] = useState<string>("");
   const [country, setCountry] = useState<string>("");
+
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Save shipping address");
+    //TODO:  Dispatch action to save shipping address
+  };
 
   return (
     <FormContainer>
