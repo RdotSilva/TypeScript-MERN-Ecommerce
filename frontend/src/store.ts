@@ -43,7 +43,7 @@ const userInfoFromLocalStorage = localStorage.getItem("userInfo")
 
 const shippingAddressFromLocalStorage = localStorage.getItem("shippingAddress")
   ? JSON.parse(localStorage.getItem("shippingAddress")!)
-  : null;
+  : undefined;
 
 const initialState = {
   cart: {
