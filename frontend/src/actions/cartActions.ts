@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CartActionTypes } from "../types/";
+import { CartActionTypes, ShippingAddress } from "../types/";
 import { AppThunk } from "../store";
 
 /**
@@ -48,7 +48,7 @@ export const removeFromCart = (id: string): AppThunk => async (
  * Save shipping address action creator
  * Actions related to saving a shipping address
  */
-export const saveShippingAddress = (data: string): AppThunk => async (
+export const saveShippingAddress = (data: ShippingAddress): AppThunk => async (
   dispatch
 ) => {
   dispatch({

@@ -37,7 +37,7 @@ export interface CartRemoveItemAction {
 
 export interface CartSaveShippingAddressAction {
   type: CartActionTypes.CART_SAVE_SHIPPING_ADDRESS;
-  payload: string;
+  payload: ShippingAddress;
 }
 
 export type CartAction =
