@@ -1,6 +1,4 @@
-import { CartItem } from "./../types";
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
-import { CartAction, CartState } from "../types/";
+import { CartAction, CartActionTypes, CartState } from "../types/";
 
 /**
  * Initial state for cart
@@ -19,7 +17,7 @@ export const cartReducer = (
   action: CartAction
 ) => {
   switch (action.type) {
-    case CART_ADD_ITEM:
+    case CartActionTypes.CART_ADD_ITEM:
       const item = action.payload;
 
       // Check if item already exists in the cart
@@ -37,12 +35,18 @@ export const cartReducer = (
       } else {
         return { ...state, cartItems: [...state.cartItems, item] };
       }
-    case CART_REMOVE_ITEM:
+    case CartActionTypes.CART_REMOVE_ITEM:
       return {
         ...state,
         cartItems: state.cartItems.filter(
           (item) => item.product !== action.payload
         ),
+      };
+
+    case CartActionTypes.CART_SAVE_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;
