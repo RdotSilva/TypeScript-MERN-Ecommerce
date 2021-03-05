@@ -7,8 +7,16 @@ export interface Cart {
   qty: number;
 }
 
+export interface ShippingAddress {
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
 export interface CartState {
   cartItems: Cart[];
+  shippingAddress?: ShippingAddress;
 }
 
 export enum CartActionTypes {
