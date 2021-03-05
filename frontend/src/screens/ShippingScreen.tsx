@@ -26,6 +26,10 @@ const ShippingScreen = ({ history }: Props) => {
 
   const dispatch = useDispatch();
 
+  /**
+   * Save users shipping address to local storage and redirect to payment page
+   * @param e HTML event form element
+   */
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Save shipping address");
@@ -58,7 +62,7 @@ const ShippingScreen = ({ history }: Props) => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="postalCode">
-          <Form.Label>postalCode</Form.Label>
+          <Form.Label>Postal Code</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter postal code"
@@ -68,7 +72,7 @@ const ShippingScreen = ({ history }: Props) => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="country">
-          <Form.Label>country</Form.Label>
+          <Form.Label>Country</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter country"
