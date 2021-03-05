@@ -1,20 +1,32 @@
 import React, { FormEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
+import { saveShippingAddress } from "../actions/cartActions";
 import FormContainer from "../components/FormContainer";
+import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}
 
 const ShippingScreen = ({ history }: Props) => {
-  const [address, setAddress] = useState<string>("");
-  const [city, setCity] = useState<string>("");
-  const [postalCode, setPostalCode] = useState<string>("");
-  const [country, setCountry] = useState<string>("");
+  const { shippingAddress } = useSelector((state: ReduxState) => state.cart);
+
+  const [address, setAddress] = useState<string>(
+    shippingAddress ? shippingAddress.address : ""
+  );
+  const [city, setCity] = useState<string>(
+    shippingAddress ? shippingAddress.city : ""
+  );
+  const [postalCode, setPostalCode] = useState<string>(
+    shippingAddress ? shippingAddress.postalCode : ""
+  );
+  const [country, setCountry] = useState<string>(
+    shippingAddress ? shippingAddress.country : ""
+  );
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Save shipping address");
-    //TODO:  Dispatch action to save shipping address
   };
 
   return (
