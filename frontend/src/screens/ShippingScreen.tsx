@@ -24,9 +24,13 @@ const ShippingScreen = ({ history }: Props) => {
     shippingAddress ? shippingAddress.country : ""
   );
 
+  const dispatch = useDispatch();
+
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Save shipping address");
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    history.push("/payment");
   };
 
   return (
