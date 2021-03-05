@@ -48,9 +48,12 @@ export const removeFromCart = (id: string): AppThunk => async (
  * Save shipping address action creator
  * Actions related to saving a shipping address
  */
-export const saveShippingAddress = (data): AppThunk => async (
-  dispatch,
-  getState
+export const saveShippingAddress = (data: string): AppThunk => async (
+  dispatch
 ) => {
-  // TODO: Add saveShippingAddress logic
+  dispatch({
+    type: CartActionTypes.CART_SAVE_SHIPPING_ADDRESS,
+    payload: data,
+  });
+  localStorage.setItem("shippingAddress", JSON.stringify(data));
 };
