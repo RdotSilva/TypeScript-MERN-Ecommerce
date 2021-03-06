@@ -2,8 +2,20 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-interface Props {}
+interface Props {
+  stepOne?: boolean;
+  stepTwo?: boolean;
+  stepThree?: boolean;
+  stepFour?: boolean;
+}
 
+/**
+ * Component that renders checkout links based on which step a user is in the checkout process
+ * @param stepOne Represents user at the signed in level
+ * @param stepTwo Represents a user at the shipping address level
+ * @param stepThree Represents a user at the payment level
+ * @param stepFour Represent a user at the place order level
+ */
 const CheckoutSteps = ({ stepOne, stepTwo, stepThree, stepFour }: Props) => {
   return (
     <Nav className="justify-content-center mb-4">
