@@ -18,6 +18,7 @@ interface Props {
  */
 const CheckoutSteps = ({ stepOne, stepTwo, stepThree, stepFour }: Props) => {
   return (
+    // TODO: Replace this nav link logic with a horizontal stepper
     <Nav className="justify-content-center mb-4">
       <Nav.Item>
         {stepOne ? (
