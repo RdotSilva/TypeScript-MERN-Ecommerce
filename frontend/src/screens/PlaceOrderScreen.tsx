@@ -15,6 +15,27 @@ const PlaceOrderScreen = (props: Props) => {
     (state: ReduxState) => state.cart
   );
 
+  // Helper
+  const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
+
+  // Calculate items price, tax price, shipping price, total price
+  const itemsPrice = Number(
+    addDecimals(cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))
+  );
+
+  // Orders greater than $100 have free shipping, otherwise $10 shipping
+  const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
+
+  const taxPrice = addDecimals(0.15 * itemsPrice);
+
+  const totalPrice = Number(
+    Number(itemsPrice) + Number(shippingPrice) + Number(taxPrice)
+  ).toFixed(2);
+
+  const placeOrderHandler = () => {
+    console.log("Order Placed");
+  };
+
   return (
     <>
       <CheckoutSteps stepOne stepTwo stepThree stepFour />
@@ -77,32 +98,32 @@ const PlaceOrderScreen = (props: Props) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>${itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>${shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>${taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>${totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button
                   type="button"
                   className="btn-block"
-                  disabled={cartItems === 0}
+                  disabled={cartItems.length === 0}
                   onClick={placeOrderHandler}
                 >
                   Place Order
