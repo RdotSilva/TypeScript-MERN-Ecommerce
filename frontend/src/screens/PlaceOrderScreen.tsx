@@ -1,7 +1,10 @@
 import React from "react";
-import { Col, ListGroup, Row } from "react-bootstrap";
+import { Col, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { isTemplateExpression } from "typescript";
 import CheckoutSteps from "../components/CheckoutSteps";
+import Message from "../components/Message";
 import { AppDispatch } from "../store";
 import { ReduxState } from "../types/ReduxState";
 
@@ -27,6 +30,11 @@ const PlaceOrderScreen = (props: Props) => {
                 {shippingAddress?.address}, {shippingAddress?.city}{" "}
                 {shippingAddress?.postalCode} {shippingAddress?.country}
               </p>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <h2>Payment Method</h2>
+              <strong>Method:</strong>
+              {paymentMethod}
             </ListGroup.Item>
           </ListGroup>
         </Col>
