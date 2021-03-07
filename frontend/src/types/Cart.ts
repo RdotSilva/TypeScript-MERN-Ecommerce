@@ -17,6 +17,7 @@ export interface ShippingAddress {
 export interface CartState {
   cartItems: Cart[];
   shippingAddress?: ShippingAddress;
+  paymentMethod?: string;
 }
 
 export enum CartActionTypes {
