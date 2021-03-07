@@ -57,3 +57,18 @@ export const saveShippingAddress = (data: ShippingAddress): AppThunk => async (
   });
   localStorage.setItem("shippingAddress", JSON.stringify(data));
 };
+
+/**
+ * Save payment method action creator
+ * Actions related to saving a method method
+ */
+export const savePaymentMethod = (paymentMethod: string): AppThunk => async (
+  dispatch
+) => {
+  dispatch({
+    type: CartActionTypes.CART_SAVE_PAYMENT_METHOD,
+    payload: paymentMethod,
+  });
+
+  localStorage.setItem("paymentMethod", JSON.stringify(paymentMethod));
+};
