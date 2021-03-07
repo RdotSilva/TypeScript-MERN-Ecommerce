@@ -36,6 +36,32 @@ const PlaceOrderScreen = (props: Props) => {
               <strong>Method:</strong>
               {paymentMethod}
             </ListGroup.Item>
+            <ListGroup.Item>
+              <h2>Order Items</h2>
+              {cartItems.length === 0 ? (
+                <Message>Your cart is empty</Message>
+              ) : (
+                <ListGroup variant="flush">
+                  {cartItems.map((cartItem, index) => (
+                    <ListGroup.Item key={index}>
+                      <Row>
+                        <Col md={1}>
+                          <Image
+                            src={cartItem.image}
+                            alt={cartItem.name}
+                            fluid
+                            rounded
+                          />
+                        </Col>
+                        <Col>
+                          <Link to={`/product/${cartItem.product}`}></Link>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
+            </ListGroup.Item>
           </ListGroup>
         </Col>
       </Row>
