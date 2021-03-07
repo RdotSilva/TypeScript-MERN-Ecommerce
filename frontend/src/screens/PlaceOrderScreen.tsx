@@ -15,19 +15,33 @@ const PlaceOrderScreen = (props: Props) => {
     (state: ReduxState) => state.cart
   );
 
-  // Helper
+  /**
+   * Format a number using decimals and include trailing zeros
+   * @param num Number to add decimals to
+   */
   const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
 
-  // Calculate items price, tax price, shipping price, total price
+  /**
+   * Total amount for items without any taxes/shipping costs
+   */
   const itemsPrice = Number(
     addDecimals(cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))
   );
 
-  // Orders greater than $100 have free shipping, otherwise $10 shipping
+  /**
+   * Orders over $100 have free shipping, anything below that is $10 flat shipping
+   * TODO: Calculate shipping based on zip code
+   */
   const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
 
+  /**
+   * Total price of taxes
+   */
   const taxPrice = addDecimals(0.15 * itemsPrice);
 
+  /**
+   * Total price including shipping and taxes
+   */
   const totalPrice = Number(
     Number(itemsPrice) + Number(shippingPrice) + Number(taxPrice)
   ).toFixed(2);
