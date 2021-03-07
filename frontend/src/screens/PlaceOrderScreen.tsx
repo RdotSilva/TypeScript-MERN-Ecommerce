@@ -1,8 +1,6 @@
-import React from "react";
 import { Col, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { isTemplateExpression } from "typescript";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
@@ -54,7 +52,13 @@ const PlaceOrderScreen = (props: Props) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product/${cartItem.product}`}></Link>
+                          <Link to={`/product/${cartItem.product}`}>
+                            {cartItem.name}
+                          </Link>
+                        </Col>
+                        <Col md={4}>
+                          {cartItem.qty} x {cartItem.price} = $
+                          {cartItem.qty * cartItem.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
