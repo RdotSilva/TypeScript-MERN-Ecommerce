@@ -1,6 +1,20 @@
-import { OrderCreateActionTypes } from "../types/OrderCreate";
+import {
+  OrderCreateAction,
+  OrderCreateActionTypes,
+  OrderCreateState,
+} from "../types/OrderCreate";
 
-export const orderCreateReducer = (state: any = {}, action: any) => {
+const orderCreateInitialState: OrderCreateState = {
+  loading: false,
+};
+
+/**
+ * Reducer used for order creation logic
+ */
+export const orderCreateReducer = (
+  state: OrderCreateState = orderCreateInitialState,
+  action: OrderCreateAction
+) => {
   switch (action.type) {
     case OrderCreateActionTypes.ORDER_CREATE_SUCCESS:
       return {
@@ -17,5 +31,7 @@ export const orderCreateReducer = (state: any = {}, action: any) => {
         loading: false,
         error: action.payload,
       };
+    default:
+      return state;
   }
 };
