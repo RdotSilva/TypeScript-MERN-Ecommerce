@@ -22,30 +22,30 @@ const PlaceOrderScreen = ({ history }: Props) => {
    */
   const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
 
-  /**
-   * Total amount for items without any taxes/shipping costs
-   */
+  // Total amount of ALL items in cart without taxes/shipping
   const itemsPrice = Number(
     addDecimals(cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))
   );
 
-  /**
-   * Orders over $100 have free shipping, anything below that is $10 flat shipping
-   * TODO: Calculate shipping based on zip code
-   */
+  // Orders over $100 have free shipping, anything below that is $10 flat shipping
   const shippingPrice = addDecimals(itemsPrice > 100 ? 0 : 100);
 
-  /**
-   * Total price of taxes
-   */
   const taxPrice = addDecimals(0.15 * itemsPrice);
 
-  /**
-   * Total price including shipping and taxes
-   */
+  // Total price including shipping & taxes
   const totalPrice = Number(
     Number(itemsPrice) + Number(shippingPrice) + Number(taxPrice)
   ).toFixed(2);
+
+  // Check if user has shipping address & payment method, if not redirect to page to update
+  if (!shippingAddress) {
+    history.push("/shipping");
+    return null;
+  }
+  if (!paymentMethod) {
+    history.push("/payment");
+    return null;
+  }
 
   const placeOrderHandler = () => {
     dispatch(
