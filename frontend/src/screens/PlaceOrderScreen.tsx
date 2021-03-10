@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
@@ -19,6 +20,13 @@ const PlaceOrderScreen = ({ history }: Props) => {
   const { order, success, error } = useSelector(
     (state: ReduxState) => state.orderCreate
   );
+
+  /**
+   * Redirect to order screen if order is successful
+   */
+  useEffect(() => {
+    if (success && order) history.push(`/order/${order._id}`);
+  }, [history, order, success]);
 
   /**
    * Format a number using decimals and include trailing zeros
@@ -147,6 +155,9 @@ const PlaceOrderScreen = ({ history }: Props) => {
                   <Col>Total</Col>
                   <Col>${totalPrice}</Col>
                 </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {error && <Message variant="danger">{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button
