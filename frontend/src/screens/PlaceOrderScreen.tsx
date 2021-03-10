@@ -16,6 +16,10 @@ const PlaceOrderScreen = ({ history }: Props) => {
     (state: ReduxState) => state.cart
   );
 
+  const { order, success, error } = useSelector(
+    (state: ReduxState) => state.orderCreate
+  );
+
   /**
    * Format a number using decimals and include trailing zeros
    * @param num Number to add decimals to
