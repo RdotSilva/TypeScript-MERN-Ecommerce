@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AppThunk } from "../store";
 import { Order } from "../types/Order";
-import { OrderCreateActionTypes } from "../types/OrderCreate";
+import { OrderCreate, OrderCreateActionTypes } from "../types/OrderCreate";
 import { errorHandler } from "./errorHandler";
 
 /**
@@ -29,7 +29,11 @@ export const createOrder = (order: Order): AppThunk => async (
       },
     };
 
-    const { data } = await axios.post(`/api/orders`, order, config);
+    const { data } = await axios.post<OrderCreate>(
+      `/api/orders`,
+      order,
+      config
+    );
 
     dispatch({
       type: OrderCreateActionTypes.ORDER_CREATE_SUCCESS,
