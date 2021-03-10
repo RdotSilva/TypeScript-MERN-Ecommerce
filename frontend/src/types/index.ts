@@ -6,3 +6,4 @@ export * from "./Product";
 export * from "./ProductDetails";
 export * from "./ProductList";
 export * from "./UserDetails";
+export * from "./OrderCreate";
