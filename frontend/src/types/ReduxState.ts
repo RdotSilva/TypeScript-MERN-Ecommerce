@@ -4,6 +4,7 @@ import { CartState } from "./";
 import { ProductDetailsState } from "./";
 import { ProductListState } from "./";
 import { UserDetailsState } from "./";
+import { OrderCreateState } from "./OrderCreate";
 import { UserUpdateProfileState } from "./UserUpdateProfile";
 
 export interface ReduxState {
@@ -14,4 +15,5 @@ export interface ReduxState {
   cart: CartState;
   userDetails: UserDetailsState;
   userUpdateProfile: UserUpdateProfileState;
+  orderCreate: OrderCreateState;
 }
