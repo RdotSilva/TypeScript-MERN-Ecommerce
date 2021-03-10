@@ -16,7 +16,7 @@ export const orderCreateReducer = (
   action: OrderCreateAction
 ) => {
   switch (action.type) {
-    case OrderCreateActionTypes.ORDER_CREATE_SUCCESS:
+    case OrderCreateActionTypes.ORDER_CREATE_REQUEST:
       return {
         loading: true,
       };
