@@ -1,14 +1,15 @@
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
+import { createOrder } from "../actions/orderActions";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
 import { ReduxState } from "../types/ReduxState";
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
-const PlaceOrderScreen = (props: Props) => {
+const PlaceOrderScreen = ({ history }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { cartItems, paymentMethod, shippingAddress } = useSelector(
@@ -47,7 +48,17 @@ const PlaceOrderScreen = (props: Props) => {
   ).toFixed(2);
 
   const placeOrderHandler = () => {
-    console.log("Order Placed");
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        shippingAddress,
+        paymentMethod,
+        itemsPrice,
+        shippingPrice: parseFloat(shippingPrice),
+        taxPrice: parseFloat(taxPrice),
+        totalPrice: parseFloat(totalPrice),
+      })
+    );
   };
 
   return (
