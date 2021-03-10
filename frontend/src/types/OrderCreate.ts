@@ -1,12 +1,16 @@
 import { Order } from "./Order";
 
+export interface OrderCreate extends Order {
+  _id: string;
+  user: string;
+}
+
 export interface OrderCreateState {
   loading: boolean;
-  order?: Order;
+  order?: OrderCreate;
   success?: boolean;
   error?: any;
 }
-
 export enum OrderCreateActionTypes {
   ORDER_CREATE_REQUEST = "ORDER_CREATE_REQUEST",
   ORDER_CREATE_SUCCESS = "ORDER_CREATE_SUCCESS",
@@ -19,7 +23,7 @@ export interface OrderCreateRequestAction {
 
 export interface OrderCreateSuccessAction {
   type: OrderCreateActionTypes.ORDER_CREATE_SUCCESS;
-  payload: Order;
+  payload: OrderCreate;
 }
 
 export interface OrderCreateFailureAction {
