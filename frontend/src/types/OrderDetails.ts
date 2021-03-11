@@ -20,3 +20,22 @@ export enum OrderDetailsActionTypes {
   ORDER_DETAILS_SUCCESS = "ORDER_DETAILS_SUCCESS",
   ORDER_DETAILS_FAILURE = "ORDER_DETAILS_FAILURE",
 }
+
+export interface OrderDetailsRequestAction {
+  type: OrderDetailsActionTypes.ORDER_DETAILS_REQUEST;
+}
+
+export interface OrderDetailsSuccessAction {
+  type: OrderDetailsActionTypes.ORDER_DETAILS_SUCCESS;
+  payload: OrderDetails;
+}
+
+export interface OrderDetailsFailureAction {
+  type: OrderDetailsActionTypes.ORDER_DETAILS_FAILURE;
+  payload: any;
+}
+
+export type OrderDetailsAction =
+  | OrderDetailsRequestAction
+  | OrderDetailsSuccessAction
+  | OrderDetailsFailureAction;
