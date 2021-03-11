@@ -4,7 +4,7 @@ import { Request, Response } from "../types/express";
 
 /**
  * Create new order
- * @route GET /api/orders
+ * @route POST /api/orders
  * @access Private
  */
 const addOrderItems = asyncHandler(async (req: Request, res: Response) => {
@@ -40,4 +40,23 @@ const addOrderItems = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
-export { addOrderItems };
+/**
+ * Get order by ID
+ * @route GET /api/orders
+ * @access Private
+ */
+const getOrderById = asyncHandler(async (req: Request, res: Response) => {
+  const order = await Order.findById(req.params.id).populate(
+    "user",
+    "name email"
+  );
+
+  if (order) {
+    res.json(order);
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
+
+export { addOrderItems, getOrderById };
