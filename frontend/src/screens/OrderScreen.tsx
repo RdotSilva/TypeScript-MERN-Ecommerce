@@ -14,9 +14,20 @@ const OrderScreen = ({ match }: Props) => {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  const { cartItems, paymentMethod, shippingAddress } = useSelector(
+    (state: ReduxState) => state.cart
+  );
+
   const { order, loading, error } = useSelector(
     (state: ReduxState) => state.orderDetails
   );
+
+  /**
+   * Redirect to order screen if order is successful
+   */
+  useEffect(() => {
+    dispatch(getOrderDetails(orderId));
+  }, []);
 
   return <div>Order Screen</div>;
 };
