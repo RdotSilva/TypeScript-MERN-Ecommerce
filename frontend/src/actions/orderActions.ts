@@ -1,7 +1,6 @@
 import axios from "axios";
 import { AppThunk } from "../store";
-import { OrderDetails } from "../types";
-import { OrderDetailsActionTypes } from "../types";
+import { OrderDetailsActionTypes, OrderDetails } from "../types/";
 import { Order } from "../types/Order";
 import { OrderCreate, OrderCreateActionTypes } from "../types/OrderCreate";
 import { errorHandler } from "./errorHandler";
