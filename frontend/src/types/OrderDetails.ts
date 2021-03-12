@@ -7,6 +7,7 @@ export interface OrderDetails extends Order {
     name: string;
     email: string;
   };
+  // TODO: Add delivery, payment
 }
 
 export interface OrderDetailsState {
