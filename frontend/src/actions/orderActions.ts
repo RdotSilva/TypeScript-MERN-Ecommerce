@@ -1,5 +1,7 @@
 import axios from "axios";
 import { AppThunk } from "../store";
+import { OrderDetails } from "../types";
+import { OrderDetailsActionTypes } from "../types";
 import { Order } from "../types/Order";
 import { OrderCreate, OrderCreateActionTypes } from "../types/OrderCreate";
 import { errorHandler } from "./errorHandler";
@@ -42,6 +44,44 @@ export const createOrder = (order: Order): AppThunk => async (
   } catch (error) {
     dispatch({
       type: OrderCreateActionTypes.ORDER_CREATE_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * Action used to get order details
+ */
+export const getOrderDetails = (id: string): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: OrderDetailsActionTypes.ORDER_DETAILS_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.get<OrderDetails>(`/api/orders/${id}`, config);
+
+    dispatch({
+      type: OrderDetailsActionTypes.ORDER_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: OrderDetailsActionTypes.ORDER_DETAILS_FAILURE,
       payload: errorHandler(error),
     });
   }
