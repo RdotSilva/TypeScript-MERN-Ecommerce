@@ -27,8 +27,10 @@ const OrderScreen = ({ match }: Props) => {
    * Redirect to order screen if order is successful
    */
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
-  }, []);
+    if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+    }
+  }, [order, orderId]);
 
   const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
 
