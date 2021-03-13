@@ -8,6 +8,7 @@ import {
   OrderDetailsActionTypes,
   OrderDetailsState,
 } from "../types/OrderDetails";
+import { OrderPayActionTypes } from "../types/OrderPay";
 
 const orderCreateInitialState: OrderCreateState = {
   loading: false,
@@ -68,6 +69,35 @@ export const orderDetailsReducer = (
         loading: false,
         error: action.payload,
       };
+    default:
+      return state;
+  }
+};
+
+/**
+ * Reducer used for order pay logic
+ */
+export const orderPayReducer = (
+  state: OrderDetailsState = orderDetailsInitialState,
+  action: any
+) => {
+  switch (action.type) {
+    case OrderPayActionTypes.ORDER_PAY_REQUEST:
+      return {
+        loading: true,
+      };
+    case OrderPayActionTypes.ORDER_PAY_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+      };
+    case OrderPayActionTypes.ORDER_PAY_FAILURE:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case OrderPayActionTypes.ORDER_PAY_RESET:
+      return {};
     default:
       return state;
   }
