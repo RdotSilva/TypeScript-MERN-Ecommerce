@@ -42,7 +42,7 @@ const addOrderItems = asyncHandler(async (req: Request, res: Response) => {
 
 /**
  * Get order by ID
- * @route GET /api/orders
+ * @route GET /api/orders/:id
  * @access Private
  */
 const getOrderById = asyncHandler(async (req: Request, res: Response) => {
@@ -59,4 +59,20 @@ const getOrderById = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
-export { addOrderItems, getOrderById };
+/**
+ * Update order to paid
+ * @route GET /api/orders/:id/pay
+ * @access Private
+ */
+const updateOrderToPaid = asyncHandler(async (req: Request, res: Response) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    //TODO: Finish implementation
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
+
+export { addOrderItems, getOrderById, updateOrderToPaid };
