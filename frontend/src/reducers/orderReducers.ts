@@ -8,7 +8,11 @@ import {
   OrderDetailsActionTypes,
   OrderDetailsState,
 } from "../types/OrderDetails";
-import { OrderPayActionTypes } from "../types/OrderPay";
+import {
+  OrderPayAction,
+  OrderPayActionTypes,
+  OrderPayState,
+} from "../types/OrderPay";
 
 const orderCreateInitialState: OrderCreateState = {
   loading: false,
@@ -74,12 +78,16 @@ export const orderDetailsReducer = (
   }
 };
 
+const orderPayInitialState: OrderPayState = {
+  loading: false,
+};
+
 /**
  * Reducer used for order pay logic
  */
 export const orderPayReducer = (
-  state: OrderDetailsState = orderDetailsInitialState,
-  action: any
+  state: OrderPayState = orderPayInitialState,
+  action: OrderPayAction
 ) => {
   switch (action.type) {
     case OrderPayActionTypes.ORDER_PAY_REQUEST:
