@@ -11,3 +11,4 @@ export * from "./Order";
 export * from "./OrderCreate";
 export * from "./OrderDetails";
 export * from "./OrderPay";
+export * from "./PaymentResult";
