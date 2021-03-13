@@ -7,7 +7,11 @@ export interface OrderDetails extends Order {
     name: string;
     email: string;
   };
-  // TODO: Add delivery, payment
+  isPaid: boolean;
+  isDelivered: boolean;
+  paidAt?: string;
+  deliveredAt?: string;
+  //TODO: Add payment result
 }
 
 export interface OrderDetailsState {
