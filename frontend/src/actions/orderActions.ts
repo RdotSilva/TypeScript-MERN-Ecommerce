@@ -4,6 +4,7 @@ import {
   OrderDetailsActionTypes,
   OrderDetails,
   OrderPayActionTypes,
+  PaymentResult,
 } from "../types/";
 import { Order } from "../types/Order";
 import { OrderCreate, OrderCreateActionTypes } from "../types/OrderCreate";
@@ -95,7 +96,7 @@ export const getOrderDetails = (id: string): AppThunk => async (
  */
 export const payOrder = (
   orderId: string,
-  paymentResult: any
+  paymentResult: PaymentResult
 ): AppThunk => async (dispatch, getState) => {
   try {
     dispatch({
