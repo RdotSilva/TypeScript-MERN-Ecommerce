@@ -26,6 +26,7 @@ interface Order extends Document {
     update_time: string;
     email_address: string;
   };
+  itemsPrice: number;
   taxPrice: number;
   shippingPrice: number;
   totalPrice: number;
@@ -70,6 +71,11 @@ const orderSchema = new mongoose.Schema(
       status: { type: String },
       update_time: { type: String },
       email_address: { type: String },
+    },
+    itemsPrice: {
+      type: Number,
+      required: true,
+      default: 0.0,
     },
     taxPrice: {
       type: Number,
