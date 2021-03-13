@@ -8,7 +8,11 @@ import Message from "../components/Message";
 import { AppDispatch } from "../store";
 import { ReduxState } from "../types/ReduxState";
 
-interface Props extends RouteComponentProps {}
+interface MatchParams {
+  id: string;
+}
+
+interface Props extends RouteComponentProps<MatchParams> {}
 
 const OrderScreen = ({ match }: Props) => {
   const orderId = match.params.id;
