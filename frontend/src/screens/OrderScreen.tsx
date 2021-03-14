@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
@@ -17,6 +18,8 @@ interface Props extends RouteComponentProps<MatchParams> {}
 const OrderScreen = ({ match }: Props) => {
   const orderId = match.params.id;
 
+  const [sdkReady, setSdkReady] = useState<boolean>(false);
+
   const dispatch = useDispatch<AppDispatch>();
 
   const { order, loading, error } = useSelector(
@@ -27,6 +30,21 @@ const OrderScreen = ({ match }: Props) => {
    * Redirect to order screen if order is successful
    */
   useEffect(() => {
+    const addPaypalScript = async () => {
+      const { data: clientId } = await axios.get("/api/config/paypal");
+
+      // Dynamically create the script tag for PayPal
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `<script src="https://www.paypal.com/sdk/js?client-id=${clientId}"></script>
+      `;
+      script.async = true;
+      script.onload = () => {
+        setSdkReady(true);
+      };
+      document.body.appendChild(script);
+    };
+
     if (!order || order._id !== orderId) {
       dispatch(getOrderDetails(orderId));
     }
