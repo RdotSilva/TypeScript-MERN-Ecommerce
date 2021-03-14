@@ -26,29 +26,34 @@ const OrderScreen = ({ match }: Props) => {
     (state: ReduxState) => state.orderDetails
   );
 
+  const { loading: loadingPay, success: successPay } = useSelector(
+    (state: ReduxState) => state.orderPay
+  );
+
   /**
    * Redirect to order screen if order is successful
    */
   useEffect(() => {
-    const addPaypalScript = async () => {
+    const addPayPalScript = async () => {
       const { data: clientId } = await axios.get("/api/config/paypal");
-
-      // Dynamically create the script tag for PayPal
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = `<script src="https://www.paypal.com/sdk/js?client-id=${clientId}"></script>
-      `;
       script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.onload = () => setSdkReady(true);
       document.body.appendChild(script);
     };
 
-    if (!order || order._id !== orderId) {
+    if (successPay || !order || order._id !== orderId) {
       dispatch(getOrderDetails(orderId));
+    } else if (!order.isPaid) {
+      if (!window.paypal) {
+        addPayPalScript();
+      } else {
+        setSdkReady(true);
+      }
     }
-  }, [order, orderId]);
+  }, [order, orderId, successPay]);
 
   const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
 
