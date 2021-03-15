@@ -1,4 +1,5 @@
 import { Order } from "./Order";
+import { PaymentResult } from "./";
 
 export interface OrderDetails extends Order {
   _id: string;
@@ -11,7 +12,7 @@ export interface OrderDetails extends Order {
   isDelivered: boolean;
   paidAt?: string;
   deliveredAt?: string;
-  //TODO: Add payment result
+  paymentResult?: PaymentResult;
 }
 
 export interface OrderDetailsState {
