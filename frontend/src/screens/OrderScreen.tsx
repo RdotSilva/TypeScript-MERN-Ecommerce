@@ -8,15 +8,8 @@ import { getOrderDetails, payOrder } from "../actions/orderActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
-import { PaymentResult } from "../types/";
+import { OrderPayActionTypes, PaymentResult } from "../types/";
 import { ReduxState } from "../types/ReduxState";
-
-// TODO: Remove this temporary declaration
-declare global {
-  interface Window {
-    paypal?: any;
-  }
-}
 
 interface MatchParams {
   id: string;
@@ -54,6 +47,7 @@ const OrderScreen = ({ match }: Props) => {
     };
 
     if (successPay || !order || order._id !== orderId) {
+      dispatch({ type: OrderPayActionTypes.ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -67,8 +61,8 @@ const OrderScreen = ({ match }: Props) => {
   const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
 
   /**
-   * Pay an order
-   * @param paymentResult
+   * Save a Payment Result from PayPal in the database and mark order as paid
+   * @param paymentResult Payment Result sent from PayPal which includes user info related to Payment
    */
   const successPaymentHandler = (paymentResult: PaymentResult) => {
     console.log(paymentResult);
