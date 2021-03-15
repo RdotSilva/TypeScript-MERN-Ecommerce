@@ -9,6 +9,13 @@ import Message from "../components/Message";
 import { AppDispatch } from "../store";
 import { ReduxState } from "../types/ReduxState";
 
+// TODO: Remove this temporary declaration
+declare global {
+  interface Window {
+    paypal?: any;
+  }
+}
+
 interface MatchParams {
   id: string;
 }
