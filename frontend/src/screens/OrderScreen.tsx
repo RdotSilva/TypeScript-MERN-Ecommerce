@@ -4,10 +4,11 @@ import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { getOrderDetails } from "../actions/orderActions";
+import { getOrderDetails, payOrder } from "../actions/orderActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
+import { PaymentResult } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 // TODO: Remove this temporary declaration
@@ -64,6 +65,15 @@ const OrderScreen = ({ match }: Props) => {
   }, [order, orderId, successPay]);
 
   const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
+
+  /**
+   * Pay an order
+   * @param paymentResult
+   */
+  const successPaymentHandler = (paymentResult: PaymentResult) => {
+    console.log(paymentResult);
+    dispatch(payOrder(orderId, paymentResult));
+  };
 
   return loading ? (
     <Loader />
