@@ -1,10 +1,8 @@
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import users from "./data/users";
 import products from "./data/products";
-import User from "./models/userModel";
-import Product from "./models/productModel";
-import Order from "./models/orderModel";
+import { User, Product, Order } from "./models/";
+import { UserDocument, Review } from "./types/";
 import connectDB from "./config/db";
 
 /**
@@ -28,14 +26,12 @@ const importData = async () => {
 
     const createdUsers = await User.insertMany(users);
 
-    const adminUser = createdUsers[0]._id;
+    const adminUser: UserDocument = createdUsers[0]._id;
 
     // Create sample products set w/ Admin user
-    const sampleProducts = products.map((product) => {
-      return {
-        ...product,
-        user: adminUser,
-      };
+    const sampleProducts = products.map((p) => {
+      let reviews: Review[] = [];
+      return { ...p, user: adminUser.id, reviews };
     });
 
     await Product.insertMany(sampleProducts);
