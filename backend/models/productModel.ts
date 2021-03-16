@@ -1,12 +1,35 @@
-const mongoose = require("mongoose");
-const reviewSchema = require("./reviewModel");
+import { Schema, model } from "mongoose";
+import { ProductDocument } from "../types/";
 
-const productSchema = mongoose.Schema(
+const reviewSchema = new Schema(
   {
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       required: true,
-      ref: "User", // Reference the User Model for the Object ID (add relationship between product and user)
+      ref: "User",
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    rating: {
+      type: Number,
+      required: true,
+    },
+    comment: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
+const productSchema = new Schema(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
     name: {
       type: String,
@@ -50,9 +73,9 @@ const productSchema = mongoose.Schema(
       default: 0,
     },
   },
-  { timestamps: true } // Automatically create "createdAt timestamp"
+  {
+    timestamps: true,
+  }
 );
 
-const Product = mongoose.model("Product", productSchema);
-
-export default Product;
+export const Product = model<ProductDocument>("Product", productSchema);
