@@ -1,78 +1,73 @@
-import mongoose, { Document, Model } from "mongoose";
-import { ProductType } from "../types";
-import User from "./userModel";
+import { Schema, model } from "mongoose";
+import { OrderDocument } from "../types/";
 
-//TODO: Split up Order Model into separate files and clear database
-
-interface Order extends Document {
-  user: User;
-  orderItems: [
-    {
-      name: string;
-      qty: number;
-      image: string;
-      price: number;
-      product: { type: ProductType };
-    }
-  ];
-  shippingAddress: {
-    address: string;
-    city: string;
-    postalCode: string;
-    country: string;
-  };
-  paymentMethod: string;
-  paymentResult: {
-    id: string;
-    status: string;
-    update_time: string;
-    email_address: string;
-  };
-  itemsPrice: number;
-  taxPrice: number;
-  shippingPrice: number;
-  totalPrice: number;
-  isPaid: boolean;
-  paidAt: Date;
-  isDelivered: boolean;
-  deliveredAt: Date;
-}
-
-const orderSchema = new mongoose.Schema(
+const orderSchema = new Schema(
   {
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       required: true,
-      ref: "User", // Create reference to the User model
+      ref: "User",
     },
     orderItems: [
       {
-        name: { type: String, required: true },
-        qty: { type: Number, required: true },
-        image: { type: String, required: true },
-        price: { type: Number, required: true },
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
+        name: {
+          type: String,
           required: true,
-          ref: "Product", // Create a reference to the Product model
+        },
+        qty: {
+          type: Number,
+          required: true,
+        },
+        image: {
+          type: String,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+        product: {
+          type: Schema.Types.ObjectId,
+          required: true,
+          ref: "Product",
         },
       },
     ],
     shippingAddress: {
-      address: { type: String, required: true },
-      city: { type: String, required: true },
-      postalCode: { type: String, required: true },
-      country: { type: String, required: true },
+      address: {
+        type: String,
+        required: true,
+      },
+      city: {
+        type: String,
+        required: true,
+      },
+      postalCode: {
+        type: String,
+        required: true,
+      },
+      country: {
+        type: String,
+        required: true,
+      },
     },
     paymentMethod: {
       type: String,
       required: true,
     },
     paymentResult: {
-      id: { type: String },
-      status: { type: String },
-      update_time: { type: String },
-      email_address: { type: String },
+      id: {
+        type: String,
+      },
+      status: {
+        type: String,
+      },
+      update_time: {
+        type: String,
+      },
+      email_address: {
+        type: String,
+      },
     },
     itemsPrice: {
       type: Number,
@@ -111,9 +106,9 @@ const orderSchema = new mongoose.Schema(
       type: Date,
     },
   },
-  { timestamps: true } // Automatically create "createdAt timestamp"
+  {
+    timestamps: true,
+  }
 );
 
-const Order: Model<Order> = mongoose.model("Order", orderSchema);
-
-export default Order;
+export const Order = model<OrderDocument>("Order", orderSchema);
