@@ -2,6 +2,8 @@ import mongoose, { Document, Model } from "mongoose";
 import { ProductType } from "../types";
 import User from "./userModel";
 
+//TODO: Split up Order Model into separate files and clear database
+
 interface Order extends Document {
   user: User;
   orderItems: [
