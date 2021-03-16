@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
-import Product from "../models/productModel";
+import { Product } from "../models/";
 
 /**
  * Fetch all products

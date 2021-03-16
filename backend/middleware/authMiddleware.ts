@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "../types/express";
 import jwt, { Secret } from "jsonwebtoken";
-import User from "../models/userModel";
+import { User } from "../models/";
 import asyncHandler from "express-async-handler";
 
 interface Decoded {

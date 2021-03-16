@@ -1,6 +1,6 @@
 import { Request, Response } from "../types/express";
 import asyncHandler from "express-async-handler";
-import User from "../models/userModel";
+import { User } from "../models/";
 import generateToken from "../utils/generateToken";
 
 /**

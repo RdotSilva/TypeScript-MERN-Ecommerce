@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import Order from "../models/orderModel";
+import { Order } from "../models/";
 import { Request, Response } from "../types/express";
 
 /**
