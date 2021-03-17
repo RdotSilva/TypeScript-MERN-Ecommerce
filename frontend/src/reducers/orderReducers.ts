@@ -8,6 +8,7 @@ import {
   OrderDetailsActionTypes,
   OrderDetailsState,
 } from "../types/OrderDetails";
+import { OrderListMyActionTypes } from "../types/OrderListMy";
 import {
   OrderPayAction,
   OrderPayActionTypes,
@@ -106,6 +107,30 @@ export const orderPayReducer = (
       };
     case OrderPayActionTypes.ORDER_PAY_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+/**
+ * Reducer used for logged in user order list
+ */
+export const orderListMyReducer = (state: any, action: any) => {
+  switch (action.type) {
+    case OrderListMyActionTypes.ORDER_LIST_MY_REQUEST:
+      return {
+        loading: true,
+      };
+    case OrderListMyActionTypes.ORDER_LIST_MY_SUCCESS:
+      return {
+        loading: false,
+        orders: action.payload,
+      };
+    case OrderListMyActionTypes.ORDER_LIST_MY_SUCCESS:
+      return {
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
