@@ -30,8 +30,8 @@ const importData = async () => {
 
     // Create sample products set w/ Admin user
     const sampleProducts = products.map((p) => {
-      let reviews: Review[] = [];
-      return { ...p, user: adminUser.id, reviews };
+      return { ...p, user: adminUser.id };
+      // TODO: Add reviews to products
     });
 
     await Product.insertMany(sampleProducts);
