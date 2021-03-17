@@ -8,7 +8,11 @@ import {
   OrderDetailsActionTypes,
   OrderDetailsState,
 } from "../types/OrderDetails";
-import { OrderListMyActionTypes } from "../types/OrderListMy";
+import {
+  OrderListMyActionTypes,
+  OrderListMyState,
+  OrderListMyAction,
+} from "../types/OrderListMy";
 import {
   OrderPayAction,
   OrderPayActionTypes,
@@ -112,10 +116,18 @@ export const orderPayReducer = (
   }
 };
 
+const orderListMyInitialState: OrderListMyState = {
+  loading: false,
+  orders: [],
+};
+
 /**
  * Reducer used for logged in user order list
  */
-export const orderListMyReducer = (state: any, action: any) => {
+export const orderListMyReducer = (
+  state: OrderListMyState = orderListMyInitialState,
+  action: OrderListMyAction
+) => {
   switch (action.type) {
     case OrderListMyActionTypes.ORDER_LIST_MY_REQUEST:
       return {
