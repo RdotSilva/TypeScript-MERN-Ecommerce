@@ -6,6 +6,7 @@ import { ProductListState } from "./";
 import { UserDetailsState } from "./";
 import { OrderCreateState } from "./OrderCreate";
 import { OrderDetailsState } from "./OrderDetails";
+import { OrderListMyState } from "./OrderListMy";
 import { OrderPayState } from "./OrderPay";
 import { UserUpdateProfileState } from "./UserUpdateProfile";
 
@@ -20,4 +21,5 @@ export interface ReduxState {
   orderCreate: OrderCreateState;
   orderDetails: OrderDetailsState;
   orderPay: OrderPayState;
+  orderListMy: OrderListMyState;
 }
