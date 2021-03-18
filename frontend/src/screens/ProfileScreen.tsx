@@ -2,6 +2,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
+import { listMyOrders } from "../actions/orderActions";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
@@ -26,6 +27,10 @@ const ProfileScreen = ({ history }: Props) => {
 
   const { success } = useSelector(
     (state: ReduxState) => state.userUpdateProfile
+  );
+
+  const { orders, loading: loadingOrders, error: errorOrders } = useSelector(
+    (state: ReduxState) => state.orderListMy
   );
 
   /**
@@ -58,6 +63,7 @@ const ProfileScreen = ({ history }: Props) => {
     } else {
       if (!user?.name) {
         dispatch(getUserDetails("profile"));
+        dispatch(listMyOrders());
       } else {
         setName(user.name);
         setEmail(user.email);
