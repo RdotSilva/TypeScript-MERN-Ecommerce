@@ -12,7 +12,7 @@ export interface OrderListMy extends Order {
 }
 
 export interface OrderListMyState {
-  orders: OrderListMy[];
+  orders?: OrderListMy[]; // TODO: Check this, made orders optional for now
   loading: boolean;
   error?: any;
 }
