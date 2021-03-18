@@ -8,6 +8,7 @@ import {
 } from "../types/";
 import { Order } from "../types/Order";
 import { OrderCreate, OrderCreateActionTypes } from "../types/OrderCreate";
+import { OrderListMyActionTypes } from "../types/OrderListMy";
 import { errorHandler } from "./errorHandler";
 
 /**
@@ -134,4 +135,37 @@ export const payOrder = (
   }
 };
 
-// TODO: Add orderListMy action
+/**
+ * Action used to list orders of logged in user
+ */
+export const listMyOrders = (): AppThunk => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: OrderListMyActionTypes.ORDER_LIST_MY_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/orders/myorders`, config);
+
+    dispatch({
+      type: OrderListMyActionTypes.ORDER_LIST_MY_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: OrderListMyActionTypes.ORDER_LIST_MY_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
