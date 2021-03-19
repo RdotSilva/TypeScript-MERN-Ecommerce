@@ -4,7 +4,11 @@ import {
   UserLoginState,
   UserRegisterActionTypes,
 } from "../types/";
-import { UserDetailsActionTypes, UserDetailsState } from "../types/UserDetails";
+import {
+  UserDetailsAction,
+  UserDetailsActionTypes,
+  UserDetailsState,
+} from "../types/UserDetails";
 import {
   UserUpdateProfileAction,
   UserUpdateProfileActionTypes,
@@ -46,7 +50,7 @@ const initialUserDetailsState: UserDetailsState = { loading: false };
 
 export const userDetailsReducer = (
   state: UserDetailsState = initialUserDetailsState,
-  action: any // TODO: UserDetailsAction
+  action: UserDetailsAction
 ) => {
   switch (action.type) {
     case UserDetailsActionTypes.USER_DETAILS_REQUEST:
