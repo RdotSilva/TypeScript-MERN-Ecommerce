@@ -43,6 +43,9 @@ const protect = asyncHandler(
   }
 );
 
+/**
+ * Middleware used to protect routes from users who are not flagged as admin
+ */
 const admin = (req: Request, res: Response, next: NextFunction) => {
   if (req.user && req.user.isAdmin) {
     next();
