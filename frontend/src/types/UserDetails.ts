@@ -18,16 +18,22 @@ export interface UserDetailsRequestAction {
 }
 
 export interface UserDetailsSuccessAction {
-  type: UserDetailsActionTypes.USER_DETAILS_REQUEST;
+  type: UserDetailsActionTypes.USER_DETAILS_SUCCESS;
   payload: User;
 }
 
-export interface UserDetailsFailure {
-  type: UserDetailsActionTypes.USER_DETAILS_REQUEST;
+export interface UserDetailsFailureAction {
+  type: UserDetailsActionTypes.USER_DETAILS_FAILURE;
+  payload: any;
+}
+
+export interface UserDetailsResetAction {
+  type: UserDetailsActionTypes.USER_DETAILS_RESET;
   payload: any;
 }
 
 export type UserDetailsAction =
   | UserDetailsRequestAction
   | UserDetailsSuccessAction
-  | UserDetailsFailure;
+  | UserDetailsFailureAction
+  | UserDetailsResetAction;
