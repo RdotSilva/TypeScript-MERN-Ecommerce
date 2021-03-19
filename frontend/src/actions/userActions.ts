@@ -8,6 +8,7 @@ import { UserRegisterActionTypes } from "../types/";
 import { errorHandler } from "./errorHandler";
 import { UserDetailsActionTypes } from "../types/UserDetails";
 import { UserUpdateProfileActionTypes } from "../types/UserUpdateProfile";
+import { OrderListMyActionTypes } from "../types/OrderListMy";
 
 /**
  * Action used to log in a user
@@ -51,9 +52,11 @@ export const login = (email: string, password: string): AppThunk => async (
 /**
  * Action used to log out a user
  */
-export const logout = () => (dispatch: Dispatch<AppAction>) => {
+export const logout = (): AppThunk => async (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: UserLoginActionTypes.USER_LOGOUT });
+  dispatch({ type: UserDetailsActionTypes.USER_DETAILS_RESET });
+  dispatch({ type: OrderListMyActionTypes.ORDER_LIST_MY_RESET });
 };
 
 /**
