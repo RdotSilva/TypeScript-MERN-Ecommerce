@@ -9,6 +9,7 @@ import { errorHandler } from "./errorHandler";
 import { UserDetailsActionTypes } from "../types/UserDetails";
 import { UserUpdateProfileActionTypes } from "../types/UserUpdateProfile";
 import { OrderListMyActionTypes } from "../types/OrderListMy";
+import { UserListActionTypes } from "../types/UserList";
 
 /**
  * Action used to log in a user
@@ -180,6 +181,41 @@ export const updateUserProfile = (user: PasswordUser): AppThunk => async (
   } catch (error) {
     dispatch({
       type: UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * Action used to list all users
+ */
+export const listUsers = (): AppThunk => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: UserListActionTypes.USER_LIST_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users`, config);
+
+    dispatch({
+      type: UserListActionTypes.USER_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UserListActionTypes.USER_LIST_FAILURE,
       payload: errorHandler(error),
     });
   }
