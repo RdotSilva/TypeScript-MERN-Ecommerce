@@ -9,6 +9,7 @@ import {
   UserDetailsActionTypes,
   UserDetailsState,
 } from "../types/UserDetails";
+import { UserListActionTypes } from "../types/UserList";
 import {
   UserUpdateProfileAction,
   UserUpdateProfileActionTypes,
@@ -80,6 +81,19 @@ export const userUpdateProfileReducer = (
     case UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_SUCCESS:
       return { loading: false, success: true, userInfo: action.payload };
     case UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userListReducer = (state: any, action: any) => {
+  switch (action.type) {
+    case UserListActionTypes.USER_LIST_REQUEST:
+      return { loading: true };
+    case UserListActionTypes.USER_LIST_SUCCESS:
+      return { loading: false, users: action.payload };
+    case UserListActionTypes.USER_LIST_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;
