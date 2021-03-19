@@ -138,10 +138,15 @@ export const orderListMyReducer = (
         loading: false,
         orders: action.payload,
       };
-    case OrderListMyActionTypes.ORDER_LIST_MY_SUCCESS:
+    case OrderListMyActionTypes.ORDER_LIST_MY_FAILURE:
       return {
         loading: false,
         error: action.payload,
+      };
+    case OrderListMyActionTypes.ORDER_LIST_MY_RESET:
+      return {
+        orders: [],
+        loading: false,
       };
     default:
       return state;
