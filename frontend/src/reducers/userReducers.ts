@@ -102,11 +102,11 @@ export const userListReducer = (
 ) => {
   switch (action.type) {
     case UserListActionTypes.USER_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, users: [] };
     case UserListActionTypes.USER_LIST_SUCCESS:
       return { loading: false, users: action.payload };
     case UserListActionTypes.USER_LIST_FAILURE:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload, users: [] };
     default:
       return state;
   }
