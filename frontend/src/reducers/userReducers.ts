@@ -9,7 +9,11 @@ import {
   UserDetailsActionTypes,
   UserDetailsState,
 } from "../types/UserDetails";
-import { UserListActionTypes } from "../types/UserList";
+import {
+  UserListAction,
+  UserListActionTypes,
+  UserListState,
+} from "../types/UserList";
 import {
   UserUpdateProfileAction,
   UserUpdateProfileActionTypes,
@@ -87,7 +91,15 @@ export const userUpdateProfileReducer = (
   }
 };
 
-export const userListReducer = (state: any, action: any) => {
+const userListReducerInitialState: UserListState = {
+  loading: false,
+  users: [],
+};
+
+export const userListReducer = (
+  state: UserListState = userListReducerInitialState,
+  action: UserListAction
+) => {
   switch (action.type) {
     case UserListActionTypes.USER_LIST_REQUEST:
       return { loading: true };
