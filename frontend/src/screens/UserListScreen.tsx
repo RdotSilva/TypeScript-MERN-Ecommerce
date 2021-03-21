@@ -20,6 +20,11 @@ const UserListScreen = (props: Props) => {
     dispatch(listUsers());
   }, [dispatch]);
 
+  const deleteHandler = (id: string) => {
+    console.log(id);
+    // TODO: Add logic, this is placeholder
+  };
+
   return (
     <>
       <h1>Users</h1>
