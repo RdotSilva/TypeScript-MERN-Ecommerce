@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { RouteComponentProps } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
 import { listUsers } from "../actions/userActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
-const UserListScreen = (props: Props) => {
+const UserListScreen = ({ history }: Props) => {
   const dispatch = useDispatch();
 
   const { loading, error, users } = useSelector(
@@ -19,8 +20,12 @@ const UserListScreen = (props: Props) => {
   const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
 
   useEffect(() => {
-    dispatch(listUsers());
-  }, [dispatch]);
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(listUsers());
+    } else {
+      history.push("/login");
+    }
+  }, [dispatch, history]);
 
   const deleteHandler = (id: string) => {
     console.log(id);
