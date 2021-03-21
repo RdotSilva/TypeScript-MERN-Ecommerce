@@ -16,6 +16,8 @@ const UserListScreen = (props: Props) => {
     (state: ReduxState) => state.userList
   );
 
+  const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
+
   useEffect(() => {
     dispatch(listUsers());
   }, [dispatch]);
