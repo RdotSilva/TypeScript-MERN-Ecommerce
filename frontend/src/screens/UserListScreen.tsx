@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
 import { listUsers } from "../actions/userActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
@@ -51,6 +52,20 @@ const UserListScreen = (props: Props) => {
                   ) : (
                     <i className="fas fa-times" style={{ color: "red" }}></i>
                   )}
+                </td>
+                <td>
+                  <LinkContainer to={`/user/${user._id}/edit`}>
+                    <Button variant="light" className="btn-sm">
+                      <i className="fas fa-edit"></i>
+                    </Button>
+                  </LinkContainer>
+                  <Button
+                    variant="danger"
+                    className="btn-sm"
+                    onClick={() => deleteHandler(user._id)}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </Button>
                 </td>
               </tr>
             ))}
