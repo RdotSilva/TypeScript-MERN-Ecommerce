@@ -37,6 +37,24 @@ const UserListScreen = (props: Props) => {
               <th></th>
             </tr>
           </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user._id}>
+                <td>{user._id}</td>
+                <td>{user.name}</td>
+                <td>
+                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                </td>
+                <td>
+                  {user.isAdmin ? (
+                    <i className="fas fa-check" style={{ color: "green" }}></i>
+                  ) : (
+                    <i className="fas fa-times" style={{ color: "red" }}></i>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </Table>
       )}
     </>
