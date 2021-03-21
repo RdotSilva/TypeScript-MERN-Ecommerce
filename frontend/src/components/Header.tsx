@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { AppDispatch } from "../store";
+import { ReduxState } from "../types/ReduxState";
 
 interface Props {}
 
@@ -13,8 +14,7 @@ interface Props {}
 const Header = (props: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const userLogin = useSelector((state: any) => state.userLogin);
-  const { userInfo } = userLogin;
+  const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
 
   /**
    * Logs a user out of the application
