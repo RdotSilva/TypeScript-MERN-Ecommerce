@@ -4,6 +4,7 @@ export * from "./UserRegister";
 export * from "./UserUpdateProfile";
 export * from "./UserDetails";
 export * from "./UserDelete";
+export * from "./UserList";
 export * from "./Cart";
 export * from "./Product";
 export * from "./ProductDetails";
