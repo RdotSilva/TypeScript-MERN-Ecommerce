@@ -3,23 +3,19 @@ import {
   UserLoginActionTypes,
   UserLoginState,
   UserRegisterActionTypes,
-} from "../types/";
-import { UserDeleteActionTypes, UserDeleteState } from "../types/UserDelete";
-import {
+  UserDeleteAction,
+  UserDeleteActionTypes,
+  UserDeleteState,
   UserDetailsAction,
   UserDetailsActionTypes,
   UserDetailsState,
-} from "../types/UserDetails";
-import {
   UserListAction,
   UserListActionTypes,
   UserListState,
-} from "../types/UserList";
-import {
   UserUpdateProfileAction,
   UserUpdateProfileActionTypes,
   UserUpdateProfileState,
-} from "../types/UserUpdateProfile";
+} from "../types/";
 
 export const userLoginReducer = (
   state: UserLoginState = {},
@@ -121,7 +117,7 @@ const userDeleteInitialState: UserDeleteState = {
 
 export const userDeleteReducer = (
   state: UserDeleteState = userDeleteInitialState,
-  action: any
+  action: UserDeleteAction
 ) => {
   switch (action.type) {
     case UserDeleteActionTypes.USER_DELETE_REQUEST:
