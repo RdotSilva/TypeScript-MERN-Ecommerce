@@ -1,4 +1,4 @@
-import { PasswordUser } from "./../types/";
+import { PasswordUser, UserDeleteActionTypes } from "./../types/";
 import { AppAction } from "./../types/actions";
 import axios from "axios";
 import { Dispatch } from "react";
@@ -217,6 +217,43 @@ export const listUsers = (): AppThunk => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: UserListActionTypes.USER_LIST_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * Action used to delete a user
+ */
+export const deleteUser = (id: string): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: UserDeleteActionTypes.USER_DELETE_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(`/api/users/${id}`, config);
+
+    dispatch({
+      type: UserDeleteActionTypes.USER_DELETE_SUCCESS,
+    });
+  } catch (error) {
+    dispatch({
+      type: UserDeleteActionTypes.USER_DELETE_FAILURE,
       payload: errorHandler(error),
     });
   }
