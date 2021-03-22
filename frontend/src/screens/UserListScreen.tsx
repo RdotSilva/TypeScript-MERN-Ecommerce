@@ -35,7 +35,9 @@ const UserListScreen = ({ history }: Props) => {
    * @param id ID of the user to delete
    */
   const deleteHandler = (id: string) => {
-    dispatch(deleteUser(id));
+    if (window.confirm("Are you sure")) {
+      dispatch(deleteUser(id));
+    }
   };
 
   return (
