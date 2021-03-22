@@ -4,7 +4,7 @@ import {
   UserLoginState,
   UserRegisterActionTypes,
 } from "../types/";
-import { UserDeleteActionTypes } from "../types/UserDelete";
+import { UserDeleteActionTypes, UserDeleteState } from "../types/UserDelete";
 import {
   UserDetailsAction,
   UserDetailsActionTypes,
@@ -115,7 +115,14 @@ export const userListReducer = (
   }
 };
 
-export const userDeleteReducer = (state: any, action: any) => {
+const userDeleteInitialState: UserDeleteState = {
+  loading: false,
+};
+
+export const userDeleteReducer = (
+  state: UserDeleteState = userDeleteInitialState,
+  action: any
+) => {
   switch (action.type) {
     case UserDeleteActionTypes.USER_DELETE_REQUEST:
       return { loading: true };
