@@ -134,10 +134,11 @@ const getUsers = asyncHandler(async (req: Request, res: Response) => {
  * @access Private/Admin
  */
 const deleteUser = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findById(req.params.id);
-
+  const { id } = req.params as { id: string };
+  
+  const user = await User.findById(id);
   if (user) {
-    await user.remove;
+    await user.remove();
     res.json({ message: "User removed" });
   } else {
     res.status(404);
