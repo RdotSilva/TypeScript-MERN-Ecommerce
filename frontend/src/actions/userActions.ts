@@ -246,7 +246,7 @@ export const deleteUser = (id: string): AppThunk => async (
       },
     };
 
-    const { data } = await axios.delete(`/api/users/${id}`, config);
+    await axios.delete(`/api/users/${id}`, config);
 
     dispatch({
       type: UserDeleteActionTypes.USER_DELETE_SUCCESS,
