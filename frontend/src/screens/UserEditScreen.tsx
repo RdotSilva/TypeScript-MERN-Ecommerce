@@ -1,8 +1,9 @@
-import React, { FormEvent, useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { FormEvent, useEffect, useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
+import { getUserDetails } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
@@ -21,9 +22,24 @@ const UserEditScreen = ({ match, history }: Props) => {
   const [email, setEmail] = useState<string>("");
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
+
   const { user, loading, error } = useSelector(
     (state: ReduxState) => state.userDetails
   );
+
+  /**
+   * Fetch current user and auto populate the form fields
+   */
+  useEffect(() => {
+    if (!user || user._id !== userId) {
+      dispatch(getUserDetails(userId));
+    } else {
+      setName(user.name);
+      setEmail(user.email);
+      setIsAdmin(user.isAdmin);
+    }
+  }, [user, userId, dispatch]);
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
