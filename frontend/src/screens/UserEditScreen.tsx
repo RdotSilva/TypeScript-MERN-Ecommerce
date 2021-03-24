@@ -1,6 +1,11 @@
 import React, { FormEvent, useState } from "react";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
+import { Link } from "react-router-dom";
+import FormContainer from "../components/FormContainer";
+import Loader from "../components/Loader.";
+import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
@@ -25,7 +30,23 @@ const UserEditScreen = ({ match, history }: Props) => {
     // TODO: Add logic to dispatch update user action
   };
 
-  return <div>User Edit Screen</div>;
+  return (
+    <>
+      <Link to="/admin/userlist" className="btn btn-light my-3">
+        Go Back
+      </Link>
+      <FormContainer>
+        <h1>Edit User</h1>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <Form onSubmit={submitHandler}></Form>
+        )}
+      </FormContainer>
+    </>
+  );
 };
 
 export default UserEditScreen;
