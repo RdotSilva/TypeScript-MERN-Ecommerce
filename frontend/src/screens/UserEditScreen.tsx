@@ -53,9 +53,13 @@ const UserEditScreen = ({ match, history }: Props) => {
     }
   }, [user, userId, dispatch, successUpdate]);
 
+  /**
+   * Update a users information
+   * @param e Form event
+   */
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: Add logic to dispatch update user action
+    dispatch(updateUser({ _id: userId, name, email, isAdmin }));
   };
 
   return (
