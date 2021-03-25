@@ -150,9 +150,7 @@ export const userUpdateReducer = (
     case UserUpdateActionTypes.USER_UPDATE_FAILURE:
       return { loading: false, error: action.payload };
     case UserUpdateActionTypes.USER_UPDATE_RESET:
-      return {
-        user: {},
-      };
+      return {};
     default:
       return state;
   }
