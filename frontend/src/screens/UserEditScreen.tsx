@@ -3,10 +3,11 @@ import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUser } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import { UserUpdateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
@@ -28,18 +29,29 @@ const UserEditScreen = ({ match, history }: Props) => {
     (state: ReduxState) => state.userDetails
   );
 
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = useSelector((state: ReduxState) => state.userUpdate);
+
   /**
    * Fetch current user and auto populate the form fields
    */
   useEffect(() => {
-    if (!user || user._id !== userId) {
-      dispatch(getUserDetails(userId));
+    if (successUpdate) {
+      dispatch({ type: UserUpdateActionTypes.USER_UPDATE_RESET });
+      history.push("/admin/userlist");
     } else {
-      setName(user.name);
-      setEmail(user.email);
-      setIsAdmin(user.isAdmin);
+      if (!user || user._id !== userId) {
+        dispatch(getUserDetails(userId));
+      } else {
+        setName(user.name);
+        setEmail(user.email);
+        setIsAdmin(user.isAdmin);
+      }
     }
-  }, [user, userId, dispatch]);
+  }, [user, userId, dispatch, successUpdate]);
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
