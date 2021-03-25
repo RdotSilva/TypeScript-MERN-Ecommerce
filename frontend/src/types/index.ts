@@ -2,6 +2,7 @@ export * from "./User";
 export * from "./UserLogin";
 export * from "./UserRegister";
 export * from "./UserUpdateProfile";
+export * from "./UserUpdate";
 export * from "./UserDetails";
 export * from "./UserDelete";
 export * from "./UserList";
