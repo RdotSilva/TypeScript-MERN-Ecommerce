@@ -1,3 +1,9 @@
+export interface UserUpdateState {
+  loading?: boolean;
+  success?: boolean;
+  error?: any;
+}
+
 export enum UserUpdateActionTypes {
   USER_UPDATE_REQUEST = "USER_UPDATE_REQUEST",
   USER_UPDATE_SUCCESS = "USER_UPDATE_SUCCESS",
