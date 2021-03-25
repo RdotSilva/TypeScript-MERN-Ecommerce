@@ -15,6 +15,7 @@ import {
   UserUpdateProfileAction,
   UserUpdateProfileActionTypes,
   UserUpdateProfileState,
+  UserUpdateActionTypes,
 } from "../types/";
 
 export const userLoginReducer = (
@@ -126,6 +127,23 @@ export const userDeleteReducer = (
       return { loading: false, success: true };
     case UserDeleteActionTypes.USER_DELETE_FAILURE:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userUpdateReducer = (state: any, action: any) => {
+  switch (action.type) {
+    case UserUpdateActionTypes.USER_UPDATE_REQUEST:
+      return { loading: true };
+    case UserUpdateActionTypes.USER_UPDATE_SUCCESS:
+      return { loading: false, success: true };
+    case UserUpdateActionTypes.USER_UPDATE_FAILURE:
+      return { loading: false, error: action.payload };
+    case UserUpdateActionTypes.USER_UPDATE_RESET:
+      return {
+        user: {},
+      };
     default:
       return state;
   }
