@@ -13,6 +13,7 @@ import {
   userLoginReducer,
   userRegisterReducer,
   userUpdateProfileReducer,
+  userUpdateReducer,
 } from "./reducers/userReducers";
 import { ReduxState } from "./types/ReduxState";
 import {
@@ -45,6 +46,7 @@ const reducer = combineReducers<ReduxState>({
   orderListMy: orderListMyReducer,
   userList: userListReducer,
   userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
 });
 
 const cartItemsFromLocalStorage = localStorage.getItem("cartItems")
