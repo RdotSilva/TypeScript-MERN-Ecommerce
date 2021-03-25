@@ -1,4 +1,9 @@
-import { PasswordUser, UserDeleteActionTypes } from "./../types/";
+import {
+  PasswordUser,
+  User,
+  UserDeleteActionTypes,
+  UserUpdateActionTypes,
+} from "./../types/";
 import { AppAction } from "./../types/actions";
 import axios from "axios";
 import { Dispatch } from "react";
@@ -254,6 +259,50 @@ export const deleteUser = (id: string): AppThunk => async (
   } catch (error) {
     dispatch({
       type: UserDeleteActionTypes.USER_DELETE_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * Action used to update  a user
+ */
+export const updateUser = (user: User): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: UserUpdateActionTypes.USER_UPDATE_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.put(`/api/users/${user._id}`, user, config);
+
+    dispatch({
+      type: UserUpdateActionTypes.USER_UPDATE_SUCCESS,
+    });
+
+    // Dispatch the update user info
+    dispatch({
+      type: UserDetailsActionTypes.USER_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UserUpdateActionTypes.USER_UPDATE_FAILURE,
       payload: errorHandler(error),
     });
   }
