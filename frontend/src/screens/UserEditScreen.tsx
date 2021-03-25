@@ -51,7 +51,7 @@ const UserEditScreen = ({ match, history }: Props) => {
         setIsAdmin(user.isAdmin);
       }
     }
-  }, [user, userId, dispatch, successUpdate]);
+  }, [user, userId, dispatch, successUpdate, history]);
 
   /**
    * Update a users information
@@ -69,6 +69,8 @@ const UserEditScreen = ({ match, history }: Props) => {
       </Link>
       <FormContainer>
         <h1>Edit User</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
