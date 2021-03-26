@@ -31,7 +31,7 @@ const LoginScreen = ({ location, history }: Props) => {
     if (userInfo) {
       history.push(redirect);
     }
-  }, [history, userInfo]);
+  }, [history, redirect, userInfo]);
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
