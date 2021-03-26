@@ -4,9 +4,7 @@ import {
   UserDeleteActionTypes,
   UserUpdateActionTypes,
 } from "./../types/";
-import { AppAction } from "./../types/actions";
 import axios from "axios";
-import { Dispatch } from "react";
 import { AppThunk } from "../store";
 import { UserLoginActionTypes } from "../types/";
 import { UserRegisterActionTypes } from "../types/";
