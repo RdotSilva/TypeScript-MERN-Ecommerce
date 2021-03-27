@@ -32,6 +32,15 @@ const ProductListScreen = ({ history }: Props) => {
     }
   }, [dispatch, history, userInfo]);
 
+  /**
+   * Delete a product 
+   */
+  const deleteHandler = (userId: string) => {
+		if (window.confirm('Are you sure')) {
+			// TODO: Dispatch delete product action
+		}
+	};
+
   const createProductHandler = (product: Product) {
     // Create new product
   }
