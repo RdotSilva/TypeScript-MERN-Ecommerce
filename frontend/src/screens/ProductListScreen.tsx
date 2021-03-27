@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
+import { LinkContainer } from "react-router-bootstrap";
 import { listProducts } from "../actions/productActions";
+import Loader from "../components/Loader.";
+import Message from "../components/Message";
 import { AppDispatch } from "../store";
 import { ReduxState } from "../types/ReduxState";
 
@@ -28,6 +31,56 @@ const ProductListScreen = ({ history }: Props) => {
     }
   }, [dispatch, history, userInfo]);
 
+  const productsListDisplay = () => {
+    if (loading) {
+      return <Loader />;
+    } else if (error) {
+      return <Message variant="danger">{error}</Message>;
+    } else {
+      return (
+        <>
+          <Table striped bordered hover responsive className="table-sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>CATEGORY</th>
+                <th>BRAND</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr key={product._id}>
+                  <td>{product._id}</td>
+                  <td>{product.name}</td>
+                  <td>${product.price}</td>
+                  <td>{product.category}</td>
+                  <td>{product.brand}</td>
+                  <td>
+                    <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                      <Button variant="light" className="btn-sm">
+                        <i className="fas fa-edit"></i>
+                      </Button>
+                    </LinkContainer>
+                    <Button
+                      variant="danger"
+                      className="btn-sm"
+                      onClick={() => deleteHandler(product._id)}
+                    >
+                      <i className="fas fa-trash"></i>
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <Row className="align-items-center">
@@ -40,6 +93,7 @@ const ProductListScreen = ({ history }: Props) => {
           </Button>
         </Col>
       </Row>
+      {productsListDisplay()}
     </>
   );
 };
