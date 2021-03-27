@@ -7,7 +7,7 @@ import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
-import { Product } from "../types";
+import { Product } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}
@@ -33,17 +33,17 @@ const ProductListScreen = ({ history }: Props) => {
   }, [dispatch, history, userInfo]);
 
   /**
-   * Delete a product 
+   * Delete a product
    */
   const deleteHandler = (userId: string) => {
-		if (window.confirm('Are you sure')) {
-			// TODO: Dispatch delete product action
-		}
-	};
+    if (window.confirm("Are you sure")) {
+      // TODO: Dispatch delete product action
+    }
+  };
 
-  const createProductHandler = (product: Product) {
-    // Create new product
-  }
+  const createProductHandler = () => {
+    // TODO: Dispatch create product action
+  };
 
   const productsListDisplay = () => {
     if (loading) {
