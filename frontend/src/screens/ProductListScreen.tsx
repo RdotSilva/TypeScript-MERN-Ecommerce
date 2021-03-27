@@ -7,6 +7,7 @@ import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
+import { Product } from "../types";
 import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}
@@ -30,6 +31,10 @@ const ProductListScreen = ({ history }: Props) => {
       history.push("/login");
     }
   }, [dispatch, history, userInfo]);
+
+  const createProductHandler = (product: Product) {
+    // Create new product
+  }
 
   const productsListDisplay = () => {
     if (loading) {
