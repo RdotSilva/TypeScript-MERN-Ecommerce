@@ -10,6 +10,7 @@ export * from "./Cart";
 export * from "./Product";
 export * from "./ProductDetails";
 export * from "./ProductList";
+export * from "./ProductDelete";
 export * from "./Order";
 export * from "./OrderCreate";
 export * from "./OrderDetails";
