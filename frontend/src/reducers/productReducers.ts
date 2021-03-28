@@ -74,7 +74,7 @@ export const productDeleteReducer = (
     case ProductDeleteActionTypes.PRODUCT_DELETE_REQUEST:
       return { loading: true };
     case ProductDeleteActionTypes.PRODUCT_DELETE_SUCCESS:
-      return { loading: true, success: true };
+      return { loading: false, success: true };
     case ProductDeleteActionTypes.PRODUCT_DELETE_FAILURE:
       return { loading: false, error: action.payload };
     default:
