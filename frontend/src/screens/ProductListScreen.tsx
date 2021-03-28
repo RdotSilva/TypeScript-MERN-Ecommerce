@@ -3,7 +3,7 @@ import { Button, Col, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
-import { listProducts } from "../actions/productActions";
+import { deleteProduct, listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
@@ -21,6 +21,12 @@ const ProductListScreen = ({ history }: Props) => {
 
   const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
 
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = useSelector((state: ReduxState) => state.productDelete);
+
   /**
    * If user is Admin load products or redirect to login
    */
@@ -35,9 +41,9 @@ const ProductListScreen = ({ history }: Props) => {
   /**
    * Delete a product
    */
-  const deleteHandler = (userId: string) => {
+  const deleteHandler = (id: string) => {
     if (window.confirm("Are you sure")) {
-      // TODO: Dispatch delete product action
+      dispatch(deleteProduct(id));
     }
   };
 
