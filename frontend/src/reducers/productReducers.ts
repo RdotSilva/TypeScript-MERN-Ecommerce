@@ -8,8 +8,7 @@ import {
   ProductListActionTypes,
   ProductListState,
 } from "../types/ProductList";
-import { ProductDeleteAction } from "../types";
-import { ProductDeleteActionTypes } from "../types";
+import { ProductDeleteAction, ProductDeleteActionTypes } from "../types/";
 
 const initialProductListState: ProductListState = {
   products: [],
