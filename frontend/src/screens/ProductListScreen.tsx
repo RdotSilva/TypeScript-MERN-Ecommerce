@@ -36,7 +36,7 @@ const ProductListScreen = ({ history }: Props) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo, successDelete]);
 
   /**
    * Delete a product
@@ -52,10 +52,12 @@ const ProductListScreen = ({ history }: Props) => {
   };
 
   const productsListDisplay = () => {
-    if (loading) {
+    if (loading || loadingDelete) {
       return <Loader />;
     } else if (error) {
       return <Message variant="danger">{error}</Message>;
+    } else if (errorDelete) {
+      return <Message variant="danger">{errorDelete}</Message>;
     } else {
       return (
         <>
