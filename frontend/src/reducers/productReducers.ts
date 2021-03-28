@@ -8,7 +8,11 @@ import {
   ProductListActionTypes,
   ProductListState,
 } from "../types/ProductList";
-import { ProductDeleteAction, ProductDeleteActionTypes } from "../types/";
+import {
+  ProductDeleteAction,
+  ProductDeleteActionTypes,
+  ProductDeleteState,
+} from "../types/";
 
 const initialProductListState: ProductListState = {
   products: [],
@@ -58,8 +62,12 @@ export const productDetailsReducer = (
   }
 };
 
+const initialProductDeleteState: ProductDeleteState = {
+  loading: false,
+};
+
 export const productDeleteReducer = (
-  state: any,
+  state: ProductDeleteState = initialProductDeleteState,
   action: ProductDeleteAction
 ) => {
   switch (action.type) {
