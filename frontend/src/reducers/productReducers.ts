@@ -8,6 +8,8 @@ import {
   ProductListActionTypes,
   ProductListState,
 } from "../types/ProductList";
+import { ProductDeleteAction } from "../types";
+import { ProductDeleteActionTypes } from "../types";
 
 const initialProductListState: ProductListState = {
   products: [],
@@ -51,6 +53,22 @@ export const productDetailsReducer = (
     case ProductDetailsActionTypes.PRODUCT_DETAILS_SUCCESS:
       return { loading: false, product: action.payload };
     case ProductDetailsActionTypes.PRODUCT_DETAILS_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productDeleteReducer = (
+  state: any,
+  action: ProductDeleteAction
+) => {
+  switch (action.type) {
+    case ProductDeleteActionTypes.PRODUCT_DELETE_REQUEST:
+      return { loading: true };
+    case ProductDeleteActionTypes.PRODUCT_DELETE_SUCCESS:
+      return { loading: true, success: true };
+    case ProductDeleteActionTypes.PRODUCT_DELETE_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;
