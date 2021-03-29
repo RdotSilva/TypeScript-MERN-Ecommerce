@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { Product } from "../models/";
+import { Response, Request } from "../types/";
 
 /**
  * Fetch all products
@@ -105,7 +105,7 @@ const updateProduct = asyncHandler(async (req: Request, res: Response) => {
     product.brand = brand;
     product.category = category;
     product.countInStock = countInStock;
-    
+
     const updatedProduct = await product.save();
     res.status(201).json(updatedProduct);
   } else {
