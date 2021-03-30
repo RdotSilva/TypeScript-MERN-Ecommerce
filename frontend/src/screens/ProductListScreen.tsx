@@ -31,6 +31,13 @@ const ProductListScreen = ({ history }: Props) => {
     success: successDelete,
   } = useSelector((state: ReduxState) => state.productDelete);
 
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = useSelector((state: ReduxState) => state.productCreate);
+
   /**
    * If user is Admin load products or redirect to login
    */
@@ -65,7 +72,7 @@ const ProductListScreen = ({ history }: Props) => {
   };
 
   const createProductHandler = () => {
-    dispatch(createProduct);
+    // TODO: add create product action
   };
 
   const productsListDisplay = () => {
