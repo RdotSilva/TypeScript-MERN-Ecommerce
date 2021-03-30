@@ -76,12 +76,14 @@ const ProductListScreen = ({ history }: Props) => {
   };
 
   const productsListDisplay = () => {
-    if (loading || loadingDelete) {
+    if (loading || loadingDelete || loadingCreate) {
       return <Loader />;
     } else if (error) {
       return <Message variant="danger">{error}</Message>;
     } else if (errorDelete) {
       return <Message variant="danger">{errorDelete}</Message>;
+    } else if (errorCreate) {
+      return <Message variant="danger">{errorCreate}</Message>;
     } else {
       return (
         <>
