@@ -49,7 +49,7 @@ const ProductListScreen = ({ history }: Props) => {
     }
 
     if (successCreate) {
-      history.push(`/admin/product/${createdProduct._id}/edit`);
+      history.push(`/admin/product/${createdProduct?._id}/edit`);
     } else {
       dispatch(listProducts());
     }
@@ -71,8 +71,11 @@ const ProductListScreen = ({ history }: Props) => {
     }
   };
 
+  /**
+   * Create a new product
+   */
   const createProductHandler = () => {
-    // TODO: add create product action
+    dispatch(createProduct());
   };
 
   const productsListDisplay = () => {
