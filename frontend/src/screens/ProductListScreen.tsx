@@ -3,11 +3,15 @@ import { Button, Col, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
-import { deleteProduct, listProducts } from "../actions/productActions";
+import {
+  createProduct,
+  deleteProduct,
+  listProducts,
+} from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
-import { Product } from "../types/";
+import { Product, ProductCreateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}
@@ -31,12 +35,25 @@ const ProductListScreen = ({ history }: Props) => {
    * If user is Admin load products or redirect to login
    */
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listProducts());
-    } else {
+    dispatch({ type: ProductCreateActionTypes.PRODUCT_CREATE_RESET });
+
+    if (!userInfo?.isAdmin) {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo, successDelete]);
+
+    if (successCreate) {
+      history.push(`/admin/product/${createdProduct._id}/edit`);
+    } else {
+      dispatch(listProducts());
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdProduct,
+  ]);
 
   /**
    * Delete a product
@@ -48,7 +65,7 @@ const ProductListScreen = ({ history }: Props) => {
   };
 
   const createProductHandler = () => {
-    // TODO: Dispatch create product action
+    dispatch(createProduct);
   };
 
   const productsListDisplay = () => {
