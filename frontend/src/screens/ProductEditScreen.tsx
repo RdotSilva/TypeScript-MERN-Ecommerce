@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { listProductDetails } from "../actions/productActions";
@@ -41,6 +41,15 @@ const ProductEditScreen = ({ match }: Props) => {
       setCountInStock(product.countInStock);
     }
   }, [product, productId, dispatch, history]);
+
+  /**
+   * Update product information
+   * @param e Form event
+   */
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    //TODO: Update the product
+  };
 
   return <div>Edit Product Screen</div>;
 };
