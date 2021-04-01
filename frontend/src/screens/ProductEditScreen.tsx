@@ -57,7 +57,7 @@ const ProductEditScreen = ({ match }: Props) => {
   };
 
   /**
-   * Render the product edit form
+   * Render the product edit
    */
   const productDetailDisplay = () => {
     if (loading) {
@@ -68,6 +68,44 @@ const ProductEditScreen = ({ match }: Props) => {
       return (
         <FormContainer>
           <h1>Edit Product</h1>
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="price">
+              <Form.Label>Price</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter price"
+                value={price}
+                onChange={(e) => setPrice(Number(e.target.value))}
+              />
+            </Form.Group>
+            <Form.Group controlId="image">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter image url"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="brand">
+              <Form.Label>Brand</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter brand"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
         </FormContainer>
       );
   };
