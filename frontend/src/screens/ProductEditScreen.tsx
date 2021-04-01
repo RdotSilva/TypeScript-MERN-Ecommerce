@@ -45,7 +45,7 @@ const ProductEditScreen = ({ match }: Props) => {
       setCategory(product.category);
       setCountInStock(product.countInStock);
     }
-  }, [product, productId, dispatch, history]);
+  }, [product, productId, dispatch]);
 
   /**
    * Update product information
@@ -105,6 +105,36 @@ const ProductEditScreen = ({ match }: Props) => {
                 onChange={(e) => setBrand(e.target.value)}
               />
             </Form.Group>
+            <Form.Group controlId="countInStock">
+              <Form.Label>Count In Stock</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter CountInStock"
+                value={countInStock}
+                onChange={(e) => setCountInStock(Number(e.target.value))}
+              />
+            </Form.Group>
+            <Form.Group controlId="category">
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="description">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </Form.Group>
+            <Button type="submit" variant="primary">
+              Update
+            </Button>
           </Form>
         </FormContainer>
       );
