@@ -1,6 +1,7 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
+import { Link } from "react-router-dom";
 import { listProductDetails } from "../actions/productActions";
 import { ReduxState } from "../types/ReduxState";
 
@@ -51,7 +52,13 @@ const ProductEditScreen = ({ match }: Props) => {
     //TODO: Update the product
   };
 
-  return <div>Edit Product Screen</div>;
+  return (
+    <>
+      <Link to="/admin/productlist" className="btn btn-dark my-3">
+        Go Back
+      </Link>
+    </>
+  );
 };
 
 export default ProductEditScreen;
