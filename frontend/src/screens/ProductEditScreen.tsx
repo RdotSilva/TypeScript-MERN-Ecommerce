@@ -1,8 +1,12 @@
 import React, { FormEvent, useEffect, useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { listProductDetails } from "../actions/productActions";
+import FormContainer from "../components/FormContainer";
+import Loader from "../components/Loader.";
+import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
@@ -52,11 +56,28 @@ const ProductEditScreen = ({ match }: Props) => {
     //TODO: Update the product
   };
 
+  /**
+   * Render the product edit form
+   */
+  const productDetailDisplay = () => {
+    if (loading) {
+      return <Loader />;
+    } else if (error) {
+      return <Message variant="danger">{error}</Message>;
+    } else
+      return (
+        <FormContainer>
+          <h1>Edit Product</h1>
+        </FormContainer>
+      );
+  };
+
   return (
     <>
       <Link to="/admin/productlist" className="btn btn-dark my-3">
         Go Back
       </Link>
+      {productDetailDisplay()}
     </>
   );
 };
