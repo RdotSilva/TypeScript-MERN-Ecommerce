@@ -30,6 +30,12 @@ const ProductEditScreen = ({ match }: Props) => {
     (state: ReduxState) => state.productDetails
   );
 
+  const {
+    success: successUpdate,
+    loading: loadingUpdate,
+    error: errorUpdate,
+  } = useSelector((state: ReduxState) => state.productUpdate);
+
   /**
    * Load a product if not currently loaded and email product state values
    */
