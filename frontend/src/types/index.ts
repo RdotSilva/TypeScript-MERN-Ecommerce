@@ -12,6 +12,7 @@ export * from "./ProductDetails";
 export * from "./ProductList";
 export * from "./ProductDelete";
 export * from "./ProductCreate";
+export * from "./ProductUpdate";
 export * from "./Order";
 export * from "./OrderCreate";
 export * from "./OrderDetails";
