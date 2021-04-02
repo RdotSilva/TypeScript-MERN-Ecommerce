@@ -7,6 +7,7 @@ import { listProductDetails } from "../actions/productActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import { ProductUpdateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
@@ -14,7 +15,7 @@ interface MatchParams {
 }
 interface Props extends RouteComponentProps<MatchParams> {}
 
-const ProductEditScreen = ({ match }: Props) => {
+const ProductEditScreen = ({ match, history }: Props) => {
   const productId = match.params.id;
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
@@ -40,18 +41,23 @@ const ProductEditScreen = ({ match }: Props) => {
    * Load a product if not currently loaded and email product state values
    */
   useEffect(() => {
-    if (!product || product._id !== productId)
-      dispatch(listProductDetails(productId));
-    else {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setDescription(product.description);
-      setBrand(product.brand);
-      setCategory(product.category);
-      setCountInStock(product.countInStock);
+    if (successUpdate) {
+      dispatch({ type: ProductUpdateActionTypes.PRODUCT_UPDATE_RESET });
+      history.push("/admin/productlist");
+    } else {
+      if (!product || product._id !== productId)
+        dispatch(listProductDetails(productId));
+      else {
+        setName(product.name);
+        setPrice(product.price);
+        setImage(product.image);
+        setDescription(product.description);
+        setBrand(product.brand);
+        setCategory(product.category);
+        setCountInStock(product.countInStock);
+      }
     }
-  }, [product, productId, dispatch]);
+  }, [product, productId, dispatch, history, successUpdate]);
 
   /**
    * Update product information
