@@ -3,7 +3,12 @@ import axios from "axios";
 import { AppThunk } from "../store";
 import { ProductListActionTypes } from "../types/ProductList";
 import { errorHandler } from "./errorHandler";
-import { ProductCreateActionTypes, ProductDeleteActionTypes } from "../types/";
+import {
+  Product,
+  ProductCreateActionTypes,
+  ProductDeleteActionTypes,
+  ProductUpdateActionTypes,
+} from "../types/";
 
 /**
  * List Products action creator
@@ -118,6 +123,49 @@ export const createProduct = (): AppThunk => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ProductCreateActionTypes.PRODUCT_CREATE_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * Action used to update a product
+ */
+export const updateProduct = (product: Product): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: ProductUpdateActionTypes.PRODUCT_UPDATE_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/products/${product._id}`,
+      product,
+      config
+    );
+
+    dispatch({
+      type: ProductUpdateActionTypes.PRODUCT_UPDATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ProductUpdateActionTypes.PRODUCT_UPDATE_FAILURE,
       payload: errorHandler(error),
     });
   }
