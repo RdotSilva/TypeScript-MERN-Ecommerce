@@ -8,6 +8,7 @@ import {
   ProductCreateActionTypes,
   ProductDeleteActionTypes,
   ProductUpdateActionTypes,
+  TemporaryProduct,
 } from "../types/";
 
 /**
@@ -131,7 +132,7 @@ export const createProduct = (): AppThunk => async (dispatch, getState) => {
 /**
  * Action used to update a product
  */
-export const updateProduct = (product: Product): AppThunk => async (
+export const updateProduct = (product: TemporaryProduct): AppThunk => async (
   dispatch,
   getState
 ) => {
@@ -163,6 +164,9 @@ export const updateProduct = (product: Product): AppThunk => async (
       type: ProductUpdateActionTypes.PRODUCT_UPDATE_SUCCESS,
       payload: data,
     });
+
+    //TODO: Look into this issue from 78. Added this to fix the bug where an updated product was not showing new data in the form
+    dispatch({ type: ProductDetailsActionTypes.PRODUCT_DETAILS_SUCCESS });
   } catch (error) {
     dispatch({
       type: ProductUpdateActionTypes.PRODUCT_UPDATE_FAILURE,
