@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import path from "path";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
 import { notFound, errorHandler } from "./middleware/errorMiddleware";
@@ -30,6 +31,10 @@ app.use("/api/users/", userRoutes);
 app.use("/api/orders/", orderRoutes);
 app.use("/api/config/paypal", paypalRoutes);
 app.use("/api/upload", uploadRoutes);
+
+// Make uploads folder static
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Use Middleware
 app.use(notFound);
