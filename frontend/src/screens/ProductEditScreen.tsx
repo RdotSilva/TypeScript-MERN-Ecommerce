@@ -3,11 +3,11 @@ import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
-import { listProductDetails } from "../actions/productActions";
+import { listProductDetails, updateProduct } from "../actions/productActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
-import { ProductUpdateActionTypes } from "../types/";
+import { ProductDetailsActionTypes, ProductUpdateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
@@ -65,7 +65,18 @@ const ProductEditScreen = ({ match, history }: Props) => {
    */
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //TODO: Update the product
+    dispatch(
+      updateProduct({
+        _id: productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        description,
+        countInStock,
+      })
+    );
   };
 
   /**
@@ -80,6 +91,8 @@ const ProductEditScreen = ({ match, history }: Props) => {
       return (
         <FormContainer>
           <h1>Edit Product</h1>
+          {loadingUpdate && <Loader />}
+          {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
