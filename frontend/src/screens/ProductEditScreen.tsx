@@ -24,6 +24,7 @@ const ProductEditScreen = ({ match, history }: Props) => {
   const [brand, setBrand] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [countInStock, setCountInStock] = useState<number>(0);
+  const [uploading, setUploading] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
