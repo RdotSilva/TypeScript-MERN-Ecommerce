@@ -121,6 +121,13 @@ const ProductEditScreen = ({ match, history }: Props) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               />
+              <Form.File
+                id="image-file"
+                label="Choose File"
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
             <Form.Group controlId="brand">
               <Form.Label>Brand</Form.Label>
