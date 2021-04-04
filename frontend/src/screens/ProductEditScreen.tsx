@@ -81,6 +81,10 @@ const ProductEditScreen = ({ match, history }: Props) => {
     );
   };
 
+  /**
+   * Get the image from the form and upload it to the backend
+   * @param e Change Event
+   */
   const uploadFileHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     const formData = new FormData();
@@ -93,7 +97,7 @@ const ProductEditScreen = ({ match, history }: Props) => {
           "Content-Type": "multipart/form-data",
         },
       };
-      
+
       const { data } = await axios.post("/api/upload", formData, config);
 
       setImage(data);
