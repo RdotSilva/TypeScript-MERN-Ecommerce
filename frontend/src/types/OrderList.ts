@@ -26,3 +26,22 @@ export enum OrderListActionTypes {
   ORDER_LIST_SUCCESS = "ORDER_LIST_SUCCESS",
   ORDER_LIST_FAILURE = "ORDER_LIST_FAILURE",
 }
+
+export interface OrderListRequestAction {
+  type: OrderListActionTypes.ORDER_LIST_REQUEST;
+}
+
+export interface OrderListSuccessAction {
+  type: OrderListActionTypes.ORDER_LIST_SUCCESS;
+  payload: OrderList[];
+}
+
+export interface OrderListFailureAction {
+  type: OrderListActionTypes.ORDER_LIST_FAILURE;
+  payload: any;
+}
+
+export type OrderListAction =
+  | OrderListRequestAction
+  | OrderListSuccessAction
+  | OrderListFailureAction;
