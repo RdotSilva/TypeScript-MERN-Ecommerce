@@ -1,6 +1,8 @@
-import { OrderListState } from "../types";
-import { OrderListAction } from "../types";
-import { OrderListState } from "../types";
+import {
+  OrderListState,
+  OrderListAction,
+  OrderListActionTypes,
+} from "../types/";
 import {
   OrderCreateAction,
   OrderCreateActionTypes,
@@ -169,19 +171,21 @@ export const orderListReducer = (
   action: OrderListAction
 ) => {
   switch (action.type) {
-    case OrderListMyActionTypes.ORDER_LIST_MY_REQUEST:
+    case OrderListActionTypes.ORDER_LIST_REQUEST:
       return {
         loading: true,
+        orders: state.orders,
       };
-    case OrderListMyActionTypes.ORDER_LIST_MY_SUCCESS:
+    case OrderListActionTypes.ORDER_LIST_SUCCESS:
       return {
         loading: false,
         orders: action.payload,
       };
-    case OrderListMyActionTypes.ORDER_LIST_MY_FAILURE:
+    case OrderListActionTypes.ORDER_LIST_FAILURE:
       return {
         loading: false,
         error: action.payload,
+        orders: state.orders,
       };
     default:
       return state;
