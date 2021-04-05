@@ -5,6 +5,7 @@ import {
   OrderDetails,
   OrderPayActionTypes,
   PaymentResult,
+  OrderListActionTypes,
 } from "../types/";
 import { Order } from "../types/Order";
 import { OrderCreate, OrderCreateActionTypes } from "../types/OrderCreate";
@@ -165,6 +166,41 @@ export const listMyOrders = (): AppThunk => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: OrderListMyActionTypes.ORDER_LIST_MY_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * Action used to list all orders
+ */
+export const listOrders = (): AppThunk => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: OrderListActionTypes.ORDER_LIST_REQUEST,
+    });
+
+    // Get user info from the userLogin object (from getState)
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Axios config
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/orders`, config);
+
+    dispatch({
+      type: OrderListActionTypes.ORDER_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: OrderListActionTypes.ORDER_LIST_FAILURE,
       payload: errorHandler(error),
     });
   }
