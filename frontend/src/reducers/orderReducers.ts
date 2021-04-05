@@ -1,3 +1,6 @@
+import { OrderListState } from "../types";
+import { OrderListAction } from "../types";
+import { OrderListState } from "../types";
 import {
   OrderCreateAction,
   OrderCreateActionTypes,
@@ -147,6 +150,38 @@ export const orderListMyReducer = (
       return {
         orders: [],
         loading: false,
+      };
+    default:
+      return state;
+  }
+};
+
+const orderListInitialState: OrderListState = {
+  loading: false,
+  orders: [],
+};
+
+/**
+ * Reducer used for admin only order list
+ */
+export const orderListReducer = (
+  state: OrderListState = orderListInitialState,
+  action: OrderListAction
+) => {
+  switch (action.type) {
+    case OrderListMyActionTypes.ORDER_LIST_MY_REQUEST:
+      return {
+        loading: true,
+      };
+    case OrderListMyActionTypes.ORDER_LIST_MY_SUCCESS:
+      return {
+        loading: false,
+        orders: action.payload,
+      };
+    case OrderListMyActionTypes.ORDER_LIST_MY_FAILURE:
+      return {
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;
