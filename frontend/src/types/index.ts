@@ -15,6 +15,7 @@ export * from "./ProductCreate";
 export * from "./ProductUpdate";
 export * from "./Order";
 export * from "./OrderCreate";
+export * from "./OrderDeliver";
 export * from "./OrderDetails";
 export * from "./OrderPay";
 export * from "./OrderListMy";
