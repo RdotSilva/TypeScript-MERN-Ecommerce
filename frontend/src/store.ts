@@ -25,6 +25,7 @@ import {
   orderListMyReducer,
   orderListReducer,
   orderPayReducer,
+  orderDeliverReducer,
 } from "./reducers/orderReducers";
 
 export type AppDispatch = ThunkDispatch<ReduxState, unknown, Action<string>>;
@@ -47,6 +48,7 @@ const reducer = combineReducers<ReduxState>({
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
+  orderDeliver: orderDeliverReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
   userList: userListReducer,
