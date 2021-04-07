@@ -85,7 +85,7 @@ const OrderScreen = ({ match }: Props) => {
     dispatch(payOrder(orderId, paymentResult));
   };
 
-  const deliverHandler = (orderId: string) => {
+  const deliverHandler = () => {
     dispatch(deliverOrder(orderId));
   };
 
@@ -209,6 +209,16 @@ const OrderScreen = ({ match }: Props) => {
                       onSuccess={successPaymentHandler}
                     ></PayPalButton>
                   )}
+                </ListGroup.Item>
+              )}
+              {loadingDeliver && <Loader />}
+              {userInfo!.isAdmin && order.isPaid && !order.isDelivered && (
+                <ListGroup.Item>
+                  <Button
+                    type="button"
+                    className="btn btn-block"
+                    onClick={deliverHandler}
+                  ></Button>
                 </ListGroup.Item>
               )}
             </ListGroup>
