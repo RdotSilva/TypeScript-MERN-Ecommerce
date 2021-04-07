@@ -4,11 +4,19 @@ import { Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { getOrderDetails, payOrder } from "../actions/orderActions";
+import {
+  deliverOrder,
+  getOrderDetails,
+  payOrder,
+} from "../actions/orderActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
-import { OrderPayActionTypes, PaymentResult } from "../types/";
+import {
+  OrderDeliverActionTypes,
+  OrderPayActionTypes,
+  PaymentResult,
+} from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
@@ -50,8 +58,9 @@ const OrderScreen = ({ match }: Props) => {
       document.body.appendChild(script);
     };
 
-    if (successPay || !order || order._id !== orderId) {
+    if (successPay || !order || order._id !== orderId || successDeliver) {
       dispatch({ type: OrderPayActionTypes.ORDER_PAY_RESET });
+      dispatch({ type: OrderDeliverActionTypes.ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -71,6 +80,10 @@ const OrderScreen = ({ match }: Props) => {
   const successPaymentHandler = (paymentResult: PaymentResult) => {
     console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
+  };
+
+  const deliverHandler = (orderId: string) => {
+    dispatch(deliverOrder(orderId));
   };
 
   return loading ? (
