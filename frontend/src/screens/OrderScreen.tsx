@@ -85,6 +85,9 @@ const OrderScreen = ({ match }: Props) => {
     dispatch(payOrder(orderId, paymentResult));
   };
 
+  /**
+   * Mark an order as delivered
+   */
   const deliverHandler = () => {
     dispatch(deliverOrder(orderId));
   };
@@ -218,7 +221,9 @@ const OrderScreen = ({ match }: Props) => {
                     type="button"
                     className="btn btn-block"
                     onClick={deliverHandler}
-                  ></Button>
+                  >
+                    Mark As Delivered
+                  </Button>
                 </ListGroup.Item>
               )}
             </ListGroup>
