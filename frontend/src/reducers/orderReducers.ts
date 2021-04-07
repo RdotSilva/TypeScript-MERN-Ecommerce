@@ -2,6 +2,9 @@ import {
   OrderListState,
   OrderListAction,
   OrderListActionTypes,
+  OrderDeliverState,
+  OrderDeliverAction,
+  OrderDeliverActionTypes,
 } from "../types/";
 import {
   OrderCreateAction,
@@ -187,6 +190,35 @@ export const orderListReducer = (
         error: action.payload,
         orders: state.orders,
       };
+    default:
+      return state;
+  }
+};
+
+/**
+ * Reducer used for order delivery logic
+ */
+export const orderDeliverReducer = (
+  state: any = {},
+  action: OrderDeliverAction
+) => {
+  switch (action.type) {
+    case OrderDeliverActionTypes.ORDER_DELIVER_REQUEST:
+      return {
+        loading: true,
+      };
+    case OrderDeliverActionTypes.ORDER_DELIVER_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+      };
+    case OrderDeliverActionTypes.ORDER_DELIVER_FAILURE:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case OrderDeliverActionTypes.ORDER_DELIVER_RESET:
+      return {};
     default:
       return state;
   }
