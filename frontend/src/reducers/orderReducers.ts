@@ -202,7 +202,7 @@ const orderDeliverInitialState: OrderDeliverState = {
 /**
  * Reducer used for order delivery logic
  */
-export const orderDeliver = (
+export const orderDeliverReducer = (
   state: OrderDeliverState = orderDeliverInitialState,
   action: OrderDeliverAction
 ) => {
