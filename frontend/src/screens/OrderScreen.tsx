@@ -1,6 +1,7 @@
 import axios from "axios";
+import { userInfo } from "os";
 import { useEffect, useState } from "react";
-import { Card, Col, Image, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
@@ -31,6 +32,8 @@ const OrderScreen = ({ match }: Props) => {
   const [sdkReady, setSdkReady] = useState<boolean>(false);
 
   const dispatch = useDispatch<AppDispatch>();
+
+  const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
 
   const { order, loading, error } = useSelector(
     (state: ReduxState) => state.orderDetails
@@ -69,7 +72,7 @@ const OrderScreen = ({ match }: Props) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, order, orderId, successPay]);
+  }, [dispatch, order, orderId, successPay, successDeliver]);
 
   const addDecimals = (num: number) => (Math.round(num * 100) / 100).toFixed(2);
 
