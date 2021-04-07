@@ -7,10 +7,12 @@ import {
   PaymentResult,
   OrderListActionTypes,
   OrderDeliverActionTypes,
+  OrderCreate,
+  OrderCreateActionTypes,
+  OrderListMyActionTypes,
 } from "../types/";
 import { Order } from "../types/Order";
-import { OrderCreate, OrderCreateActionTypes } from "../types/OrderCreate";
-import { OrderListMyActionTypes } from "../types/OrderListMy";
+
 import { errorHandler } from "./errorHandler";
 
 /**
