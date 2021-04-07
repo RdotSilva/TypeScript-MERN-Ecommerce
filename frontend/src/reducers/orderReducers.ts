@@ -195,11 +195,15 @@ export const orderListReducer = (
   }
 };
 
+const orderDeliverInitialState: OrderDeliverState = {
+  loading: false,
+};
+
 /**
  * Reducer used for order delivery logic
  */
-export const orderDeliverReducer = (
-  state: any = {},
+export const orderDeliver = (
+  state: OrderDeliverState = orderDeliverInitialState,
   action: OrderDeliverAction
 ) => {
   switch (action.type) {
