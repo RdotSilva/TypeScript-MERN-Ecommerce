@@ -32,6 +32,10 @@ const OrderScreen = ({ match }: Props) => {
     (state: ReduxState) => state.orderPay
   );
 
+  const { loading: loadingDeliver, success: successDeliver } = useSelector(
+    (state: ReduxState) => state.orderDeliver
+  );
+
   /**
    * Redirect to order screen if order is successful
    */
