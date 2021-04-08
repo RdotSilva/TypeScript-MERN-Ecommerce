@@ -26,7 +26,7 @@ interface MatchParams {
 
 interface Props extends RouteComponentProps<MatchParams> {}
 
-const OrderScreen = ({ match }: Props) => {
+const OrderScreen = ({ match, history }: Props) => {
   const orderId = match.params.id;
 
   const [sdkReady, setSdkReady] = useState<boolean>(false);
@@ -51,6 +51,10 @@ const OrderScreen = ({ match }: Props) => {
    * Redirect to order screen if order is successful
    */
   useEffect(() => {
+    if (!userInfo) {
+      history.push("/login");
+    }
+
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get("/api/config/paypal");
       const script = document.createElement("script");
