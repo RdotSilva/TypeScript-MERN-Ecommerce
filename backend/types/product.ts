@@ -21,7 +21,7 @@ export interface Review {
 
 interface ProductInDatabase extends Product {
   user: string;
-  // TODO: Add reviews to products in DB
+  reviews: Review[];
 }
 
 export interface ProductDocument extends ProductInDatabase, Document {}
