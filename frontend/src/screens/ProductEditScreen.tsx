@@ -8,7 +8,7 @@ import { listProductDetails, updateProduct } from "../actions/productActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
-import { ProductDetailsActionTypes, ProductUpdateActionTypes } from "../types/";
+import { ProductUpdateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
@@ -11,7 +11,7 @@ import {
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { AppDispatch } from "../store";
-import { Product, ProductCreateActionTypes } from "../types/";
+import { ProductCreateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}

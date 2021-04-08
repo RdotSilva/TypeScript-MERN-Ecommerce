@@ -4,7 +4,6 @@ import { AppThunk } from "../store";
 import { ProductListActionTypes } from "../types/ProductList";
 import { errorHandler } from "./errorHandler";
 import {
-  Product,
   ProductCreateActionTypes,
   ProductDeleteActionTypes,
   ProductUpdateActionTypes,
