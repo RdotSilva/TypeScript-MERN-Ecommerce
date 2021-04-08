@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import products from "../data/products";
 import { Product } from "../models/";
-import { Response, Request } from "../types/";
+import { Response, Request, Review } from "../types/";
 
 /**
  * Fetch all products
@@ -133,7 +133,7 @@ const createProductReview = asyncHandler(
     if (product) {
       // Check if user has already reviewed a product
       const alreadyReviewed = product.reviews.find(
-        (review) => review.user.toString === req.user._id.toString()
+        (review: Review) => review.user.toString() === req.user?._id.toString()
       );
 
       if (alreadyReviewed) {
@@ -153,8 +153,10 @@ const createProductReview = asyncHandler(
       product.numReviews = product.reviews.length;
 
       product.rating =
-        product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-        product.reviews.length;
+        product.reviews.reduce(
+          (acc: number, item: any) => item.rating + acc,
+          0
+        ) / product.reviews.length;
 
       await product.save();
       res.status(201).json({ message: "Review added" });
@@ -171,4 +173,5 @@ export {
   deleteProduct,
   createProduct,
   updateProduct,
+  createProductReview,
 };
