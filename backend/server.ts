@@ -10,6 +10,7 @@ import userRoutes from "./routes/userRoutes";
 import orderRoutes from "./routes/orderRoutes";
 import paypalRoutes from "./routes/paypalRoutes";
 import uploadRoutes from "./routes/uploadRoutes";
+import morgan from "morgan";
 
 const PORT = process.env.PORT || 5000;
 
@@ -17,6 +18,9 @@ const app = express();
 
 // Middleware to accept JSON in body
 app.use(express.json());
+
+// Morgan logging
+app.use(morgan("dev"));
 
 dotenv.config();
 
