@@ -13,6 +13,7 @@ export * from "./ProductList";
 export * from "./ProductDelete";
 export * from "./ProductCreate";
 export * from "./ProductUpdate";
+export * from "./ProductCreateReview";
 export * from "./Order";
 export * from "./OrderCreate";
 export * from "./OrderDeliver";
