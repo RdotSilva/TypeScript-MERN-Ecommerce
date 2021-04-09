@@ -57,6 +57,7 @@ const reducer = combineReducers<ReduxState>({
   productDelete: productDeleteReducer,
   productCreate: productCreateReducer,
   productUpdate: productUpdateReducer,
+  productCreateReview: productCreateReducer,
 });
 
 const cartItemsFromLocalStorage = localStorage.getItem("cartItems")
