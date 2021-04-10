@@ -24,7 +24,9 @@ interface MatchParams {
 interface Props extends RouteComponentProps<MatchParams> {}
 
 const ProductScreen = ({ match, history }: Props) => {
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState<number>(1);
+  const [rating, setRating] = useState<number>(1);
+  const [comment, setComment] = useState<string>("");
 
   const dispatch = useDispatch<AppDispatch>();
 
