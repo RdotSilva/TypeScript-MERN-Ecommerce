@@ -34,6 +34,14 @@ const ProductScreen = ({ match, history }: Props) => {
     (state: ReduxState) => state.productDetails
   );
 
+  const { userInfo } = useSelector((state: ReduxState) => state.userLogin);
+
+  const {
+    success: successProductReview,
+    loading: loadingProductReview,
+    error: errorProductReviews,
+  } = useSelector((state: ReduxState) => state.productCreateReview);
+
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
