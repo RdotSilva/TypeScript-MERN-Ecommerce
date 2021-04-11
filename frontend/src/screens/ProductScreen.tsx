@@ -174,7 +174,15 @@ const ProductScreen = ({ match, history }: Props) => {
                             <option value="5">5 - Excellent</option>
                           </Form.Control>
                         </Form.Group>
-
+                        <Form.Group controlId="comment">
+                          <Form.Label>Comment</Form.Label>
+                          <Form.Control
+                            as="textarea"
+                            rows={3}
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                          ></Form.Control>
+                        </Form.Group>
                         <Button type="submit" variant="primary">
                           Submit
                         </Button>
