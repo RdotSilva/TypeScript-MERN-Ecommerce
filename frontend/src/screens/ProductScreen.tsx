@@ -11,7 +11,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Rating from "../components/Rating";
-import { listProductDetails } from "../actions/productActions";
+import {
+  createProductReview,
+  listProductDetails,
+} from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
@@ -52,6 +55,14 @@ const ProductScreen = ({ match, history }: Props) => {
    */
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
+  };
+
+  /**
+   * Create a new product review
+   */
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(createProductReview(match.params.id, { rating, comment }));
   };
 
   return (
