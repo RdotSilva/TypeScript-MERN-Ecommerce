@@ -146,8 +146,25 @@ const ProductScreen = ({ match, history }: Props) => {
           <Row>
             <Col md={6}>
               <h2>Reviews</h2>
-              {product.reviews.length === 0 && <Message>No Reviews</Message>}
+              {product.reviews.length === 0 && <Message>No reviews</Message>}
               <ListGroup variant="flush">
+                {userInfo &&
+                  !product.reviews.find((p) => p.user === userInfo._id) && (
+                    <ListGroup.Item>
+                      <h2>Writer a customer review</h2>
+                      {errorProductReviews && (
+                        <Message variant="danger">
+                          {errorProductReviews}
+                        </Message>
+                      )}
+                      {loadingProductReview && <Loader />}
+                      <Form onSubmit={submitHandler}>
+                        <Button type="submit" variant="primary">
+                          Submit
+                        </Button>
+                      </Form>
+                    </ListGroup.Item>
+                  )}
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
