@@ -8,7 +8,6 @@ import {
   ProductCreateReviewActionTypes,
   ProductDeleteActionTypes,
   ProductUpdateActionTypes,
-  Review,
   TemporaryProduct,
 } from "../types/";
 
@@ -181,7 +180,7 @@ export const updateProduct = (product: TemporaryProduct): AppThunk => async (
  */
 export const createProductReview = (
   productId: string,
-  review: Review
+  review: { rating: number; comment: string }
 ): AppThunk => async (dispatch, getState) => {
   try {
     dispatch({
