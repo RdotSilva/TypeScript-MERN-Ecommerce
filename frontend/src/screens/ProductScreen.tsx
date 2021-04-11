@@ -19,6 +19,7 @@ import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
 import { AppDispatch } from "../store";
+import { ProductCreateReviewActionTypes } from "../types/";
 
 interface MatchParams {
   id: string;
@@ -46,8 +47,18 @@ const ProductScreen = ({ match, history }: Props) => {
   } = useSelector((state: ReduxState) => state.productCreateReview);
 
   useEffect(() => {
+    // Reset review form if product review is successful
+    if (successProductReview) {
+      alert("Review Submitted!");
+      setRating(0);
+      setComment("");
+      dispatch({
+        type: ProductCreateReviewActionTypes.PRODUCT_CREATE_REVIEW_RESET,
+      });
+    }
+
     dispatch(listProductDetails(match.params.id));
-  }, [dispatch, match]);
+  }, [dispatch, match, successProductReview]);
 
   /**
    * Add an item to the cart using qty selected from the form
