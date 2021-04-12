@@ -9,7 +9,17 @@ import { Response, Request, Review } from "../types/";
  * @access Public
  */
 const getProducts = asyncHandler(async (req: Request, res: Response) => {
-  const products = await Product.find({});
+  // Get search keyword from request and search for partial match
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        } as any,
+      }
+    : {};
+
+  const products = await Product.find({ ...keyword });
 
   res.json(products);
 });
