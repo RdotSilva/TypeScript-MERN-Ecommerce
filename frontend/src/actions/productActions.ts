@@ -15,11 +15,11 @@ import {
  * List Products action creator
  * Actions related to listing all products
  */
-export const listProducts = (): AppThunk => async (dispatch) => {
+export const listProducts = (keyword = ""): AppThunk => async (dispatch) => {
   try {
     dispatch({ type: ProductListActionTypes.PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/products");
+    const { data } = await axios.get(`/api/products?keyword=${keyword}`);
 
     dispatch({
       type: ProductListActionTypes.PRODUCT_LIST_SUCCESS,
