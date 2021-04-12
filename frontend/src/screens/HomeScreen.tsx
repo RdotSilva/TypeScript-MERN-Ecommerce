@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { RouteComponentProps } from "react-router";
 import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
@@ -10,7 +11,12 @@ import { AppDispatch } from "../store";
 import { ProductType } from "../types";
 import { ReduxState } from "../types/ReduxState";
 
-interface Props {}
+interface MatchParams {
+  keyword: string;
+  //TODO: PageNumber
+}
+
+interface Props extends RouteComponentProps<MatchParams> {}
 
 const HomeScreen = (props: Props) => {
   const dispatch = useDispatch<AppDispatch>();
