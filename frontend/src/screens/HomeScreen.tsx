@@ -29,7 +29,7 @@ const HomeScreen = ({ match }: Props) => {
 
   useEffect(() => {
     dispatch(listProducts(keyword));
-  }, [dispatch]);
+  }, [dispatch, keyword]);
 
   return (
     <>
