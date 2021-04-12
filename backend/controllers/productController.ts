@@ -9,6 +9,9 @@ import { Response, Request, Review } from "../types/";
  * @access Public
  */
 const getProducts = asyncHandler(async (req: Request, res: Response) => {
+  const pageSize = 2; //TODO: Make this number higher, set to 2 for development
+  const page = Number(req.query.pageNumber) || 1;
+
   // Get search keyword from request and search for partial match
   const keyword = req.query.keyword
     ? {
@@ -19,9 +22,12 @@ const getProducts = asyncHandler(async (req: Request, res: Response) => {
       }
     : {};
 
-  const products = await Product.find({ ...keyword });
+  const count = await Product.count({ ...keyword });
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
 
-  res.json(products);
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 /**
