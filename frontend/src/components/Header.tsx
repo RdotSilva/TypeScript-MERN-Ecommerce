@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { AppDispatch } from "../store";
 import { ReduxState } from "../types/ReduxState";
+import SearchBox from "./SearchBox";
 
 interface Props {}
 
@@ -32,6 +33,7 @@ const Header = (props: Props) => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <SearchBox />
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
