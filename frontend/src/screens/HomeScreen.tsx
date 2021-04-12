@@ -18,7 +18,9 @@ interface MatchParams {
 
 interface Props extends RouteComponentProps<MatchParams> {}
 
-const HomeScreen = (props: Props) => {
+const HomeScreen = ({ match }: Props) => {
+  const keyword = match.params.keyword;
+
   const dispatch = useDispatch<AppDispatch>();
 
   const { products, loading, error } = useSelector(
@@ -26,7 +28,7 @@ const HomeScreen = (props: Props) => {
   );
 
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listProducts(keyword));
   }, [dispatch]);
 
   return (
