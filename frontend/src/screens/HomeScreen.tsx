@@ -13,13 +13,15 @@ import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {
   keyword: string;
-  //TODO: PageNumber
+  pageNumber: string;
 }
 
 interface Props extends RouteComponentProps<MatchParams> {}
 
 const HomeScreen = ({ match }: Props) => {
   const keyword = match.params.keyword;
+
+  const pageNumber = match.params.pageNumber || 1;
 
   const dispatch = useDispatch<AppDispatch>();
 
