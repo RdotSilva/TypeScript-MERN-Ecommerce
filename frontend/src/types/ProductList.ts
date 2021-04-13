@@ -2,6 +2,8 @@ import { Product } from "./";
 
 export interface ProductListState {
   products: Product[];
+  pages?: number;
+  page?: number;
   loading: boolean;
   error?: undefined;
 }
