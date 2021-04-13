@@ -21,7 +21,7 @@ interface Props extends RouteComponentProps<MatchParams> {}
 const HomeScreen = ({ match }: Props) => {
   const keyword = match.params.keyword;
 
-  const pageNumber = match.params.pageNumber || 1;
+  const pageNumber = match.params.pageNumber || "1";
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -30,8 +30,8 @@ const HomeScreen = ({ match }: Props) => {
   );
 
   useEffect(() => {
-    dispatch(listProducts(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listProducts(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
 
   return (
     <>
