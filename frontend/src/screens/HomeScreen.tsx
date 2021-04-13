@@ -5,6 +5,7 @@ import { RouteComponentProps } from "react-router";
 import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import Paginate from "../components/Paginate";
 import Product from "../components/Product";
 import { AppDispatch } from "../store";
 
@@ -25,7 +26,7 @@ const HomeScreen = ({ match }: Props) => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const { products, loading, error } = useSelector(
+  const { products, loading, error, page, pages } = useSelector(
     (state: ReduxState) => state.productList
   );
 
@@ -43,13 +44,22 @@ const HomeScreen = ({ match }: Props) => {
       ) : !products ? (
         <Message variant="danger">No Products Currently Available</Message>
       ) : (
-        <Row>
-          {products.map((product: ProductType) => (
-            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-              <Product product={product} />
-            </Col>
-          ))}
-        </Row>
+        <>
+          <Row>
+            {products.map((product: ProductType) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+          {pages && page && (
+            <Paginate
+              pages={pages}
+              page={page}
+              keyword={keyword ? keyword : ""}
+            />
+          )}
+        </>
       )}
     </>
   );
