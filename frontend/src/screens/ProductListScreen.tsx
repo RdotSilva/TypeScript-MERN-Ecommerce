@@ -67,6 +67,7 @@ const ProductListScreen = ({ history, match }: Props) => {
     successDelete,
     successCreate,
     createdProduct,
+    pageNumber,
   ]);
 
   /**
