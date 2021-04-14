@@ -41,7 +41,7 @@ const App: React.FC = () => {
             exact
           />
           <Route
-            path="/admin/productlist:pageNumber"
+            path="/admin/productlist/:pageNumber"
             component={ProductListScreen}
             exact
           />
