@@ -10,6 +10,7 @@ import {
 } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import Paginate from "../components/Paginate";
 import { AppDispatch } from "../store";
 import { ProductCreateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
@@ -19,7 +20,7 @@ interface Props extends RouteComponentProps {}
 const ProductListScreen = ({ history }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { loading, products, error } = useSelector(
+  const { loading, products, error, page, pages } = useSelector(
     (state: ReduxState) => state.productList
   );
 
@@ -127,6 +128,9 @@ const ProductListScreen = ({ history }: Props) => {
               ))}
             </tbody>
           </Table>
+          {userInfo && page && pages && (
+            <Paginate page={page} pages={pages} isAdmin={userInfo.isAdmin} />
+          )}
         </>
       );
     }
