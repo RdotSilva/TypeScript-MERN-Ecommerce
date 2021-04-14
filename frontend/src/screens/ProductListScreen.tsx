@@ -22,6 +22,8 @@ interface MatchParams {
 interface Props extends RouteComponentProps<MatchParams> {}
 
 const ProductListScreen = ({ history, match }: Props) => {
+  const pageNumber = match.params.pageNumber || "1";
+
   const dispatch = useDispatch<AppDispatch>();
 
   const { loading, products, error, page, pages } = useSelector(
@@ -56,7 +58,7 @@ const ProductListScreen = ({ history, match }: Props) => {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct?._id}/edit`);
     } else {
-      dispatch(listProducts());
+      dispatch(listProducts("", pageNumber));
     }
   }, [
     dispatch,
