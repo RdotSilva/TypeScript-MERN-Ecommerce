@@ -15,9 +15,13 @@ import { AppDispatch } from "../store";
 import { ProductCreateActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
-interface Props extends RouteComponentProps {}
+interface MatchParams {
+  pageNumber: string;
+}
 
-const ProductListScreen = ({ history }: Props) => {
+interface Props extends RouteComponentProps<MatchParams> {}
+
+const ProductListScreen = ({ history, match }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { loading, products, error, page, pages } = useSelector(
