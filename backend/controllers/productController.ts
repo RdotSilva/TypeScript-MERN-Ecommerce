@@ -9,7 +9,7 @@ import { Response, Request, Review } from "../types/";
  * @access Public
  */
 const getProducts = asyncHandler(async (req: Request, res: Response) => {
-  const pageSize = 2; //TODO: Make this number higher, set to 2 for development
+  const pageSize = 10;
   const page = Number(req.query.pageNumber) || 1;
 
   // Get search keyword from request and search for partial match
