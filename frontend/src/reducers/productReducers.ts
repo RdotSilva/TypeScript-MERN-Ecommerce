@@ -188,6 +188,7 @@ export const productTopRatedReducer = (
       };
     case ProductTopActionTypes.PRODUCT_TOP_FAILURE:
       return {
+        products: [],
         error: action.payload,
       };
     default:
