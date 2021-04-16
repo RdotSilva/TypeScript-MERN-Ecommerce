@@ -6,6 +6,7 @@ import {
   productDeleteReducer,
   productDetailsReducer,
   productListReducer,
+  productTopRatedReducer,
   productUpdateReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
@@ -58,6 +59,7 @@ const reducer = combineReducers<ReduxState>({
   productCreate: productCreateReducer,
   productUpdate: productUpdateReducer,
   productCreateReview: productCreateReducer,
+  productTopRated: productTopRatedReducer,
 });
 
 const cartItemsFromLocalStorage = localStorage.getItem("cartItems")
