@@ -41,5 +41,5 @@ export interface ReduxState {
   productCreate: ProductCreateState;
   productUpdate: ProductUpdateState;
   productCreateReview: ProductCreateReviewState;
-  productTop: ProductTopState;
+  productTopRated: ProductTopState;
 }
