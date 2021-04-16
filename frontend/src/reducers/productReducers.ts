@@ -22,6 +22,11 @@ import {
   ProductUpdateActionTypes,
   ProductUpdateState,
 } from "../types/";
+import {
+  ProductTopAction,
+  ProductTopActionTypes,
+  ProductTopState,
+} from "../types/ProductTop";
 
 const initialProductListState: ProductListState = {
   products: [],
@@ -159,6 +164,32 @@ export const productCreateReviewReducer = (
       };
     case ProductCreateReviewActionTypes.PRODUCT_CREATE_REVIEW_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+const initialProductTopRatedState: ProductTopState = {
+  loading: false,
+  products: [],
+};
+
+export const productTopRatedReducer = (
+  state: ProductTopState = initialProductTopRatedState,
+  action: ProductTopAction
+) => {
+  switch (action.type) {
+    case ProductTopActionTypes.PRODUCT_TOP_REQUEST:
+      return { loading: true, products: [] };
+    case ProductTopActionTypes.PRODUCT_TOP_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload,
+      };
+    case ProductTopActionTypes.PRODUCT_TOP_FAILURE:
+      return {
+        error: action.payload,
+      };
     default:
       return state;
   }
