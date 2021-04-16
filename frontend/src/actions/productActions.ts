@@ -10,6 +10,7 @@ import {
   ProductUpdateActionTypes,
   TemporaryProduct,
 } from "../types/";
+import { ProductTopActionTypes } from "../types/ProductTop";
 
 /**
  * List Products action creator
@@ -214,6 +215,28 @@ export const createProductReview = (
   } catch (error) {
     dispatch({
       type: ProductCreateReviewActionTypes.PRODUCT_CREATE_REVIEW_FAILURE,
+      payload: errorHandler(error),
+    });
+  }
+};
+
+/**
+ * List Top Products action creator
+ * Actions related to listing all top products
+ */
+export const listTopProducts = (): AppThunk => async (dispatch) => {
+  try {
+    dispatch({ type: ProductTopActionTypes.PRODUCT_TOP_REQUEST });
+
+    const { data } = await axios.get(`/api/products/top`);
+
+    dispatch({
+      type: ProductTopActionTypes.PRODUCT_TOP_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ProductTopActionTypes.PRODUCT_TOP_FAILURE,
       payload: errorHandler(error),
     });
   }
