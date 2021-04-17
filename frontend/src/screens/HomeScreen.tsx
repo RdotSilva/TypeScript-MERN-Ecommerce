@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
-import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
+import Meta from "../components/Meta";
 import Paginate from "../components/Paginate";
 import Product from "../components/Product";
 import ProductCarousel from "../components/ProductCarousel";
@@ -38,17 +38,7 @@ const HomeScreen = ({ match }: Props) => {
 
   return (
     <>
-      <Helmet>
-        <title>Welcome To ECommerce</title>
-        <meta
-          name="description"
-          content="We sell awesome products for the best prices"
-        ></meta>
-        <meta
-          name="keywords"
-          content="electronics, products, cheap products"
-        ></meta>
-      </Helmet>
+      <Meta />
       {!keyword && <ProductCarousel />}
       <h1>Latest Products</h1>
       {loading ? (
