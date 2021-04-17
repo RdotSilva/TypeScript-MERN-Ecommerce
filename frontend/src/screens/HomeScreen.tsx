@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { listProducts } from "../actions/productActions";
@@ -37,6 +38,17 @@ const HomeScreen = ({ match }: Props) => {
 
   return (
     <>
+      <Helmet>
+        <title>Welcome To ECommerce</title>
+        <meta
+          name="description"
+          content="We sell awesome products for the best prices"
+        ></meta>
+        <meta
+          name="keywords"
+          content="electronics, products, cheap products"
+        ></meta>
+      </Helmet>
       {!keyword && <ProductCarousel />}
       <h1>Latest Products</h1>
       {loading ? (
