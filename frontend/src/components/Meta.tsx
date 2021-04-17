@@ -2,9 +2,9 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 interface Props {
-  title: string;
-  keyword: string;
-  description: string;
+  title?: string;
+  keyword?: string;
+  description?: string;
 }
 
 const Meta = ({ title, description, keyword }: Props) => {
@@ -18,7 +18,7 @@ const Meta = ({ title, description, keyword }: Props) => {
 };
 
 Meta.defaultProps = {
-  title: "Welcome To ProShop",
+  title: "Welcome To ECommerce",
   description: "we sell the best products cheaply",
   keywords: "electronics, buy electronics, cheap electronics",
 };
