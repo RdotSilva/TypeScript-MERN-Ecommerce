@@ -20,6 +20,7 @@ import Message from "../components/Message";
 import { ReduxState } from "../types/ReduxState";
 import { AppDispatch } from "../store";
 import { ProductCreateReviewActionTypes } from "../types/";
+import Meta from "../components/Meta";
 
 interface MatchParams {
   id: string;
@@ -89,6 +90,7 @@ const ProductScreen = ({ match, history }: Props) => {
         <Message variant="danger">Product Not Found</Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
