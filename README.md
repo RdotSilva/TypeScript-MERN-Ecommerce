@@ -4,18 +4,34 @@ E-Commerce Platform created using the MERN Stack w/ TypeScript
 
 ## Installation
 
-1. Install dependencies in frontend folder.
+1. Install dependencies
 
 ```
 npm install
 ```
 
-## Running the servers
+## Running the server
 
 1. Start server
 
 ```
-npm start
+npm run server
+```
+
+## Running the client
+
+1. Start client
+
+```
+npm run client
+```
+
+## Running the server & client concurrently
+
+1. Start server & client
+
+```
+npm run dev
 ```
 
 ## Built With
@@ -26,6 +42,7 @@ npm start
 - ExpressJS
 - MongoDB
 - Redux
+- React Helmet
 
 ## Screenshots
 
