@@ -7,6 +7,9 @@ interface Props {
   description?: string;
 }
 
+/**
+ * Component used to create a custom Meta within individual pages
+ */
 const Meta = ({ title, description, keyword }: Props) => {
   return (
     <Helmet>
