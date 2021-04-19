@@ -8,6 +8,7 @@ import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import Loader from "../components/Loader.";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
+import { UserUpdateProfileActionTypes } from "../types/";
 import { ReduxState } from "../types/ReduxState";
 
 interface Props extends RouteComponentProps {}
@@ -63,7 +64,10 @@ const ProfileScreen = ({ history }: Props) => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      if (!user?.name) {
+      if (!user?.name || success) {
+        dispatch({
+          type: UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_RESET,
+        });
         dispatch(getUserDetails("profile"));
         dispatch(listMyOrders());
       } else {
@@ -71,7 +75,7 @@ const ProfileScreen = ({ history }: Props) => {
         setEmail(user.email);
       }
     }
-  }, [dispatch, history, userInfo, user]);
+  }, [dispatch, history, userInfo, user, success]);
 
   return (
     <>
