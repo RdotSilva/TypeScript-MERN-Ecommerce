@@ -28,7 +28,12 @@ export interface UserUpdateProfileFailureAction {
   payload: any;
 }
 
+export interface UserUpdateProfileResetAction {
+  type: UserUpdateProfileActionTypes.USER_UPDATE_PROFILE_RESET;
+}
+
 export type UserUpdateProfileAction =
   | UserUpdateProfileRequestAction
   | UserUpdateProfileSuccessAction
-  | UserUpdateProfileFailureAction;
+  | UserUpdateProfileFailureAction
+  | UserUpdateProfileResetAction;
