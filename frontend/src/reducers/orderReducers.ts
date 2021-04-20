@@ -5,27 +5,19 @@ import {
   OrderDeliverState,
   OrderDeliverAction,
   OrderDeliverActionTypes,
-} from "../types/";
-import {
   OrderCreateAction,
   OrderCreateActionTypes,
   OrderCreateState,
-} from "../types/OrderCreate";
-import {
   OrderDetailsAction,
   OrderDetailsActionTypes,
   OrderDetailsState,
-} from "../types/OrderDetails";
-import {
   OrderListMyActionTypes,
   OrderListMyState,
   OrderListMyAction,
-} from "../types/OrderListMy";
-import {
   OrderPayAction,
   OrderPayActionTypes,
   OrderPayState,
-} from "../types/OrderPay";
+} from "../types/";
 
 const orderCreateInitialState: OrderCreateState = {
   loading: false,

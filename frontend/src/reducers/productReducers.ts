@@ -1,14 +1,4 @@
 import {
-  ProductDetailsAction,
-  ProductDetailsActionTypes,
-  ProductDetailsState,
-} from "./../types/ProductDetails";
-import {
-  ProductListAction,
-  ProductListActionTypes,
-  ProductListState,
-} from "../types/ProductList";
-import {
   ProductCreateAction,
   ProductCreateActionTypes,
   ProductCreateReviewAction,
@@ -21,12 +11,16 @@ import {
   ProductUpdateAction,
   ProductUpdateActionTypes,
   ProductUpdateState,
-} from "../types/";
-import {
   ProductTopAction,
   ProductTopActionTypes,
   ProductTopState,
-} from "../types/ProductTop";
+  ProductListAction,
+  ProductListActionTypes,
+  ProductListState,
+  ProductDetailsAction,
+  ProductDetailsActionTypes,
+  ProductDetailsState,
+} from "../types/";
 
 const initialProductListState: ProductListState = {
   products: [],
