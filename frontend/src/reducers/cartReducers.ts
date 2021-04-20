@@ -1,15 +1,11 @@
 import { CartAction, CartActionTypes, CartState } from "../types/";
 
-/**
- * Initial state for cart
- */
-
 const cartInitialState: CartState = {
   cartItems: [],
 };
 
 /**
- * Reducer used for cart related logic
+ * Reducer used to add item to cart, remove item from cart, save shipping address, and save payment method
  */
 
 export const cartReducer = (
@@ -20,7 +16,7 @@ export const cartReducer = (
     case CartActionTypes.CART_ADD_ITEM:
       const item = action.payload;
 
-      // Check if item already exists in the cart
+      // Check if item already exists in the cart state
       const itemExists = state.cartItems.find(
         (cartItem) => cartItem.product === item.product
       )!;
