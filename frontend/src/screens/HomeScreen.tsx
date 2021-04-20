@@ -11,7 +11,6 @@ import Paginate from "../components/Paginate";
 import Product from "../components/Product";
 import ProductCarousel from "../components/ProductCarousel";
 import { AppDispatch } from "../store";
-
 import { ProductType } from "../types";
 import { ReduxState } from "../types/ReduxState";
 
@@ -22,9 +21,13 @@ interface MatchParams {
 
 interface Props extends RouteComponentProps<MatchParams> {}
 
+/**
+ * This is the home screen that a user is directed to from the root URL
+ */
 const HomeScreen = ({ match }: Props) => {
   const keyword = match.params.keyword;
 
+  // Page number used for pagination, default to page 1
   const pageNumber = match.params.pageNumber || "1";
 
   const dispatch = useDispatch<AppDispatch>();
