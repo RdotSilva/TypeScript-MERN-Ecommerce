@@ -24,7 +24,7 @@ const orderCreateInitialState: OrderCreateState = {
 };
 
 /**
- * Reducer used for order creation logic
+ * Reducer used to create an order
  */
 export const orderCreateReducer = (
   state: OrderCreateState = orderCreateInitialState,
@@ -56,7 +56,7 @@ const orderDetailsInitialState: OrderDetailsState = {
 };
 
 /**
- * Reducer used for order details logic
+ * Reducer used to get order details
  */
 export const orderDetailsReducer = (
   state: OrderDetailsState = orderDetailsInitialState,
@@ -88,7 +88,7 @@ const orderPayInitialState: OrderPayState = {
 };
 
 /**
- * Reducer used for order pay logic
+ * Reducer used to handle order payment
  */
 export const orderPayReducer = (
   state: OrderPayState = orderPayInitialState,
@@ -122,7 +122,7 @@ const orderListMyInitialState: OrderListMyState = {
 };
 
 /**
- * Reducer used for logged in user order list
+ * Reducer used to fetch a logged in user's order list
  */
 export const orderListMyReducer = (
   state: OrderListMyState = orderListMyInitialState,
@@ -159,7 +159,7 @@ const orderListInitialState: OrderListState = {
 };
 
 /**
- * Reducer used for admin only order list
+ * Reducer used for an admin to fetch all orders
  */
 export const orderListReducer = (
   state: OrderListState = orderListInitialState,
@@ -192,7 +192,7 @@ const orderDeliverInitialState: OrderDeliverState = {
 };
 
 /**
- * Reducer used for order delivery logic
+ * Reducer used for order delivery
  */
 export const orderDeliverReducer = (
   state: OrderDeliverState = orderDeliverInitialState,
