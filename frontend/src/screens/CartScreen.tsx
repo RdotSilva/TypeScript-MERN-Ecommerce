@@ -1,20 +1,20 @@
-import React, { ChangeEvent, useEffect } from "react";
-import { Link, RouteComponentProps } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { ChangeEvent, useEffect } from "react";
 import {
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Form,
   Button,
   Card,
+  Col,
+  Form,
+  Image,
+  ListGroup,
+  Row,
 } from "react-bootstrap";
-import Message from "../components/Message";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import { ReduxState } from "../types/ReduxState";
-import { AppDispatch } from "../store";
+import Message from "../components/Message";
 import Meta from "../components/Meta";
+import { AppDispatch } from "../store";
+import { ReduxState } from "../types/";
 
 interface MatchParams {
   id: string;
@@ -43,7 +43,7 @@ const CartScreen = ({ match, location, history }: Props) => {
   /**
    * Remove an item from the cart
    *
-   * @param cartItem - The cart item to remove from cart
+   * @param productId - The ID of the product to remove from cart
    */
   const removeFromCartHandler = (productId: string) => {
     dispatch(removeFromCart(productId));
