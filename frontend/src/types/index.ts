@@ -42,3 +42,8 @@ export * from "./PaymentResult";
  * Cart exports
  */
 export * from "./Cart";
+
+/**
+ * ReduxState exports
+ */
+export * from "./ReduxState";
