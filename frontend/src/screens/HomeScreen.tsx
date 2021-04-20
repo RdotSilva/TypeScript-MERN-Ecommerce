@@ -11,7 +11,7 @@ import Paginate from "../components/Paginate";
 import Product from "../components/Product";
 import ProductCarousel from "../components/ProductCarousel";
 import { AppDispatch } from "../store";
-import { ProductType } from "../types";
+import { Product as ProductType } from "../types";
 import { ReduxState } from "../types/ReduxState";
 
 interface MatchParams {

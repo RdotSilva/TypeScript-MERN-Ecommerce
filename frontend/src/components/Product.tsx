@@ -1,7 +1,6 @@
-import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ProductType } from "../types";
+import { Product as ProductType } from "../types/";
 import Rating from "./Rating";
 
 interface Props {
