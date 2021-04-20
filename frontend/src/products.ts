@@ -1,4 +1,4 @@
-import { ProductType } from "./types";
+import { Product as ProductType } from "./types/";
 
 const products: ProductType[] = [
   {
@@ -13,6 +13,7 @@ const products: ProductType[] = [
     countInStock: 10,
     rating: 4.5,
     numReviews: 12,
+    reviews: [],
   },
   {
     _id: "2",
@@ -26,6 +27,7 @@ const products: ProductType[] = [
     countInStock: 7,
     rating: 4.0,
     numReviews: 8,
+    reviews: [],
   },
   {
     _id: "3",
@@ -39,6 +41,7 @@ const products: ProductType[] = [
     countInStock: 5,
     rating: 3,
     numReviews: 12,
+    reviews: [],
   },
   {
     _id: "4",
@@ -52,6 +55,7 @@ const products: ProductType[] = [
     countInStock: 11,
     rating: 5,
     numReviews: 12,
+    reviews: [],
   },
   {
     _id: "5",
@@ -65,6 +69,7 @@ const products: ProductType[] = [
     countInStock: 7,
     rating: 3.5,
     numReviews: 10,
+    reviews: [],
   },
   {
     _id: "6",
@@ -78,6 +83,7 @@ const products: ProductType[] = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    reviews: [],
   },
 ];
 
