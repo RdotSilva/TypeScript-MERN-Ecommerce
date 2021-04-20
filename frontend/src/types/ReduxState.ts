@@ -1,24 +1,26 @@
-import { UserRegisterState } from "./";
-import { UserLoginState } from "./";
-import { CartState } from "./";
-import { ProductDetailsState } from "./";
-import { ProductListState } from "./";
-import { UserDetailsState } from "./";
-import { OrderCreateState } from "./OrderCreate";
-import { OrderDeliverState } from "./OrderDeliver";
-import { OrderDetailsState } from "./OrderDetails";
-import { OrderListState } from "./OrderList";
-import { OrderListMyState } from "./OrderListMy";
-import { OrderPayState } from "./OrderPay";
-import { ProductCreateState } from "./ProductCreate";
-import { ProductCreateReviewState } from "./ProductCreateReview";
-import { ProductDeleteState } from "./ProductDelete";
-import { ProductTopState } from "./ProductTop";
-import { ProductUpdateState } from "./ProductUpdate";
-import { UserDeleteState } from "./UserDelete";
-import { UserListState } from "./UserList";
-import { UserUpdateState } from "./UserUpdate";
-import { UserUpdateProfileState } from "./UserUpdateProfile";
+import {
+  CartState,
+  OrderCreateState,
+  OrderDeliverState,
+  OrderDetailsState,
+  OrderListState,
+  OrderListMyState,
+  OrderPayState,
+  ProductDetailsState,
+  ProductListState,
+  UserDetailsState,
+  UserLoginState,
+  UserRegisterState,
+  ProductCreateState,
+  ProductCreateReviewState,
+  ProductDeleteState,
+  ProductTopState,
+  ProductUpdateState,
+  UserDeleteState,
+  UserListState,
+  UserUpdateState,
+  UserUpdateProfileState,
+} from "./";
 
 export interface ReduxState {
   userLogin: UserLoginState;
