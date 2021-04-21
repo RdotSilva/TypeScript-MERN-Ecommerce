@@ -1,5 +1,4 @@
 import axios from "axios";
-import { userInfo } from "os";
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { PayPalButton } from "react-paypal-button-v2";

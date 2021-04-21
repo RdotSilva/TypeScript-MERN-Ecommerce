@@ -1,5 +1,5 @@
-import React, { FormEvent, useState } from "react";
-import { Button, Form, Col } from "react-bootstrap";
+import { FormEvent, useState } from "react";
+import { Button, Col, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { savePaymentMethod } from "../actions/cartActions";
