@@ -1,6 +1,6 @@
-import { ProductType } from "./../types";
+import { Product } from "./../types/";
 
-const products: ProductType[] = [
+const products: Product[] = [
   {
     name: "Airpods Wireless Bluetooth Headphones",
     image: "/images/airpods.jpg",
