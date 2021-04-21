@@ -27,6 +27,9 @@ const initialProductListState: ProductListState = {
   loading: false,
 };
 
+/**
+ * Reducer used for fetching the full list of products
+ */
 export const productListReducer = (
   state: ProductListState = initialProductListState,
   action: ProductListAction
@@ -56,6 +59,9 @@ const initialProductDetailsState: ProductDetailsState = {
   loading: false,
 };
 
+/**
+ * Reducer used for fetching details about a product
+ */
 export const productDetailsReducer = (
   state: ProductDetailsState = initialProductDetailsState,
   action: ProductDetailsAction
@@ -76,6 +82,9 @@ const initialProductDeleteState: ProductDeleteState = {
   loading: false,
 };
 
+/**
+ * Reducer used for deleting a product
+ */
 export const productDeleteReducer = (
   state: ProductDeleteState = initialProductDeleteState,
   action: ProductDeleteAction
@@ -96,6 +105,9 @@ const initialProductCreateState: ProductCreateState = {
   loading: false,
 };
 
+/**
+ * Reducer used for creating a new product
+ */
 export const productCreateReducer = (
   state: ProductCreateState = initialProductCreateState,
   action: ProductCreateAction
@@ -118,6 +130,9 @@ const initialProductUpdateState: ProductUpdateState = {
   loading: false,
 };
 
+/**
+ * Reducer used for updating a product's details
+ */
 export const productUpdateReducer = (
   state: ProductUpdateState = initialProductUpdateState,
   action: ProductUpdateAction
@@ -140,6 +155,9 @@ const initialProductCreateReviewState: ProductCreateReviewState = {
   loading: false,
 };
 
+/**
+ * Reducer used for creating a review for a product
+ */
 export const productCreateReviewReducer = (
   state: ProductCreateReviewState = initialProductCreateReviewState,
   action: ProductCreateReviewAction
@@ -168,6 +186,9 @@ const initialProductTopRatedState: ProductTopState = {
   products: [],
 };
 
+/**
+ * Reducer used for fetching the top rated products
+ */
 export const productTopRatedReducer = (
   state: ProductTopState = initialProductTopRatedState,
   action: ProductTopAction
