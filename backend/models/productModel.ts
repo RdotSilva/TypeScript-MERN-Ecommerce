@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { model, Schema } from "mongoose";
 import { ProductDocument } from "../types/";
 
 const reviewSchema = new Schema(
