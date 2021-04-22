@@ -36,13 +36,14 @@ npm run dev
 
 ## Built With
 
-- React
-- TypeScript
-- NodeJS
-- ExpressJS
-- MongoDB
-- Redux
-- React Helmet
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [NodeJS](https://nodejs.org/en/)
+- [ExpressJS](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Redux](https://redux.js.org/)
+- [ReactHelmet](https://www.npmjs.com/package/react-helmet)
+- [bcrypt](https://www.npmjs.com/package/bcryptjs)
 
 ## Screenshots
 
