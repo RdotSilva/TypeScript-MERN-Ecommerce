@@ -1,15 +1,16 @@
 import express from "express";
-const router = express.Router();
 import {
-  getProducts,
-  getProductById,
-  deleteProduct,
-  updateProduct,
   createProduct,
   createProductReview,
+  deleteProduct,
+  getProductById,
+  getProducts,
   getTopProducts,
+  updateProduct,
 } from "../controllers/productController";
 import { admin, protect } from "../middleware/authMiddleware";
+
+const router = express.Router();
 
 router.route("/").get(getProducts).post(protect, admin, createProduct);
 router.route("/:id/reviews").post(protect, createProductReview);
