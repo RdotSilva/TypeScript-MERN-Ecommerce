@@ -1,6 +1,9 @@
 import { Model, Document } from "mongoose";
 import { ProductDocument } from "./";
 
+/**
+ * Represents an order item
+ */
 export interface OrderItems {
   name: string;
   qty: number;
@@ -9,6 +12,9 @@ export interface OrderItems {
   product: ProductDocument;
 }
 
+/**
+ * Represents a shipping address for a user
+ */
 export interface ShippingAddress {
   address: string;
   city: string;
@@ -16,6 +22,9 @@ export interface ShippingAddress {
   country: string;
 }
 
+/**
+ * Represents a payment result for an order
+ */
 export interface PaymentResult {
   id: string;
   status: string;
@@ -23,6 +32,9 @@ export interface PaymentResult {
   email_address: string;
 }
 
+/**
+ * Represents an order
+ */
 export interface Order {
   user: string;
   orderItems: OrderItems[];

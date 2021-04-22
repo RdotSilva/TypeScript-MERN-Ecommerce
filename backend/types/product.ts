@@ -1,5 +1,8 @@
 import { Model, Document } from "mongoose";
 
+/**
+ * Represents a product
+ */
 export interface Product {
   name: string;
   image: string;
@@ -12,6 +15,9 @@ export interface Product {
   numReviews: number;
 }
 
+/**
+ * Represents a product review
+ */
 export interface Review {
   user: string;
   name: string;
@@ -19,6 +25,9 @@ export interface Review {
   comment: string;
 }
 
+/**
+ * Represents a product w/ reviews
+ */
 interface ProductInDatabase extends Product {
   user: string;
   reviews: Review[];

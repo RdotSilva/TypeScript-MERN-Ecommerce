@@ -1,5 +1,8 @@
 import { Model, Document } from "mongoose";
 
+/**
+ * Represents a user
+ */
 export interface User {
   name: string;
   email: string;
