@@ -1,6 +1,7 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import CheckoutStepper from "./CheckoutStepper";
 
 interface Props {
   stepOne?: boolean;
@@ -8,6 +9,20 @@ interface Props {
   stepThree?: boolean;
   stepFour?: boolean;
 }
+
+const renderCheckoutSteps = (
+  stepTwo?: boolean,
+  stepThree?: boolean,
+  stepFour?: boolean
+) => {
+  if (stepTwo) {
+    return <CheckoutStepper currentStep={1} />;
+  } else if (stepThree) {
+    return <CheckoutStepper currentStep={2} />;
+  } else if (stepFour) {
+    return <CheckoutStepper currentStep={3} />;
+  }
+};
 
 /**
  * Component that renders checkout links based on which step a user is in the checkout process
@@ -20,42 +35,7 @@ const CheckoutSteps = ({ stepOne, stepTwo, stepThree, stepFour }: Props) => {
   return (
     // TODO: Replace this nav link logic with a horizontal stepper
     <Nav className="justify-content-center mb-4">
-      <Nav.Item>
-        {stepOne ? (
-          <LinkContainer to="/login">
-            <Nav.Link>Sign In</Nav.Link>
-          </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Sign In</Nav.Link>
-        )}
-      </Nav.Item>
-      <Nav.Item>
-        {stepTwo ? (
-          <LinkContainer to="/shipping">
-            <Nav.Link>Shipping</Nav.Link>
-          </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Shipping</Nav.Link>
-        )}
-      </Nav.Item>
-      <Nav.Item>
-        {stepThree ? (
-          <LinkContainer to="/payment">
-            <Nav.Link>Payment</Nav.Link>
-          </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Payment</Nav.Link>
-        )}
-      </Nav.Item>
-      <Nav.Item>
-        {stepFour ? (
-          <LinkContainer to="/placeorder">
-            <Nav.Link>Place Order</Nav.Link>
-          </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Place Order</Nav.Link>
-        )}
-      </Nav.Item>
+      {renderCheckoutSteps(stepTwo, stepThree, stepFour)}
     </Nav>
   );
 };
