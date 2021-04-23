@@ -39,7 +39,7 @@ const PaymentScreen = ({ history }: Props) => {
     <>
       <Meta title="Payment Method" />
       <FormContainer>
-        <CheckoutSteps stepOne stepTwo stepThree />
+        <CheckoutSteps stepThree />
         <h1>Payment Method</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group>

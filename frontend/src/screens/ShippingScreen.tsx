@@ -43,7 +43,7 @@ const ShippingScreen = ({ history }: Props) => {
     <>
       <Meta title="Shipping" />
       <FormContainer>
-        <CheckoutSteps stepOne stepTwo />
+        <CheckoutSteps stepTwo />
         <h1>Shipping</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="address">
