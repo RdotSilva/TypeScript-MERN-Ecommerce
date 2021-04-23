@@ -1,5 +1,5 @@
 // @ts-ignore TODO: Fix type declaration file
-import { Stepper } from "react-stepper-horizontal";
+import Stepper from "react-stepper-horizontal";
 
 interface Props {
   currentStep: number;
