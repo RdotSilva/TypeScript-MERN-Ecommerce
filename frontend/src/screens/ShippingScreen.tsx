@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { saveShippingAddress } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
 import FormContainer from "../components/FormContainer";
@@ -86,7 +86,10 @@ const ShippingScreen = ({ history }: Props) => {
               onChange={(e) => setCountry(e.target.value)}
             ></Form.Control>
           </Form.Group>
-          <Button type="submit" variant="primary">
+          <Link to="/" className="btn btn-dark">
+            Back
+          </Link>
+          <Button type="submit" variant="primary" className="ml-3">
             Continue
           </Button>
         </Form>

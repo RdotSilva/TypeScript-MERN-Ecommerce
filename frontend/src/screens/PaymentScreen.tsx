@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { savePaymentMethod } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
 import FormContainer from "../components/FormContainer";
@@ -65,7 +65,10 @@ const PaymentScreen = ({ history }: Props) => {
               ></Form.Check>
             </Col>
           </Form.Group>
-          <Button type="submit" variant="primary">
+          <Link to="/shipping" className="btn btn-dark">
+            Back
+          </Link>
+          <Button type="submit" variant="primary" className="ml-3">
             Continue
           </Button>
         </Form>
