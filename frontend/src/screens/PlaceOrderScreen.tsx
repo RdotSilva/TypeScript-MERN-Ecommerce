@@ -162,6 +162,11 @@ const PlaceOrderScreen = ({ history }: Props) => {
               <ListGroup.Item>
                 <Row>
                   <Col>
+                    <Link to="/cart" className="btn btn-dark">
+                      Edit Cart
+                    </Link>
+                  </Col>
+                  <Col>
                     <Button
                       type="button"
                       className="btn-block"
@@ -170,11 +175,6 @@ const PlaceOrderScreen = ({ history }: Props) => {
                     >
                       Place Order
                     </Button>
-                  </Col>
-                  <Col>
-                    <Link to="/payment" className="btn btn-dark">
-                      Back
-                    </Link>
                   </Col>
                 </Row>
               </ListGroup.Item>
