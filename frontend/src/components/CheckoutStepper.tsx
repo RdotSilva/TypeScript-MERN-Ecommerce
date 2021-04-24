@@ -20,7 +20,7 @@ const CheckoutStepper = ({ currentStep }: Props) => {
       activeStep={currentStep}
       completeColor={"black"}
       activeColor={"#76d907"}
-      size={25}
+      size={55}
     />
   );
 };
