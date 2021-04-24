@@ -18,6 +18,9 @@ const CheckoutStepper = ({ currentStep }: Props) => {
         { title: "Place Order" },
       ]}
       activeStep={currentStep}
+      completeColor={"black"}
+      activeColor={"#76d907"}
+      size={25}
     />
   );
 };
