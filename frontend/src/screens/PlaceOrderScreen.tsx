@@ -160,14 +160,23 @@ const PlaceOrderScreen = ({ history }: Props) => {
                 {error && <Message variant="danger">{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button
-                  type="button"
-                  className="btn-block"
-                  disabled={cartItems.length === 0}
-                  onClick={placeOrderHandler}
-                >
-                  Place Order
-                </Button>
+                <Row>
+                  <Col>
+                    <Button
+                      type="button"
+                      className="btn-block"
+                      disabled={cartItems.length === 0}
+                      onClick={placeOrderHandler}
+                    >
+                      Place Order
+                    </Button>
+                  </Col>
+                  <Col>
+                    <Link to="/payment" className="btn btn-dark">
+                      Back
+                    </Link>
+                  </Col>
+                </Row>
               </ListGroup.Item>
             </ListGroup>
           </Card>
