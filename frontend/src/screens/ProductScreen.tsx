@@ -222,8 +222,10 @@ const ProductScreen = ({ match, history }: Props) => {
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
-                <ProductReviewRatings productReviews={product.reviews} />
               </ListGroup>
+            </Col>
+            <Col md={3}>
+              <ProductReviewRatings productReviews={product.reviews} />
             </Col>
           </Row>
         </>
