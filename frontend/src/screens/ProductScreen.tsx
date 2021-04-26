@@ -21,6 +21,7 @@ import { ReduxState } from "../types/ReduxState";
 import { AppDispatch } from "../store";
 import { ProductCreateReviewActionTypes } from "../types/";
 import Meta from "../components/Meta";
+import ProductReviewRatings from "../components/ProductReviewRatings";
 
 interface MatchParams {
   id: string;
@@ -221,6 +222,7 @@ const ProductScreen = ({ match, history }: Props) => {
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
+                <ProductReviewRatings productReviews={product.reviews} />
               </ListGroup>
             </Col>
           </Row>
