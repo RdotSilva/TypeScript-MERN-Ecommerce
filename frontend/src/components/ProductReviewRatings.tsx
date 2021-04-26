@@ -38,13 +38,24 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
 
   return (
     <>
+      <h2>Product Ratings Overview</h2>
       {productReviews.map((review) => (
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
               <Rating value={review.rating} />
             </ListGroup.Item>
-            <ListGroup.Item>{productReviews.length}</ListGroup.Item>
+            {review.rating === 1 ? (
+              <ListGroup.Item>{oneStarReviews}</ListGroup.Item>
+            ) : review.rating === 2 ? (
+              <ListGroup.Item>{twoStarReviews}</ListGroup.Item>
+            ) : review.rating === 3 ? (
+              <ListGroup.Item>{threeStarReviews}</ListGroup.Item>
+            ) : review.rating === 4 ? (
+              <ListGroup.Item>{fourStarReviews}</ListGroup.Item>
+            ) : (
+              <ListGroup.Item>{fiveStarReviews}</ListGroup.Item>
+            )}
           </ListGroup>
         </Card>
       ))}
