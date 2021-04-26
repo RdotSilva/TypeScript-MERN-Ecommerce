@@ -1,7 +1,11 @@
 import React from "react";
 import { Review } from "../types";
 
-const ProductReviewRatings = ({ productReviews }) => {
+interface Props {
+  productReviews: Review[];
+}
+
+const ProductReviewRatings = ({ productReviews }: Props) => {
   return <div></div>;
 };
 
