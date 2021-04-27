@@ -40,7 +40,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
           break;
       }
     });
-  }, []);
+  }, [productReviews]);
 
   const calculateReviewRatingPercentage = (
     reviewsPerRating: number,
