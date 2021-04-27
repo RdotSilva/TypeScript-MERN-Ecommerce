@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Dropdown } from "react-bootstrap";
 import { Review } from "../types";
 import Rating from "./Rating";
 
@@ -52,37 +52,44 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
   return (
     <>
       <h2>Product Ratings Overview</h2>
-      {productReviews.map((review) => (
-        <Card>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <Rating value={review.rating} />
-            </ListGroup.Item>
-            {review.rating === 1 ? (
-              <ListGroup.Item>
-                {oneStarReviews}
-                {oneStarReviews > 1 ? "reviews" : "review"}
-              </ListGroup.Item>
-            ) : review.rating === 2 ? (
-              <ListGroup.Item>
-                {twoStarReviews} {twoStarReviews > 1 ? "reviews" : "review"}
-              </ListGroup.Item>
-            ) : review.rating === 3 ? (
-              <ListGroup.Item>
-                {threeStarReviews} {threeStarReviews > 1 ? "reviews" : "review"}
-              </ListGroup.Item>
-            ) : review.rating === 4 ? (
-              <ListGroup.Item>
-                {fourStarReviews} {fourStarReviews > 1 ? "reviews" : "review"}
-              </ListGroup.Item>
-            ) : (
-              <ListGroup.Item>
-                {fiveStarReviews} {fiveStarReviews > 1 ? "reviews" : "review"}
-              </ListGroup.Item>
-            )}
-          </ListGroup>
-        </Card>
-      ))}
+      <Dropdown>
+        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+          Product Reviews
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          {productReviews.map((review) => (
+            <Card>
+              <Dropdown.Item>
+                <Rating value={review.rating} />
+              </Dropdown.Item>
+              {review.rating === 1 ? (
+                <Dropdown.Item>
+                  {oneStarReviews}
+                  {oneStarReviews > 1 ? "reviews" : "review"}
+                </Dropdown.Item>
+              ) : review.rating === 2 ? (
+                <Dropdown.Item>
+                  {twoStarReviews} {twoStarReviews > 1 ? "reviews" : "review"}
+                </Dropdown.Item>
+              ) : review.rating === 3 ? (
+                <Dropdown.Item>
+                  {threeStarReviews}{" "}
+                  {threeStarReviews > 1 ? "reviews" : "review"}
+                </Dropdown.Item>
+              ) : review.rating === 4 ? (
+                <Dropdown.Item>
+                  {fourStarReviews} {fourStarReviews > 1 ? "reviews" : "review"}
+                </Dropdown.Item>
+              ) : (
+                <Dropdown.Item>
+                  {fiveStarReviews} {fiveStarReviews > 1 ? "reviews" : "review"}
+                </Dropdown.Item>
+              )}
+            </Card>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
     </>
   );
 };
