@@ -52,15 +52,26 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
               <Rating value={review.rating} />
             </ListGroup.Item>
             {review.rating === 1 ? (
-              <ListGroup.Item>{oneStarReviews}</ListGroup.Item>
+              <ListGroup.Item>
+                {oneStarReviews}
+                {oneStarReviews > 1 ? "reviews" : "review"}
+              </ListGroup.Item>
             ) : review.rating === 2 ? (
-              <ListGroup.Item>{twoStarReviews}</ListGroup.Item>
+              <ListGroup.Item>
+                {twoStarReviews} {twoStarReviews > 1 ? "reviews" : "review"}
+              </ListGroup.Item>
             ) : review.rating === 3 ? (
-              <ListGroup.Item>{threeStarReviews}</ListGroup.Item>
+              <ListGroup.Item>
+                {threeStarReviews} {threeStarReviews > 1 ? "reviews" : "review"}
+              </ListGroup.Item>
             ) : review.rating === 4 ? (
-              <ListGroup.Item>{fourStarReviews}</ListGroup.Item>
+              <ListGroup.Item>
+                {fourStarReviews} {fourStarReviews > 1 ? "reviews" : "review"}
+              </ListGroup.Item>
             ) : (
-              <ListGroup.Item>{fiveStarReviews}</ListGroup.Item>
+              <ListGroup.Item>
+                {fiveStarReviews} {fiveStarReviews > 1 ? "reviews" : "review"}
+              </ListGroup.Item>
             )}
           </ListGroup>
         </Card>
