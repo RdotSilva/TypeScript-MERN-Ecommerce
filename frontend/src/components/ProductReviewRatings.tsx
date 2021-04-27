@@ -11,7 +11,7 @@ interface Props {
  * Product Review Ratings component that shows total number of reviews based on the star rating
  */
 const ProductReviewRatings = ({ productReviews }: Props) => {
-  const [oneStarReviews, setOneStartReviews] = useState(0);
+  const [oneStarReviews, setOneStarReviews] = useState(0);
   const [twoStarReviews, setTwoStarReviews] = useState(0);
   const [threeStarReviews, setThreeStarReviews] = useState(0);
   const [fourStarReviews, setFourStarReviews] = useState(0);
@@ -24,7 +24,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     productReviews.forEach((review) => {
       switch (review.rating) {
         case 1:
-          setOneStartReviews(oneStarReviews + 1);
+          setOneStarReviews(oneStarReviews + 1);
           break;
         case 2:
           setTwoStarReviews(twoStarReviews + 1);
