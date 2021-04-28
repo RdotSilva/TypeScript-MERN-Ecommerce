@@ -51,6 +51,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     reviewsPerRating: number,
     totalReviews: number
   ) => {
+    console.log((100 * reviewsPerRating) / totalReviews);
     return (100 * reviewsPerRating) / totalReviews;
   };
 
@@ -72,6 +73,13 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
                 <Dropdown.Item>
                   {oneStarReviews}
                   {oneStarReviews > 1 ? "reviews" : "review"}
+                  <p>
+                    {calculateReviewRatingPercentage(
+                      oneStarReviews,
+                      productReviews.length
+                    )}{" "}
+                    Percent
+                  </p>
                 </Dropdown.Item>
               ) : review.rating === 2 ? (
                 <Dropdown.Item>
