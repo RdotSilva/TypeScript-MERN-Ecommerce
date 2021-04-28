@@ -44,6 +44,9 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     });
   }, []);
 
+  /**
+   * Calculates the total percentage of reviews per star based on the total reviews
+   */
   const calculateReviewRatingPercentage = (
     reviewsPerRating: number,
     totalReviews: number
