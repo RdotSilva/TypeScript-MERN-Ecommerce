@@ -24,23 +24,25 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     productReviews.forEach((review) => {
       switch (review.rating) {
         case 1:
-          setOneStarReviews(oneStarReviews + 1);
+          setOneStarReviews((prevOneStarReviews) => prevOneStarReviews + 1);
           break;
         case 2:
-          setTwoStarReviews(twoStarReviews + 1);
+          setTwoStarReviews((prevTwoStarReviews) => prevTwoStarReviews + 1);
           break;
         case 3:
-          setThreeStarReviews(threeStarReviews + 1);
+          setThreeStarReviews(
+            (prevThreeStarReviews) => prevThreeStarReviews + 1
+          );
           break;
         case 4:
-          setFourStarReviews(fourStarReviews + 1);
+          setFourStarReviews((prevFourStarReviews) => prevFourStarReviews + 1);
           break;
         case 5:
-          setFiveStarReviews(fiveStarReviews + 1);
+          setFiveStarReviews((prevFiveStarReviews) => prevFiveStarReviews + 1);
           break;
       }
     });
-  }, [productReviews]);
+  }, []);
 
   const calculateReviewRatingPercentage = (
     reviewsPerRating: number,
