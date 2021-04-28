@@ -64,7 +64,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
 
         <Dropdown.Menu>
           {productReviews.map((review) => (
-            <Card>
+            <div>
               <Dropdown.Item>
                 <Rating value={review.rating} />
               </Dropdown.Item>
@@ -91,7 +91,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
                   {fiveStarReviews} {fiveStarReviews > 1 ? "reviews" : "review"}
                 </Dropdown.Item>
               )}
-            </Card>
+            </div>
           ))}
         </Dropdown.Menu>
       </Dropdown>
