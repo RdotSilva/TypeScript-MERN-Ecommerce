@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, ListGroup, Dropdown } from "react-bootstrap";
 import { Review } from "../types";
 import Rating from "./Rating";
+import ReviewPercentage from "./ReviewPercentage";
 
 interface Props {
   productReviews: Review[];
@@ -44,16 +45,6 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     });
   }, []);
 
-  /**
-   * Calculates the total percentage of reviews per star based on the total reviews
-   */
-  const calculateReviewRatingPercentage = (
-    reviewsPerRating: number,
-    totalReviews: number
-  ) => {
-    return Math.round((100 * reviewsPerRating) / totalReviews);
-  };
-
   return (
     <>
       <h2>Product Ratings Overview</h2>
@@ -68,37 +59,10 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
               <Dropdown.Item>
                 <Rating value={review.rating} />
               </Dropdown.Item>
-              {review.rating === 1 ? (
-                <Dropdown.Item>
-                  {oneStarReviews}
-                  {oneStarReviews > 1
-                    ? ` reviews (${calculateReviewRatingPercentage(
-                        oneStarReviews,
-                        productReviews.length
-                      )}%)`
-                    : ` review (${calculateReviewRatingPercentage(
-                        oneStarReviews,
-                        productReviews.length
-                      )}%)`}
-                </Dropdown.Item>
-              ) : review.rating === 2 ? (
-                <Dropdown.Item>
-                  {twoStarReviews} {twoStarReviews > 1 ? "reviews" : "review"}
-                </Dropdown.Item>
-              ) : review.rating === 3 ? (
-                <Dropdown.Item>
-                  {threeStarReviews}{" "}
-                  {threeStarReviews > 1 ? "reviews" : "review"}
-                </Dropdown.Item>
-              ) : review.rating === 4 ? (
-                <Dropdown.Item>
-                  {fourStarReviews} {fourStarReviews > 1 ? "reviews" : "review"}
-                </Dropdown.Item>
-              ) : (
-                <Dropdown.Item>
-                  {fiveStarReviews} {fiveStarReviews > 1 ? "reviews" : "review"}
-                </Dropdown.Item>
-              )}
+              <ReviewPercentage
+                reviewsPerStar={oneStarReviews}
+                totalReviews={productReviews.length}
+              />
             </div>
           ))}
         </Dropdown.Menu>
