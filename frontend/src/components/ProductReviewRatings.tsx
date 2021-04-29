@@ -51,8 +51,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     reviewsPerRating: number,
     totalReviews: number
   ) => {
-    console.log((100 * reviewsPerRating) / totalReviews);
-    return (100 * reviewsPerRating) / totalReviews;
+    return Math.round((100 * reviewsPerRating) / totalReviews);
   };
 
   return (
