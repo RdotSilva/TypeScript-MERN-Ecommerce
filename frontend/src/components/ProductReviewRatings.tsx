@@ -59,6 +59,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
               <Dropdown.Item>
                 <Rating value={review.rating} />
               </Dropdown.Item>
+              {/* TODO: Remove hard coded oneStarReviews, this needs to be dynamic */}
               <ReviewPercentage
                 reviewsPerStar={oneStarReviews}
                 totalReviews={productReviews.length}
