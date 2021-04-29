@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Card, ListGroup, Dropdown } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Dropdown } from "react-bootstrap";
 import { Review } from "../types";
 import Rating from "./Rating";
 import ReviewPercentage from "./ReviewPercentage";
