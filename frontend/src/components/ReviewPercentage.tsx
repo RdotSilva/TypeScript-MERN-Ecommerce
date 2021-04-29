@@ -19,7 +19,18 @@ const ReviewPercentage = ({ reviewsPerStar, totalReviews }: Props) => {
   };
 
   return (
-    
+    <Dropdown.Item>
+      {reviewsPerStar}
+      {reviewsPerStar! > 1
+        ? ` reviews (${calculateReviewRatingPercentage(
+            reviewsPerStar!,
+            totalReviews!
+          )}%)`
+        : ` review (${calculateReviewRatingPercentage(
+            reviewsPerStar!,
+            totalReviews!
+          )}%)`}
+    </Dropdown.Item>
   );
 };
 
