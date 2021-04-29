@@ -71,14 +71,15 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
               {review.rating === 1 ? (
                 <Dropdown.Item>
                   {oneStarReviews}
-                  {oneStarReviews > 1 ? "reviews" : "review"}
-                  <p>
-                    {calculateReviewRatingPercentage(
-                      oneStarReviews,
-                      productReviews.length
-                    )}{" "}
-                    Percent
-                  </p>
+                  {oneStarReviews > 1
+                    ? ` reviews (${calculateReviewRatingPercentage(
+                        oneStarReviews,
+                        productReviews.length
+                      )}%)`
+                    : ` review (${calculateReviewRatingPercentage(
+                        oneStarReviews,
+                        productReviews.length
+                      )}%)`}
                 </Dropdown.Item>
               ) : review.rating === 2 ? (
                 <Dropdown.Item>
