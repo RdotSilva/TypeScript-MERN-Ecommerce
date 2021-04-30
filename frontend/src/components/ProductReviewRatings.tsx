@@ -18,6 +18,13 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
   const [fourStarReviews, setFourStarReviews] = useState(0);
   const [fiveStarReviews, setFiveStarReviews] = useState(0);
 
+  const uniqueReviewsByRating: Review[] = Object.values(
+    productReviews.reduce(
+      (acc, cur) => Object.assign(acc, { [cur.rating]: cur }),
+      {}
+    )
+  );
+
   /**
    * Populate the number of reviews per star
    */
@@ -94,7 +101,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          {productReviews.map((review) => (
+          {uniqueReviewsByRating.map((review) => (
             <div>
               <Dropdown.Item>
                 <Rating value={review.rating} />
