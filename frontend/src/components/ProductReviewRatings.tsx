@@ -45,6 +45,46 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     });
   }, []);
 
+  const renderReviewRatings = (review: Review) => {
+    switch (review.rating) {
+      case 1:
+        return (
+          <ReviewPercentage
+            reviewsPerStar={oneStarReviews}
+            totalReviews={productReviews.length}
+          />
+        );
+      case 2:
+        return (
+          <ReviewPercentage
+            reviewsPerStar={twoStarReviews}
+            totalReviews={productReviews.length}
+          />
+        );
+      case 3:
+        return (
+          <ReviewPercentage
+            reviewsPerStar={threeStarReviews}
+            totalReviews={productReviews.length}
+          />
+        );
+      case 4:
+        return (
+          <ReviewPercentage
+            reviewsPerStar={fourStarReviews}
+            totalReviews={productReviews.length}
+          />
+        );
+      case 5:
+        return (
+          <ReviewPercentage
+            reviewsPerStar={fiveStarReviews}
+            totalReviews={productReviews.length}
+          />
+        );
+    }
+  };
+
   return (
     <>
       <h2>Product Ratings Overview</h2>
@@ -60,10 +100,6 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
                 <Rating value={review.rating} />
               </Dropdown.Item>
               {/* TODO: Remove hard coded oneStarReviews, this needs to be dynamic */}
-              <ReviewPercentage
-                reviewsPerStar={oneStarReviews}
-                totalReviews={productReviews.length}
-              />
             </div>
           ))}
         </Dropdown.Menu>
