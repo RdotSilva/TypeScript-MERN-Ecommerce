@@ -18,6 +18,10 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
   const [fourStarReviews, setFourStarReviews] = useState(0);
   const [fiveStarReviews, setFiveStarReviews] = useState(0);
 
+  /**
+   * Unique array that contains only a single review PER star rating.
+   * This is used when rendering the rating dropdown to ensure we have no duplicates per star rating.
+   */
   const uniqueReviewsByRating: Review[] = Object.values(
     productReviews.reduce(
       (acc, cur) => Object.assign(acc, { [cur.rating]: cur }),
@@ -52,6 +56,9 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
     });
   }, []);
 
+  /**
+   * Used to render the ReviewPercentage component for a specific star rating
+   */
   const renderReviewRatings = (review: Review) => {
     switch (review.rating) {
       case 1:
