@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Review } from "../types";
 interface Props {
