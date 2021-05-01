@@ -5,6 +5,7 @@ import {
   render,
   screen,
   container,
+  getByRole,
 } from "@testing-library/react";
 import ReviewPercentage from "./ReviewPercentage";
 
@@ -28,4 +29,14 @@ it("renders star image", () => {
     <ReviewPercentage reviewsPerStar={1} totalReviews={2} />
   );
   expect(container.firstChild).toHaveClass("rating");
+});
+
+/**
+ * Product Review dropdown link is rendered
+ */
+it("renders product reviews dropdown link", () => {
+  const { getByText } = render(
+    <ReviewPercentage reviewsPerStar={1} totalReviews={2} />
+  );
+  expect(getByRole("link")).toBeVisible();
 });
