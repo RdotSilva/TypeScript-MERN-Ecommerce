@@ -44,6 +44,8 @@ npm run dev
 - [Redux](https://redux.js.org/)
 - [ReactHelmet](https://www.npmjs.com/package/react-helmet)
 - [bcrypt](https://www.npmjs.com/package/bcryptjs)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 ## Screenshots
 
