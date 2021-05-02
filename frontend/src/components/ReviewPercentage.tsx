@@ -18,7 +18,7 @@ const ReviewPercentage = ({ reviewsPerStar, totalReviews }: Props) => {
   };
 
   return (
-    <Dropdown.Item>
+    <Dropdown.Item data-testid="review-dropdown">
       {reviewsPerStar}
       {reviewsPerStar! > 1
         ? ` reviews (${calculateReviewRatingPercentage(
