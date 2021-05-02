@@ -15,6 +15,7 @@ const Loader = () => {
         margin: "auto",
         display: "block",
       }}
+      data-testid="spinner"
     >
       <span className="sr-only">Loading...</span>
     </Spinner>
