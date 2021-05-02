@@ -19,3 +19,17 @@ describe("Input value", () => {
     expect(searchInput.value).toBe("test");
   });
 });
+
+describe("Search box", () => {
+  describe("with empty query", () => {
+    it("does not trigger submitHandler function", () => {
+      const submitHandler = jest.fn();
+
+      const { queryByTestId, queryByPlaceholderText } = render(<SearchBox />);
+
+      fireEvent.click(queryByTestId("search-box"));
+
+      expect(submitHandler).not.toHaveBeenCalled();
+    });
+  });
+});
