@@ -14,6 +14,12 @@ it("renders without crashing", () => {
   ReactDOM.render(<ReviewPercentage />, div);
 });
 
+it("renders correctly", () => {
+  const { queryByTestId } = render(<ReviewPercentage />);
+
+  expect(queryByTestId("review-dropdown")).toBeTruthy();
+});
+
 it("renders review", () => {
   const { getByText } = render(
     <ReviewPercentage reviewsPerStar={1} totalReviews={2} />
