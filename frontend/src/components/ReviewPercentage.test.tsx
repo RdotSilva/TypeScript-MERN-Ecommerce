@@ -9,22 +9,10 @@ import {
 } from "@testing-library/react";
 import ReviewPercentage from "./ReviewPercentage";
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<ReviewPercentage />, div);
-});
-
 it("renders correctly", () => {
   const { queryByTestId } = render(<ReviewPercentage />);
 
   expect(queryByTestId("review-dropdown")).toBeTruthy();
-});
-
-it("renders review", () => {
-  const { getByText } = render(
-    <ReviewPercentage reviewsPerStar={1} totalReviews={2} />
-  );
-  expect(getByText("review")).toBeInTheDocument;
 });
 
 /**
