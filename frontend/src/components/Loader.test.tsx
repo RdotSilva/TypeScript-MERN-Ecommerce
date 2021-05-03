@@ -6,3 +6,10 @@ it("renders correctly", () => {
 
   expect(queryByTestId("spinner")).toBeTruthy();
 });
+
+it("renders correct text content", () => {
+  const { queryByTestId } = render(<Loader />);
+  const spinnerTextContent = queryByTestId("spinner")?.textContent;
+
+  expect(spinnerTextContent).toEqual("Loading...");
+});
