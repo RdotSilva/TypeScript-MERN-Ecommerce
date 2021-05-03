@@ -21,6 +21,7 @@ const CheckoutStepper = ({ currentStep }: Props) => {
       completeColor={"black"}
       activeColor={"#76d907"}
       size={55}
+      data-testid="checkout-stepper"
     />
   );
 };
