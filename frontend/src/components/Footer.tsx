@@ -8,7 +8,7 @@ interface Props {}
  */
 const Footer = (props: Props) => {
   return (
-    <footer>
+    <footer data-testid="footer">
       <Container>
         <Row>
           <Col className="text-center py-3">Copyright &copy; RdotSilva</Col>
