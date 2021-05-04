@@ -6,3 +6,9 @@ it("renders correctly", () => {
 
   expect(queryByTestId("message-alert")).toBeTruthy();
 });
+
+it("renders single child properly", () => {
+  const { container } = render(<Message>Test</Message>);
+
+  expect(container.children.length).toBe(1);
+});
