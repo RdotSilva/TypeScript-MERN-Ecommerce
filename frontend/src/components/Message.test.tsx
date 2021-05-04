@@ -12,3 +12,10 @@ it("renders single child properly", () => {
 
   expect(container.children.length).toBe(1);
 });
+
+it("should have default variant prop", () => {
+  const variantDefaultProps = Message.defaultProps.variant;
+
+  expect(variantDefaultProps).toBeDefined;
+  expect(variantDefaultProps).toEqual("info");
+});
