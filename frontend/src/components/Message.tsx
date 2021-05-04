@@ -10,7 +10,11 @@ interface Props {
  * Message component used to format alerts throughout different pages
  */
 const Message = ({ variant, children }: Props) => {
-  return <Alert variant={variant}>{children}</Alert>;
+  return (
+    <Alert data-testid="message-alert" variant={variant}>
+      {children}
+    </Alert>
+  );
 };
 
 Message.defaultProps = {
