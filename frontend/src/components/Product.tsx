@@ -9,7 +9,7 @@ interface Props {
 
 const Product = ({ product }: Props) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card data-testid="product-card" className="my-3 p-3 rounded">
       <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} variant="top" />
       </Link>
