@@ -21,9 +21,9 @@ const Meta = ({ title, description, keyword }: Props) => {
 };
 
 Meta.defaultProps = {
-  title: "Welcome To ECommerce",
-  description: "we sell the best products cheaply",
-  keywords: "electronics, buy electronics, cheap electronics",
+  title: "TypeScript MERN E-Commerce",
+  description: "We sell the best items at the best prices",
+  keywords: "store, ecommerce, buy items, best prices",
 };
 
 export default Meta;
