@@ -10,6 +10,14 @@ E-Commerce Platform created using the MERN Stack w/ TypeScript
 npm install
 ```
 
+## Running Unit Tests
+
+1. Run unit tests
+
+```
+npm test
+```
+
 ## Running the server
 
 1. Start server
