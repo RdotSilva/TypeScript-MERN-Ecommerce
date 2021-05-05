@@ -12,7 +12,7 @@ interface Props {
  */
 const Meta = ({ title, description, keyword }: Props) => {
   return (
-    <Helmet>
+    <Helmet data-testid="helmet-meta">
       <title>{title}</title>
       <meta name="description" content={description}></meta>
       <meta name="keyword" content={keyword}></meta>
