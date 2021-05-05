@@ -26,3 +26,13 @@ it("renders correctly", () => {
 
   expect(queryByTestId("product-card")).toBeTruthy();
 });
+
+it("renders single child properly", () => {
+  const { queryByTestId, container } = render(
+    <MemoryRouter>
+      <Product product={testProduct} />
+    </MemoryRouter>
+  );
+
+  expect(container.children.length).toBe(1);
+});
