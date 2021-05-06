@@ -102,7 +102,7 @@ const ProductReviewRatings = ({ productReviews }: Props) => {
   return (
     <>
       <h2>Product Ratings Overview</h2>
-      <Dropdown>
+      <Dropdown data-testid="rating-overview">>
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
           Product Reviews
         </Dropdown.Toggle>
