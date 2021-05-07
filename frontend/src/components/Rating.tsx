@@ -11,7 +11,7 @@ interface Props {
  */
 const Rating = ({ value, text, color }: Props) => {
   return (
-    <div className="rating">
+    <div data-testid="rating" className="rating">
       <span>
         <i
           style={{ color }}
