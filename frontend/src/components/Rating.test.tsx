@@ -6,3 +6,9 @@ it("renders correctly", () => {
 
   expect(queryByTestId("rating")).toBeTruthy();
 });
+
+it("should contain a child span element", () => {
+  const { queryByTestId } = render(<Rating value={5} />);
+
+  expect(queryByTestId("rating-span")).toBeTruthy();
+});
