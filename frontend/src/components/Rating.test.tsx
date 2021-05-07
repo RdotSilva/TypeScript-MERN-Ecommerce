@@ -29,3 +29,10 @@ it("half star review should have half star image class name", () => {
 
   expect(halfStarRatingImage?.className).toBe("fas fa-star-half-alt");
 });
+
+it("should have default props", () => {
+  const ratingDefaultProps = Rating.defaultProps;
+
+  expect(ratingDefaultProps).toBeDefined;
+  expect(ratingDefaultProps.color).toEqual("#f8e825");
+});
