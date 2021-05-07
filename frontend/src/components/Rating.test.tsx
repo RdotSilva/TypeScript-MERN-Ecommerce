@@ -20,3 +20,12 @@ it("one star review should have one star image class name", () => {
     container.firstElementChild?.firstElementChild?.firstElementChild?.className
   ).toBe("fas fa-star");
 });
+
+it("half star review should have half star image class name", () => {
+  const { container } = render(<Rating value={0.5} />);
+
+  const halfStarRatingImage = container.getElementsByTagName("span")[0]
+    .firstChild;
+
+  expect(halfStarRatingImage?.className).toBe("fas fa-star-half-alt");
+});
