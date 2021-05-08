@@ -48,7 +48,14 @@ const UserListScreen = ({ history }: Props) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
+        <Table
+          striped
+          bordered
+          hover
+          responsive
+          className="table-sm"
+          data-testid="user-list-table"
+        >
           <thead>
             <tr>
               <th>ID</th>
