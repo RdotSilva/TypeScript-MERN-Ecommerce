@@ -9,10 +9,19 @@ app.use(express.json());
 app.use("/api/config/paypal", paypalRoutes);
 
 describe("GET /api/config/paypal", () => {
-  it("responds with json", (done) => {
+  it("responds with 200", (done) => {
     request(app)
       .get("/api/config/paypal")
       .set("Accept", "application/json")
       .expect(200, done);
+  });
+});
+
+describe("POST /api/config/paypal", () => {
+  it("responds with 404", (done) => {
+    request(app)
+      .post("/api/config/paypal")
+      .set("Accept", "application/json")
+      .expect(404, done);
   });
 });
