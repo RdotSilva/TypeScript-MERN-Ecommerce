@@ -25,3 +25,12 @@ describe("POST /api/config/paypal", () => {
       .expect(404, done);
   });
 });
+
+describe("PUT /api/config/paypal", () => {
+  it("responds with 404", (done) => {
+    request(app)
+      .put("/api/config/paypal")
+      .set("Accept", "application/json")
+      .expect(404, done);
+  });
+});
