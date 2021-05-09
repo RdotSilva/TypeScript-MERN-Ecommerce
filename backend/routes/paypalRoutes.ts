@@ -5,4 +5,4 @@ const router = express.Router();
 
 router.route("/").get(fetchPaypalClientId);
 
-export default router;
+module.exports = router;
