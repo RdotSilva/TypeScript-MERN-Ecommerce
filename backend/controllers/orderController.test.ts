@@ -17,20 +17,11 @@ describe("GET /api/orders/myorders", () => {
   });
 });
 
-// describe("POST /api/config/paypal", () => {
-//   it("responds with 404", (done) => {
-//     request(app)
-//       .post("/api/config/paypal")
-//       .set("Accept", "application/json")
-//       .expect(404, done);
-//   });
-// });
-
-// describe("PUT /api/config/paypal", () => {
-//   it("responds with 404", (done) => {
-//     request(app)
-//       .put("/api/config/paypal")
-//       .set("Accept", "application/json")
-//       .expect(404, done);
-//   });
-// });
+describe("POST /api/orders/s", () => {
+  it("responds with 200", (done) => {
+    request(app)
+      .get("/api/orders/")
+      .set("Accept", "application/json")
+      .expect(200, done);
+  });
+});
