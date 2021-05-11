@@ -12,10 +12,16 @@ npm install
 
 ## Running Unit Tests
 
-1. Run unit tests
+1. Run all unit tests
 
 ```
 npm test
+```
+
+1. Run an individual unit test
+
+```
+npm test -- filename.test.ts
 ```
 
 ## Running the server
