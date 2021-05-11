@@ -23,3 +23,9 @@ it("password is being hashed", () => {
 
   expect(usersWithHashedPassword.length).toEqual(0);
 });
+
+it("contains only one admin account", () => {
+  const totalAdmins = users.filter((user) => user.isAdmin === true);
+
+  expect(totalAdmins.length).toEqual(1);
+});
