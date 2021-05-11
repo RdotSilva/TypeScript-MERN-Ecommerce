@@ -17,9 +17,9 @@ it("each user has 4 properties", () => {
 });
 
 it("password is being hashed", () => {
-  const usersWithHashedPassword = users.filter((user) => {
-    user.password === "12345";
-  });
+  const usersWithHashedPassword = users.filter(
+    (user) => user.password === "12345"
+  );
 
   expect(usersWithHashedPassword.length).toEqual(0);
 });
