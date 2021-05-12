@@ -34,3 +34,12 @@ describe("DELETE /api/products", () => {
       .expect(200, done);
   });
 });
+
+describe("POST /api/products", () => {
+  it("responds with 200", (done) => {
+    request(app)
+      .post("/api/products")
+      .set("Accept", "application/json")
+      .expect(200, done);
+  });
+});
