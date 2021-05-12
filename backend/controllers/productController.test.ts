@@ -25,3 +25,12 @@ describe("GET /api/products/:id", () => {
       .expect(200, done);
   });
 });
+
+describe("DELETE /api/products", () => {
+  it("responds with 200", (done) => {
+    request(app)
+      .delete("/api/products")
+      .set("Accept", "application/json")
+      .expect(200, done);
+  });
+});
