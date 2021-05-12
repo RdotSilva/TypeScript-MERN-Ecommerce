@@ -16,3 +16,12 @@ describe("GET /api/products", () => {
       .expect(200, done);
   });
 });
+
+describe("GET /api/products/:id", () => {
+  it("responds with 200", (done) => {
+    request(app)
+      .get("/api/products/606261b8b81e2856b83e05c5")
+      .set("Accept", "application/json")
+      .expect(200, done);
+  });
+});
