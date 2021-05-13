@@ -34,3 +34,12 @@ describe("GET /api/users/profile", () => {
       .expect(200, done);
   });
 });
+
+describe("PUT /api/users/profile", () => {
+  it("responds with 200", (done) => {
+    request(app)
+      .put("/api/users/profile")
+      .set("Accept", "application/json")
+      .expect(200, done);
+  });
+});
