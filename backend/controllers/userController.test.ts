@@ -16,3 +16,12 @@ describe("POST /api/users/login", () => {
       .expect(200, done);
   });
 });
+
+describe("POST /api/users", () => {
+  it("responds with 200", (done) => {
+    request(app)
+      .get("/api/users")
+      .set("Accept", "application/json")
+      .expect(200, done);
+  });
+});
