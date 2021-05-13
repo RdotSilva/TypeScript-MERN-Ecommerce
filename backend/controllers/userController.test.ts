@@ -11,7 +11,7 @@ app.use("/api/users/", userRoutes);
 describe("POST /api/users/login", () => {
   it("responds with 200", (done) => {
     request(app)
-      .get("/api/users/login")
+      .post("/api/users/login")
       .set("Accept", "application/json")
       .expect(200, done);
   });
@@ -20,7 +20,7 @@ describe("POST /api/users/login", () => {
 describe("POST /api/users", () => {
   it("responds with 200", (done) => {
     request(app)
-      .get("/api/users")
+      .post("/api/users")
       .set("Accept", "application/json")
       .expect(200, done);
   });
