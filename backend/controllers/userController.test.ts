@@ -51,3 +51,12 @@ describe("GET /api/users", () => {
         .set("Accept", "application/json")
         .expect(200, done);
     });
+
+    describe("PUT /api/users/:id", () => {
+      it("responds with 200", (done) => {
+        request(app)
+          .put("/api/users/1fj38eckaj39fl922")
+          .set("Accept", "application/json")
+          .expect(200, done);
+      });
+    });
