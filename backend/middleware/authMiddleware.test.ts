@@ -21,4 +21,15 @@ describe("Authorization middleware", () => {
 
     expect(mockResponse.json).toBeCalledWith(expectedResponse);
   });
+
+  test('with "authorization" header calls next function', async () => {
+    mockRequest = {
+      headers: {
+        authorization: "Bearer 1234d1234",
+      },
+    };
+    protect(mockRequest as Request, mockResponse as Response, nextFunction);
+
+    expect(nextFunction).toBeCalledTimes(1);
+  });
 });
