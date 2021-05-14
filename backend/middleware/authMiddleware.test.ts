@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { protect } from "./authMiddleware";
 
 describe("Authorization middleware", () => {
   let mockRequest: Partial<Request>;
@@ -10,5 +11,14 @@ describe("Authorization middleware", () => {
     mockResponse = {
       json: jest.fn(),
     };
+  });
+
+  test("without headers throws error", async () => {
+    const expectedResponse = {
+      error: "Not authorized, token failed",
+    };
+    protect(mockRequest as Request, mockResponse as Response, nextFunction);
+
+    expect(mockResponse.json).toBeCalledWith(expectedResponse);
   });
 });
