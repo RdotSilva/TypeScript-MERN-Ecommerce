@@ -29,3 +29,11 @@ it("contains only one admin account", () => {
 
   expect(totalAdmins.length).toEqual(1);
 });
+
+it("contains users with valid email addresses", () => {
+  const usersWithValidEmails = users.filter((user) =>
+    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$/.test(user.email)
+  );
+
+  expect(usersWithValidEmails.length).toEqual(3);
+});
