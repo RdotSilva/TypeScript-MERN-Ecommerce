@@ -15,3 +15,11 @@ it("each review has 4 properties", () => {
 
   expect(reviewsWithFourProperties.length).toEqual(6);
 });
+
+it("minimum rating is 1", () => {
+  const reviewsWithRatingLessThanOne = reviews.filter(
+    (review) => review.rating < 1
+  );
+
+  expect(reviewsWithRatingLessThanOne.length).toEqual(0);
+});
