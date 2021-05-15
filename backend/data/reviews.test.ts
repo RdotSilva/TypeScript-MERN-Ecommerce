@@ -39,3 +39,7 @@ it("review comment is 3 characters or more", () => {
 
   expect(reviewsWithCommentsLessThanThreeCharacters.length).toEqual(0);
 });
+
+it("review array has only one review per user", () => {
+  //TODO: Check that every user in the reviews array is unique to ensure only one user can review per item
+});
