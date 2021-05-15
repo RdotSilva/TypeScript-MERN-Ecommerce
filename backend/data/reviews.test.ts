@@ -31,3 +31,11 @@ it("maximum rating is 5", () => {
 
   expect(reviewsWithRatingsGreaterThanFive.length).toEqual(0);
 });
+
+it("review comment is 3 characters or more", () => {
+  const reviewsWithCommentsLessThanThreeCharacters = reviews.filter(
+    (review) => review.comment.length < 3
+  );
+
+  expect(reviewsWithCommentsLessThanThreeCharacters.length).toEqual(0);
+});
