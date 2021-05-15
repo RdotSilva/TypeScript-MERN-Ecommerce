@@ -23,3 +23,11 @@ it("minimum rating is 1", () => {
 
   expect(reviewsWithRatingLessThanOne.length).toEqual(0);
 });
+
+it("maximum rating is 5", () => {
+  const reviewsWithRatingsGreaterThanFive = reviews.filter(
+    (review) => review.rating > 5
+  );
+
+  expect(reviewsWithRatingsGreaterThanFive.length).toEqual(0);
+});
