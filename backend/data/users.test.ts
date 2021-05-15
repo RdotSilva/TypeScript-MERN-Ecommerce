@@ -18,7 +18,7 @@ it("each user has 4 properties", () => {
 
 it("password is being hashed", () => {
   const usersWithHashedPassword = users.filter(
-    (user) => user.password === "12345"
+    (user) => user.password === "123456"
   );
 
   expect(usersWithHashedPassword.length).toEqual(0);
@@ -35,5 +35,5 @@ it("contains users with valid email addresses", () => {
     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$/.test(user.email)
   );
 
-  expect(usersWithValidEmails.length).toEqual(3);
+  expect(usersWithValidEmails.length).toEqual(4);
 });
