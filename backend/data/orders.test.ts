@@ -15,3 +15,11 @@ it("each order has 12 properties", () => {
 
   expect(ordersWithTwelveProperties.length).toEqual(3);
 });
+
+it("each order has shipping address that contains 4 properties", () => {
+  const ordersWithCorrectShippingAddressProperties = orders.filter(
+    (order) => Object.keys(order.shippingAddress).length === 4
+  );
+
+  expect(ordersWithCorrectShippingAddressProperties.length).toEqual(3);
+});
