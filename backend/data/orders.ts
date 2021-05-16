@@ -57,3 +57,5 @@ const orders = [
     deliveredAt: 2,
   },
 ];
+
+export default orders;
